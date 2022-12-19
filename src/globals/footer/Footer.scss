@@ -1,0 +1,26 @@
+footer{
+    background-color: var(--card-color);
+    padding: 2rem;
+    font-size: 0.8rem;
+    width: 100%;
+
+    &.absolute{
+        position: absolute;
+        bottom: 0;
+    }
+
+    img{
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        margin: 1rem;
+    }
+
+    a{
+        color: inherit;
+        text-decoration: none;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}

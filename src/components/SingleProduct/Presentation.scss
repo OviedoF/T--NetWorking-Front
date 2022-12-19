@@ -1,0 +1,118 @@
+.presentation{
+    display: flex;
+    padding: 2em;
+    justify-content: space-between;
+    align-items: center;
+
+    .presentation__image{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+
+        .galery{
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            margin-top: 20px;
+
+            img{
+                width: 100%;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+                grid-column: auto;
+                grid-row: auto;
+
+                &.primary{
+                    grid-column: 1 / 4;
+                    grid-row: 1 / 3;
+                    width: 100%;
+                    margin-bottom: 20px;
+                }
+
+                &:hover{
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+
+    .presentation__info{
+        width: 50%;
+        padding: 0 2em;
+
+        *{
+            margin: 20px 0;
+        }
+
+        b{
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        h1{
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        p{
+            font-size: 1.2em;
+            white-space: pre-line;
+            line-height: 1.4;
+        }
+
+        .presentation__info__quantity{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            *{
+                margin: 0 10px;
+            }
+
+            span{
+                font-size: 1.5em;
+            }
+
+            button{
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                font-size: 1.2em;
+                font-weight: bold;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+
+                &:hover{
+                    background-color: white;
+                    color: black;
+                }
+            }
+            
+        }
+
+        .presentation__info__buttons{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+
+            button{
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                font-size: 1.2em;
+                font-weight: bold;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+                margin: 0 10px;
+
+                &:hover{
+                    transform: scale(1.2);
+                }
+            }
+        }
+    }
+}

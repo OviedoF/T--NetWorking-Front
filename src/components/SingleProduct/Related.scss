@@ -1,0 +1,53 @@
+.related_container{
+    
+    padding: 2em;
+
+    h2{
+        font-size: 2em;
+        font-weight: bold;
+        margin-bottom: 1em;
+    }
+
+    .related{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 20px;
+
+        .related__item{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow:  0 0 10px rgba(0,0,0,0.5);
+            padding: 1em;
+            transition: all 0.3s ease-in-out;
+            color: inherit;
+            text-decoration: none;
+
+            &:hover{
+                transform: scale(1.05);
+            }
+
+            img{
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                margin-bottom: 1em;
+            }
+
+            .related__item__name{
+                font-size: 1em;
+                font-weight: 500;
+                margin-bottom: 1em;
+            }
+
+            .related__item__price{
+                font-size: 1.2em;
+                font-weight: bold;
+                color: #f00;
+            }
+        }
+    }   
+}

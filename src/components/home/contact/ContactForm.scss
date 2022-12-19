@@ -1,0 +1,40 @@
+.contact_form{
+    width: 49%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+    
+    .contact_form_title{
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    .form-group{
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .contact_form_input{
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+
+    .contact_form_button{
+        width: calc(100% - 20px);
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+    }
+}
