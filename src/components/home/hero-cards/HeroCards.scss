@@ -21,3 +21,20 @@
         }
     }
 }
+
+@media screen and (max-width: 768px){
+    .hero_cards_container{
+        flex-direction: column;
+        align-items: center;
+
+        .hero_card{
+            width: 90%;
+            height: 200px;
+            margin: 20px 0;
+
+            img{
+                bottom: 0;
+            }
+        }
+    }
+}

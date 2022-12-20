@@ -2,17 +2,26 @@ import axios from 'axios';
 import React, { useRef } from 'react';
 import env from '../../../env';
 import './LoginForm.scss';
+import { useDispatch } from 'react-redux';
+import {authLogin} from '../../../redux/actions/auth.actions'; 
+import { useNavigate } from 'react-router-dom';
+import routes from '../../../router/routes';
 
 const LoginForm = ({ setError }) => {
     const emailInput = useRef();
     const passwordInput = useRef();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const identifyUser = () => {
         const token = localStorage.getItem('token');
         console.log(token);
 
         axios.post(`${env.API_URL}/auth/login/identifyUser`, {token})
-        .then(res => console.log(res))
+        .then(res =>{
+            dispatch( authLogin(res.data) )
+            navigate(routes.dashboard)
+        })
         .catch(err => console.log(err));
     };
 

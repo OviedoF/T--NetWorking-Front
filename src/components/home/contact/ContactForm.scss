@@ -38,3 +38,14 @@
         right: 0;
     }
 }
+
+@media screen and (max-width: 768px){
+    .image_form{
+        display: none;
+    }
+
+    .contact_form{
+        width: 100%;
+        padding: 0;
+    }
+}

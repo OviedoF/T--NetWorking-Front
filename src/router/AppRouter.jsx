@@ -8,6 +8,7 @@ import PageNotFound from '../pages/PageNotFound';
 import Product from '../pages/Product';
 import Products from '../pages/Products';
 import ShoppingCart from '../pages/ShoppingCart';
+import Dashboard from '../pages/Dashboard';
 import routes from './routes';
 
 const AppRouter = () => {
@@ -21,6 +22,7 @@ const AppRouter = () => {
                 <Route exact path={routes.product} element={<Product />} />
                 <Route exact path={routes.login} element={<Login />} />
                 <Route exact path={routes.cart} element={<ShoppingCart />} />
+                <Route exact path={routes.dashboard} element={<Dashboard />} />
                 <Route path={'/*'} element={<PageNotFound />} />
             </Routes>
 

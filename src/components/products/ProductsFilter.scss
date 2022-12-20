@@ -1,0 +1,23 @@
+@media only screen and (max-width: 768px) {
+  .filters_container {
+    width: 100%;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    .form-group {
+      width: 100%;
+      display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      margin: 0;
+      margin-bottom: 20px;
+    }
+
+    img{
+        display: none;
+    }
+  }
+}

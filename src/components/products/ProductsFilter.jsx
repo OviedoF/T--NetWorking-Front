@@ -1,8 +1,9 @@
 import React from 'react';
+import './ProductsFilter.scss';
 
 const ProductsFilter = () => {
     return (
-        <form data-animation="appear">
+        <form data-animation="appear" className='filters_container'>
             <div className="form-group">
                 <label htmlFor="category">Categoría</label>
                 <select className="form-control" id="category">
