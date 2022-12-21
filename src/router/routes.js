@@ -5,4 +5,6 @@ export default {
     login: '/login',
     dashboard: '/dashboard',
     cart: '/cart',
+    adminPanel: '/admin-panel',
+    notFound: '/*',
 }
