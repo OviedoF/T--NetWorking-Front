@@ -1,0 +1,82 @@
+.social_media{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50vh;
+    left: 50vw;
+
+    .social_media_xmark{
+        position: fixed;
+        top: 30px;
+        right: -30px;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        font-size: 20px;
+
+        &:hover{
+            transform: scale(1.2);
+        }
+    }
+
+    .social_media_container{
+        background-color: red;
+        width: 30%;
+        height: 30%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 30px 40px;
+        box-sizing: content-box;
+        border-radius: 15px;
+        background-color: var(--card-color);
+
+        .social_media_input{
+            width: 48%;
+            display: flex;
+            height: 20%;
+            align-items: center;
+            justify-content: space-evenly;
+
+            svg{
+                width: auto;
+                height: 20px;
+            }
+
+            input{
+                width: 1%;
+                border: none;
+                border-bottom: 1px solid #00000040;
+                background-color: transparent;
+                color: #ffffff99;
+                padding: 5px;
+
+                &:focus{
+                    outline: none;
+                }
+            }
+        }
+
+        .social_media_button{
+            width: 48% !important;
+            height: 13%;
+            text-align: center;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center; 
+            background-color: #00000040;
+            border: none;
+            color: #ffffff;
+            font-size: 14px;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+
+            &:hover{
+                background-color: #ffffff30;
+            }
+        }
+    }
+}
