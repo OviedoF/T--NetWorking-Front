@@ -12,10 +12,15 @@ import Dashboard from '../pages/Dashboard';
 import routes from './routes';
 import AdminPanel from '../pages/AdminPanel';
 import ProtectedRoute from '../globals/navbar/ProtectedRoute';
+import CreateCategory from '../pages/admin/CreateCategory';
+import CreateProduct from '../pages/admin/CreateProduct';
+import CreateCoupon from '../pages/admin/CreateCoupon';
+import CreateNews from '../pages/admin/CreateNews';
 import env from '../env';
 import { useDispatch } from 'react-redux';
 import { authLogin } from '../redux/actions/auth.actions';
 import axios from 'axios';
+import CreateModUser from '../pages/admin/CreateModUser';
 
 const AppRouter = () => {
     const dispatch = useDispatch();
@@ -57,6 +62,37 @@ const AppRouter = () => {
                         <AdminPanel />
                     </ProtectedRoute> 
                 }/>
+
+                <Route exact path={routes.createCategory} element={ 
+                    <ProtectedRoute condition={'admin'}>
+                        <CreateCategory />
+                    </ProtectedRoute> 
+                }/>
+
+                <Route exact path={routes.createProduct} element={ 
+                    <ProtectedRoute condition={'admin'}>
+                        <CreateProduct />
+                    </ProtectedRoute> 
+                }/>
+
+                <Route exact path={routes.createCoupon} element={ 
+                    <ProtectedRoute condition={'admin'}>
+                        <CreateCoupon />
+                    </ProtectedRoute> 
+                }/>
+
+                <Route exact path={routes.createNews} element={ 
+                    <ProtectedRoute condition={'admin'}>
+                        <CreateNews />
+                    </ProtectedRoute> 
+                }/>
+
+                <Route exact path={routes.createModUser} element={ 
+                    <ProtectedRoute condition={'admin'}>
+                        <CreateModUser />
+                    </ProtectedRoute> 
+                }/>
+
 
                 <Route path={'/*'} element={<PageNotFound />} />
             </Routes>

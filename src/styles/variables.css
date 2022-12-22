@@ -1,16 +1,20 @@
 @media (prefers-color-scheme: light) {
     :root {
-      color: #213547;
+      color: #213547 !important;
       background-color: #ffffff;
       --card-color: #434242;
+      --color-danger: #dc3545;
+      --color-success: #28a745;
     }
 }
 
   @media (prefers-color-scheme: dark) {
     :root {
-      color: #F3EFE0;
+      color: #F3EFE0 !important;
       background-color: #222222;
       --card-color: #434242;
+      --color-danger: #dc3545;
+      --color-success: #28a745;
     }
 }
   

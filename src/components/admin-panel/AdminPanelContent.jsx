@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {motion } from 'framer-motion';
 import './AdminPanel.scss';
 import { Link } from 'react-router-dom';
+import routes from '../../router/routes';
+import { useNavigate } from 'react-router-dom';
 
 const adminPanelActions = [
     {
@@ -40,14 +42,19 @@ const adminPanelActions = [
         path: '/admin-panel/news'
     },
     {
+        name: 'Administrar categorías',
+        category: 'manage',
+        path: '/admin-panel/categories'
+    },
+    {
         name: 'Crear usuario moderador',
         category: 'create',
-        path: '/admin-panel/create-moderator-user'
+        path: routes.createModUser
     },
     {
         name: 'Crear producto',
         category: 'create',
-        path: '/admin-panel/create-product'
+        path: routes.createProduct
     },
     {
         name: 'Crear membresía',
@@ -57,12 +64,17 @@ const adminPanelActions = [
     {
         name: 'Crear cupón',
         category: 'create',
-        path: '/admin-panel/create-coupon'
+        path: routes.createCoupon
     },
     {
         name: 'Crear noticia',
         category: 'create',
-        path: '/admin-panel/create-news'
+        path: routes.createNews
+    },
+    {
+        name: 'Crear categoría',
+        category: 'create',
+        path: routes.createCategory
     }
 ];
 
@@ -70,13 +82,14 @@ const adminPanelActions = [
 const AdminPanelContent = () => {
     const [manageActions, setManageActions] = useState([]);
     const [createActions, setCreateActions] = useState([]);
+    const navigate = useNavigate()
 
     useEffect(() => {
         setManageActions(adminPanelActions.filter(action => action.category === 'manage'));
         setCreateActions(adminPanelActions.filter(action => action.category === 'create'));
     }, []);
 
-    const transitionTime = 1;
+    const transitionTime = .5;
 
     return (
         <motion.div className='admin_panel'>
@@ -97,7 +110,7 @@ const AdminPanelContent = () => {
                 <h2 className='admin_panel__create__title'>Creación</h2>
                 <ul className='admin_panel__create__list'>
                     {createActions.map((action, index) => (
-                        <motion.li transition={{duration: transitionTime +(index*0.1)}} animate={{top: 0}} className='admin_panel__create__list__item' key={action.name}>
+                        <motion.li transition={{duration: transitionTime +(index*0.1)}} animate={{top: 0}} className='admin_panel__create__list__item' key={action.name} onClick={() => navigate(action.path)}>
                             <Link className='admin_panel__create__list__item__link' to={action.path}>
                                 {action.name}
                             </Link>

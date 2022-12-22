@@ -1,6 +1,7 @@
 .dashboard_nav{
     background-color: #00000040;
     width: 20%;
+    min-height: 100%;
     opacity: 0;
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
     display: flex;

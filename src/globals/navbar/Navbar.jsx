@@ -20,7 +20,6 @@ const Navbar = () => {
         <div className={styles.navbar}>
             <div className={styles.top}>
                 <p data-animation="appear">Siguenos en nuestro instagram! @mitienda</p>
-                <img data-animation="appear" src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="Instagram" />
                 <input data-animation="appear" type="text" placeholder="Buscar" />
             </div>
             
