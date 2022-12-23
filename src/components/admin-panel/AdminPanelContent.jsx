@@ -39,12 +39,12 @@ const adminPanelActions = [
     {
         name: 'Administrar noticias',
         category: 'manage',
-        path: '/admin-panel/news'
+        path: routes.manageNews
     },
     {
         name: 'Administrar categorías',
         category: 'manage',
-        path: '/admin-panel/categories'
+        path: routes.manageCategories
     },
     {
         name: 'Crear usuario moderador',

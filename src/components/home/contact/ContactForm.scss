@@ -37,7 +37,8 @@
         padding: 10px;
         border: 1px solid #ccc;
         border-radius: 5px;
-        color: #fff;
+        color: var(--color-text-card);
+        background-color: var(--card-color);
         font-weight: 600;
         cursor: pointer;
         position: absolute;

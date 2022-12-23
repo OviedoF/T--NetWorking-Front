@@ -21,6 +21,8 @@ import { useDispatch } from 'react-redux';
 import { authLogin } from '../redux/actions/auth.actions';
 import axios from 'axios';
 import CreateModUser from '../pages/admin/CreateModUser';
+import ManageCategories from '../pages/admin/manage/ManageCategories';
+import ManageNews from '../pages/admin/manage/ManageNews';
 
 const AppRouter = () => {
     const dispatch = useDispatch();
@@ -92,6 +94,10 @@ const AppRouter = () => {
                         <CreateModUser />
                     </ProtectedRoute> 
                 }/>
+
+                <Route exact path={routes.manageCategories} element={ <ProtectedRoute condition={'admin'}> <ManageCategories /> </ProtectedRoute> }/>
+
+                <Route exact path={routes.manageNews} element={ <ProtectedRoute condition={'admin'}> <ManageNews /> </ProtectedRoute> }/>
 
 
                 <Route path={'/*'} element={<PageNotFound />} />

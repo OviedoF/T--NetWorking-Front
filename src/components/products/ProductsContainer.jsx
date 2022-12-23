@@ -35,7 +35,7 @@ const ProductsContainer = () => {
             <ProductsFilter />
 
             <div className='products_container' data-animation="appear">
-                {products.map((el, index) => {
+                {products && products.map((el, index) => {
                     return <ProductCard key={index} product={el} width='24%' />
                 })}
             </div> 

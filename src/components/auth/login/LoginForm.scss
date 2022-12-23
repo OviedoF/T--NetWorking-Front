@@ -7,7 +7,7 @@
     .login_form__title{
         font-size: 25px;
         font-weight: 500;
-        color: #fff;
+        color: var(--card-text-color);
         text-align: center;
         margin-bottom: 30px;
     }
@@ -19,7 +19,7 @@
 
         label{
             font-size: 15px;
-            color: #fff;
+            color: var(--card-text-color);
             margin-bottom: 15px;
         }
 
