@@ -1,3 +1,151 @@
+.filters {
+  width: 17%;
+
+  h1 {
+    font-size: 30px;
+  }
+
+  p {
+    font-size: 10px;
+    margin: 15px 0;
+    color: #ffffff50;
+  }
+
+  .filter_categories {
+    margin-bottom: 30px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+
+    .categorie_item{
+      margin-top: 30px;
+    }
+
+    input {
+      margin: 0px;
+      padding: 0;
+      background: none;
+      border: none;
+      border-radius: 0;
+      outline: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+
+    input {
+      cursor: pointer;
+      padding-left: 2rem;
+      vertical-align: middle;
+      position: relative;
+    }
+
+    input::before,
+    input::after {
+      content: "";
+      display: block;
+      position: absolute;
+    }
+
+    input::before {
+      background-color: transparent;
+      border-radius: 5px;
+      border: 1px solid #666464;
+      width: 1rem; 
+      height: 1rem; 
+      transform: translateY(-50%);
+      top: 50%;
+      left: 0.25rem;
+    }
+
+    input::after {
+      border-bottom: 3px solid #666464;
+      border-left: 3px solid #666464; 
+      opacity: 0; 
+      height: 8px; 
+      width: 6px;
+      transform: rotate(-45deg);
+      top: -9px; 
+      left: 8px; 
+      transition: opacity 0.3s;
+    }
+
+    input:checked::after {
+      opacity: 1; 
+    }
+
+    input {
+      cursor: pointer;
+    }
+
+    label {
+      margin-left: 10px;
+    }
+  }
+
+  .filter_prices{
+      margin-bottom: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      p{
+          width: 100%;
+      }
+
+      .price_inputs_container{
+          display: flex;
+          justify-content: space-between;
+      }
+
+      input{
+          width: 35%;
+          border: 1px solid var(--card-color);
+          background: transparent;
+          margin: 0 2px;
+          padding: 8px 0;
+          border-radius: 10px;
+          text-align: center;
+      }
+
+      button{
+          width: 15%;
+          border: 1px solid var(--color-primary);
+          background: none;
+          color: var(--color-primary);
+          padding: 8px 0;
+          border-radius: 10px;
+          cursor: pointer;
+          transition: all .2s;
+
+          &:hover{
+              background-color: var(--color-primary);
+              color: white;
+          }
+      }
+      
+  }
+
+  .actions_filters{
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+
+      button{
+          width: 49%;
+          font-size: 12px;
+          padding: 10px 0;
+          cursor: pointer;
+          border-radius: 10px;
+          background: none;
+          box-sizing: border-box;
+          border: 1px solid var(--card-color);
+          color: white;
+          background-color: var(--card-color);
+      }
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .filters_container {
     width: 100%;

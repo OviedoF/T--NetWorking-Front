@@ -9,12 +9,12 @@ const adminPanelActions = [
     {
         name: 'Lista de usuarios',
         category: 'manage',
-        path: '/admin-panel/users'
+        path: routes.manageUsers
     },
     {
         name: 'Lista de productos',
         category: 'manage',
-        path: '/admin-panel/products'
+        path: routes.manageProducts
     },
     {
         name: 'Lista de membresías',
@@ -29,7 +29,7 @@ const adminPanelActions = [
     {
         name: 'Gestionar cupones',
         category: 'manage',
-        path: '/admin-panel/coupons'
+        path: routes.manageCoupons
     },
     {
         name: 'Editar usuario administrador',

@@ -1,6 +1,6 @@
 #create-category-form{
     padding: 40px 20px;
-    background-color: #525252;
+    background-color: #646464;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -49,8 +49,8 @@
             height: 30px;
             font-size: 15px;
             padding: 0 5px;
-            color: var(--color-text-card);
             min-width: 100%;
+            color: var(--color-text-card);
 
             &:focus{
                 border-color: #ccc;

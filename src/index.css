@@ -63,3 +63,16 @@ table {
 body{
 	overflow-x: hidden;
 }
+
+.previousButton{
+    background: url(./assets/icons/previous.png) no-repeat center center / 16px !important;
+
+}
+
+.nextButton{
+    background: url(./assets/icons/next.png) no-repeat center center / 16px !important;
+}
+
+#mp-close-btn > svg > path{
+    fill: red !important;
+}

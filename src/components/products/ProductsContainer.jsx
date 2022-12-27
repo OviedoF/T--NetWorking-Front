@@ -36,7 +36,7 @@ const ProductsContainer = () => {
 
             <div className='products_container' data-animation="appear">
                 {products && products.map((el, index) => {
-                    return <ProductCard key={index} product={el} width='24%' />
+                    return <ProductCard key={index} product={el} width='23%' />
                 })}
             </div> 
         </div>

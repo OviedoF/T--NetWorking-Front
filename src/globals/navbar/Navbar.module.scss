@@ -14,7 +14,8 @@
         padding: 5px 20px;
         border-radius: 5px;
         font-size: 1.2rem;
-        border-bottom: 1px solid #ffffff70;
+        border-bottom: 1px solid var(--card-color);
+        background-color: transparent;
     }
 
     .top{

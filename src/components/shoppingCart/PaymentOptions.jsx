@@ -1,12 +1,14 @@
 import axios from 'axios';
 import React, { useState, useEffect, useRef } from 'react';
 import env from '../../env';
+import MercadoPagoPaymentCompra from './MercadoPagoPaymentCompra';
 import './PaymentOptions.scss'
 
 const PaymentOptions = ({products}) => {
     const [total, setTotal] = useState(0);
     const [totalWithCoupon, setTotalWithCoupon] = useState(0);
     const [aplyingCoupon, setAplyingCoupon] = useState(false);
+    const [paymentID, setPaymentID] = useState(null);
     const couponCode = useRef();
 
     useEffect(() => {
@@ -50,6 +52,9 @@ const PaymentOptions = ({products}) => {
                 </div>
             )}
 
+            
+            <MercadoPagoPaymentCompra cart={products} setPaymentID={setPaymentID} 
+            paymentID={paymentID}/>
 
 
             

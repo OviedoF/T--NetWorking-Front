@@ -23,6 +23,9 @@ import axios from 'axios';
 import CreateModUser from '../pages/admin/CreateModUser';
 import ManageCategories from '../pages/admin/manage/ManageCategories';
 import ManageNews from '../pages/admin/manage/ManageNews';
+import ManageCoupons from '../pages/admin/manage/ManageCoupons';
+import ManageUsers from '../pages/admin/manage/ManageUsers';
+import ManageProducts from '../pages/admin/manage/ManageProducts';
 
 const AppRouter = () => {
     const dispatch = useDispatch();
@@ -99,6 +102,11 @@ const AppRouter = () => {
 
                 <Route exact path={routes.manageNews} element={ <ProtectedRoute condition={'admin'}> <ManageNews /> </ProtectedRoute> }/>
 
+                <Route exact path={routes.manageCoupons} element={ <ProtectedRoute condition={'admin'}> <ManageCoupons/> </ProtectedRoute> }/>
+
+                <Route exact path={routes.manageUsers} element={ <ProtectedRoute condition={'admin'}> <ManageUsers /> </ProtectedRoute> }/>
+
+                <Route exact path={routes.manageProducts} element={ <ProtectedRoute condition={'admin'}> <ManageProducts /> </ProtectedRoute> }/>
 
                 <Route path={'/*'} element={<PageNotFound />} />
             </Routes>

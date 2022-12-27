@@ -22,5 +22,6 @@ export default {
     manageProducts: '/admin-panel/manage-products',
     manageCoupons: '/admin-panel/manage-coupons',
     manageNews: '/admin-panel/manage-news',
+    manageUsers: '/admin-panel/manage-users',
 
 }
