@@ -9,10 +9,12 @@ import EditCategory from '../../../components/admin-panel/manage/EditCategory';
 import {motion} from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { useSelector } from 'react-redux';
 
 const ManageCategories = () => {
     const [categories, setCategories] = useState([]);
     const [selectedId, setSelectedId] = useState(null);
+    const auth = useSelector(state => state.auth)
 
     useEffect(() => {
         axios.get(`${env.API_URL}/categories`)
@@ -23,7 +25,7 @@ const ManageCategories = () => {
 
     return (
         <main style={{minHeight: '100vh', display: 'flex'}}>
-            <DashboardNav />
+            <DashboardNav auth={auth}/>
 
             <div className="container" style={{width: '100%', minHeight: '100%', display: 'flex',
             flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>

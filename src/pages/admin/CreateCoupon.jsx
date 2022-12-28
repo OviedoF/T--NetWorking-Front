@@ -1,11 +1,14 @@
 import React from 'react';
 import DashboardNav from '../../components/dashboard/DashboardNav';
 import CreateCouponForm from '../../components/admin-panel/create-coupon/CreateCouponForm';
+import { useSelector } from 'react-redux';
 
 const CreateCoupon = () => {
+    const auth = useSelector(   state => state.auth)
+
     return (
         <main style={{minHeight: '120vh', display: 'flex'}}>
-            <DashboardNav />
+            <DashboardNav auth={auth}/>
 
             <div className="container" style={{width: '100%', minHeight: '100%', display: 'flex',
             flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>

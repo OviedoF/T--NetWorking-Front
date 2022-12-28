@@ -34,7 +34,7 @@ const adminPanelActions = [
     {
         name: 'Editar usuario administrador',
         category: 'manage',
-        path: '/admin-panel/edit-admin-user'
+        path: routes.editAdmin
     },
     {
         name: 'Administrar noticias',
@@ -47,7 +47,7 @@ const adminPanelActions = [
         path: routes.manageCategories
     },
     {
-        name: 'Crear usuario moderador',
+        name: 'Crear usuario',
         category: 'create',
         path: routes.createModUser
     },

@@ -9,6 +9,7 @@
     }
 
     .related{
+        overflow-x: scroll;
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         grid-gap: 20px;
@@ -50,4 +51,16 @@
             }
         }
     }   
+}
+
+@media screen and (max-width: 530px){
+    .related_container{
+        .related{
+            grid-template-columns: repeat(4, 1fr);
+
+            .related__item{
+                width: 240%;
+            }
+        }
+    }
 }

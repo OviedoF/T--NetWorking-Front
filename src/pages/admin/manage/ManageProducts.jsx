@@ -24,7 +24,7 @@ const ManageProducts = () => {
 
     return (
         <main style={{ minHeight: '100vh', display: 'flex' }}>
-            <DashboardNav />
+            <DashboardNav auth={auth}/>
 
             <div className="container" style={{
                 width: '100%', minHeight: '100%', display: 'flex',

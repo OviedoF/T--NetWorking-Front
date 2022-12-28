@@ -7,6 +7,10 @@ export default {
     cart: '/cart',
     adminPanel: '/admin-panel',
     notFound: '/*',
+    userPage: '/user/:id',
+    userPagePath: '/user',
+    userSearch: '/user-search',
+    userConfig: '/user-config',
 
     // Admin Create/edit
     createCategory: '/admin-panel/create-category',
@@ -16,6 +20,7 @@ export default {
     createCoupon: '/admin-panel/create-coupon',
     createNews: '/admin-panel/create-news',
     createModUser: '/admin-panel/create-mod-user',
+    editAdmin: '/admin-panel/edit-admin',
 
     // Admin Manage
     manageCategories: '/admin-panel/manage-categories',

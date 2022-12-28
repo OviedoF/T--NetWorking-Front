@@ -67,3 +67,15 @@
 
     }
 }
+
+@media screen and (max-width: 768px){
+    .admin_panel{
+        div{
+            ul{
+                li{
+                    width: 30%;
+                }
+            }
+        }
+    }
+}

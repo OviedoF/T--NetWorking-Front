@@ -108,7 +108,6 @@
 
         .qr .info{
             font-size: 13px;
-            color: #ffffff60;
         }
     }
 
@@ -266,5 +265,11 @@
     100% {
         opacity: 1;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+}
+
+@media screen and (max-width: 530px){
+    .dashboard_nav{
+        display: none;
     }
 }

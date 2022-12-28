@@ -9,7 +9,7 @@ export default function Dashboard() {
     console.log(auth);
   return (
     <main className='dashboard_main' style={{display: 'flex', height: '100vh'}}>
-        <DashboardNav />
+        <DashboardNav auth={auth}/>
         <DashboardContent auth={auth}/>
     </main>
   )

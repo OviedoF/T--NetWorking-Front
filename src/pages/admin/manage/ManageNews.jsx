@@ -9,10 +9,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import NewsCard from '../../../components/admin-panel/manage-news/NewsCard';
 import EditNewsForm from '../../../components/admin-panel/manage-news/EditNewsForm';
+import { useSelector } from 'react-redux';
 
 const ManageNews = () => {
     const [news, setNews] = useState([]);
     const [selectedId, setSelectedId] = useState(null);
+    const auth = useSelector(state => state.auth);
 
     useEffect(() => {
         axios.get(`${env.API_URL}/news`)
@@ -29,7 +31,7 @@ const ManageNews = () => {
 
     return (
         <main style={{minHeight: '100vh', display: 'flex'}}>
-            <DashboardNav />
+            <DashboardNav auth={auth}/>
 
             <div className="container" style={{width: '100%', minHeight: '100%', display: 'flex',
             flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>

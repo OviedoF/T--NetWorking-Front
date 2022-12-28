@@ -5,11 +5,9 @@ import env from '../../env';
 import CategoryFilter from './CategoryFilter';
 import PricesFilter from './PricesFilter';
 
-const ProductsFilter = () => {
-    const [products, setProducts] = useState([]);
+const ProductsFilter = ({setProducts, setFilters}) => {
     const [categories, setCategories] = useState([]);
     const [filter, setFilter] = useState({});
-    console.log('a');
   
     useEffect(() => {
       axios
@@ -26,8 +24,12 @@ const ProductsFilter = () => {
     }
   
     const handleSubmit = () => {
-      axios.post(`${env.API_URL}/products/filters`, filter)
-        .then(res => setProducts(res.data))
+      console.log('filtrar')
+      axios.post(`${env.API_URL}/product/filters`, filter)
+        .then(res => {
+          setProducts(res.data);
+          console.log(res.data)
+        })
         .catch(e => console.log(e));
     }
 
@@ -48,7 +50,10 @@ const ProductsFilter = () => {
           </div>
 
           <div className={'actions_filters'}>
-            <button className={'clear'}>Limpiar filtros</button>
+            <button className={'clear'} onClick={() => {
+              setFilter({})
+              handleSubmit()
+            }}>Limpiar filtros</button>
             <button className={'goFilter'} onClick={() => handleSubmit()}>Filtrar</button>
           </div>
         </section>

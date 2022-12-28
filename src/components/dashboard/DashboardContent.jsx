@@ -7,6 +7,7 @@ import DashboardAddContact from './DashboardAddContact';
 
 export default function DashboardContent({auth}) {
     const [activeSocial, setActiveSocial] = useState(false);
+    console.log(auth);
 
     const transitionDuration = 1;
 

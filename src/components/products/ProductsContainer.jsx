@@ -5,9 +5,10 @@ import ProductsFilter from './ProductsFilter';
 import ProductCard from '../../globals/ProductCard';
 import './ProductsContainer.scss';
 
-const ProductsContainer = () => {
+const ProductsContainer = ({}) => {
     const [products, setProducts] = useState([]);
     const [filters, setFilters] = useState(false);
+    const [windowsSize, setWindowsSize] = useState(window.innerWidth);
 
     const handleFilters = (e) => {
         e.preventDefault();
@@ -15,11 +16,10 @@ const ProductsContainer = () => {
     }
 
     useEffect(() => {
-        if(!filters) {
-            axios.get(`${env.API_URL}/product`)
-                .then(res => setProducts(res.data))
-                .catch(err => console.log(err));
-        }
+        window.addEventListener('resize', () => {
+            setWindowsSize(window.innerWidth);
+            console.log(window.innerWidth);
+        });
     }, []);
 
     useEffect(() => {
@@ -28,15 +28,21 @@ const ProductsContainer = () => {
                 .then(res => setProducts(res.data))
                 .catch(err => console.log(err));
         }
+
+        if(!filters) {
+            axios.get(`${env.API_URL}/product`)
+                .then(res => setProducts(res.data))
+                .catch(err => console.log(err));
+        }
     }, [filters]);
 
     return (
         <div className='general'>
-            <ProductsFilter />
+            <ProductsFilter setFilters={setFilters} setProducts={setProducts}/>
 
             <div className='products_container' data-animation="appear">
                 {products && products.map((el, index) => {
-                    return <ProductCard key={index} product={el} width='23%' />
+                    return <ProductCard key={index} product={el} width={windowsSize > 500 ? '23%' : '45%'} />
                 })}
             </div> 
         </div>

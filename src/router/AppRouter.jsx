@@ -7,6 +7,7 @@ import Login from '../pages/Login';
 import PageNotFound from '../pages/PageNotFound';
 import Product from '../pages/Product';
 import Products from '../pages/Products';
+import UserPage from '../pages/UserPage';
 import ShoppingCart from '../pages/ShoppingCart';
 import Dashboard from '../pages/Dashboard';
 import routes from './routes';
@@ -26,6 +27,9 @@ import ManageNews from '../pages/admin/manage/ManageNews';
 import ManageCoupons from '../pages/admin/manage/ManageCoupons';
 import ManageUsers from '../pages/admin/manage/ManageUsers';
 import ManageProducts from '../pages/admin/manage/ManageProducts';
+import EditAdminForm from '../pages/admin/manage/EditAdminForm';
+import UserSearch from '../pages/UserSearch';
+import UserConfig from '../pages/UserConfig.jsx';
 
 const AppRouter = () => {
     const dispatch = useDispatch();
@@ -60,6 +64,9 @@ const AppRouter = () => {
                 <Route exact path={routes.login} element={<Login />} />
                 <Route exact path={routes.cart} element={<ShoppingCart />} />
                 <Route exact path={routes.dashboard} element={<Dashboard />} />
+                <Route exact path={routes.userPage} element={<UserPage />} />
+                <Route exact path={routes.userSearch} element={<UserSearch />} />
+                <Route exact path={routes.userConfig} element={<UserConfig />} />
 
                 {/* ADMIN ROUTES */}
                 <Route exact path={routes.adminPanel} element={ 
@@ -107,6 +114,9 @@ const AppRouter = () => {
                 <Route exact path={routes.manageUsers} element={ <ProtectedRoute condition={'admin'}> <ManageUsers /> </ProtectedRoute> }/>
 
                 <Route exact path={routes.manageProducts} element={ <ProtectedRoute condition={'admin'}> <ManageProducts /> </ProtectedRoute> }/>
+
+                <Route exact path={routes.editAdmin} element={ <ProtectedRoute condition={'admin'}> <EditAdminForm /> </ProtectedRoute> }/>
+
 
                 <Route path={'/*'} element={<PageNotFound />} />
             </Routes>

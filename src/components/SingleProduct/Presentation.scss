@@ -116,3 +116,17 @@
         }
     }
 }
+
+@media screen and (max-width: 768px) {
+    .presentation{
+        flex-direction: column;
+
+        .presentation__image, .presentation__info{
+            width: 100%;
+        }
+
+        .presentation__info{
+            margin-top: 40px;
+        }
+    }  
+}
