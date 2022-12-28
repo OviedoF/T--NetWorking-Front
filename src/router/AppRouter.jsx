@@ -12,10 +12,20 @@ import Dashboard from '../pages/Dashboard';
 import routes from './routes';
 import AdminPanel from '../pages/AdminPanel';
 import ProtectedRoute from '../globals/navbar/ProtectedRoute';
+import CreateCategory from '../pages/admin/CreateCategory';
+import CreateProduct from '../pages/admin/CreateProduct';
+import CreateCoupon from '../pages/admin/CreateCoupon';
+import CreateNews from '../pages/admin/CreateNews';
 import env from '../env';
 import { useDispatch } from 'react-redux';
 import { authLogin } from '../redux/actions/auth.actions';
 import axios from 'axios';
+import CreateModUser from '../pages/admin/CreateModUser';
+import ManageCategories from '../pages/admin/manage/ManageCategories';
+import ManageNews from '../pages/admin/manage/ManageNews';
+import ManageCoupons from '../pages/admin/manage/ManageCoupons';
+import ManageUsers from '../pages/admin/manage/ManageUsers';
+import ManageProducts from '../pages/admin/manage/ManageProducts';
 
 const AppRouter = () => {
     const dispatch = useDispatch();
@@ -57,6 +67,46 @@ const AppRouter = () => {
                         <AdminPanel />
                     </ProtectedRoute> 
                 }/>
+
+                <Route exact path={routes.createCategory} element={ 
+                    <ProtectedRoute condition={'admin'}>
+                        <CreateCategory />
+                    </ProtectedRoute> 
+                }/>
+
+                <Route exact path={routes.createProduct} element={ 
+                    <ProtectedRoute condition={'admin'}>
+                        <CreateProduct />
+                    </ProtectedRoute> 
+                }/>
+
+                <Route exact path={routes.createCoupon} element={ 
+                    <ProtectedRoute condition={'admin'}>
+                        <CreateCoupon />
+                    </ProtectedRoute> 
+                }/>
+
+                <Route exact path={routes.createNews} element={ 
+                    <ProtectedRoute condition={'admin'}>
+                        <CreateNews />
+                    </ProtectedRoute> 
+                }/>
+
+                <Route exact path={routes.createModUser} element={ 
+                    <ProtectedRoute condition={'admin'}>
+                        <CreateModUser />
+                    </ProtectedRoute> 
+                }/>
+
+                <Route exact path={routes.manageCategories} element={ <ProtectedRoute condition={'admin'}> <ManageCategories /> </ProtectedRoute> }/>
+
+                <Route exact path={routes.manageNews} element={ <ProtectedRoute condition={'admin'}> <ManageNews /> </ProtectedRoute> }/>
+
+                <Route exact path={routes.manageCoupons} element={ <ProtectedRoute condition={'admin'}> <ManageCoupons/> </ProtectedRoute> }/>
+
+                <Route exact path={routes.manageUsers} element={ <ProtectedRoute condition={'admin'}> <ManageUsers /> </ProtectedRoute> }/>
+
+                <Route exact path={routes.manageProducts} element={ <ProtectedRoute condition={'admin'}> <ManageProducts /> </ProtectedRoute> }/>
 
                 <Route path={'/*'} element={<PageNotFound />} />
             </Routes>

@@ -1,32 +1,57 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import './ProductsFilter.scss';
+import env from '../../env';
+import CategoryFilter from './CategoryFilter';
+import PricesFilter from './PricesFilter';
 
 const ProductsFilter = () => {
+    const [products, setProducts] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [filter, setFilter] = useState({});
+    console.log('a');
+  
+    useEffect(() => {
+      axios
+        .get(`${env.API_URL}/categories`)
+        .then((res) => setCategories(res.data))
+        .catch((err) => console.log(err));
+    }, []);
+  
+    const handleChange = (name, value) => {
+      setFilter({
+        ...filter,
+        [name]: value
+      })
+    }
+  
+    const handleSubmit = () => {
+      axios.post(`${env.API_URL}/products/filters`, filter)
+        .then(res => setProducts(res.data))
+        .catch(e => console.log(e));
+    }
+
     return (
-        <form data-animation="appear" className='filters_container'>
-            <div className="form-group">
-                <label htmlFor="category">Categoría</label>
-                <select className="form-control" id="category">
-                    <option value="all">Todas</option>
-                    <option value="1">Categoría 1</option>
-                    <option value="2">Categoría 2</option>
-                    <option value="3">Categoría 3</option>
-                </select>
-            </div>
+        <section style={{ marginTop: "30px" }} className={'filters'}>
+          <h1>Todos Los Productos</h1>
 
-            <div className="form-group">
-                <label htmlFor="price">Precio</label>
-                <input type="range" name="price" id="price" />
-            </div>
+          <div className={'filter_categories'}>
+            <p>CATEGORÍA</p>
 
-            <div className="form-group">
-                <input type="search" name="search" id="search" />
-            </div>
+            <CategoryFilter categories={categories} handleChange={handleChange} />
+          </div>
 
-            <button type="submit" className="btn btn-primary">Filtrar</button>
+          <div className={'filter_prices'}>
+            <p>PRECIO</p>
 
-            <img src="https://media.istockphoto.com/id/1304484797/photo/person-holds-a-smartphone-with-mobile-banking-icons-projection.jpg?b=1&s=170667a&w=0&k=20&c=Ltu8ENR_G2n8QBF90rEjKhIvM1j3emewjZUuSVTLIlI=" alt="placeholder" />
-        </form>
+            <PricesFilter handleChange={handleChange}/>
+          </div>
+
+          <div className={'actions_filters'}>
+            <button className={'clear'}>Limpiar filtros</button>
+            <button className={'goFilter'} onClick={() => handleSubmit()}>Filtrar</button>
+          </div>
+        </section>
     );
 }
 

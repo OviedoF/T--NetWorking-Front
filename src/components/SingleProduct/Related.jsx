@@ -15,7 +15,7 @@ const Related = ({category, product_id}) => {
                 setProducts(related);
             })
             .catch(err => console.log(err));
-    }, []);
+    }, [product_id]);
 
     return (
         <div className='related_container'>

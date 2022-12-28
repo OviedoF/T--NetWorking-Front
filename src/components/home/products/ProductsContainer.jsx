@@ -54,7 +54,7 @@ const ProductsContainer = () => {
         <div>
             <CategoriesPicker categories={categories} setCategorySelected={setCategorySelected}/>
 
-            <div className="products_container" style={{display: 'flex', padding: '40px', justifyContent: 'space-evenly', flexWrap: 'wrap'}}>
+            <div className="products_container" style={{display: 'flex', padding: '40px', justifyContent: 'flex-start', flexWrap: 'wrap', width: '100%'}}>
                 {products.map(product => {
                     if(categorySelected === undefined) {
                         return (
