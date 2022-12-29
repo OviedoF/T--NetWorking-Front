@@ -13,12 +13,14 @@ const Navbar = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [menuToggle, setMenuToggle] = useState(false);
+    const [windowsSize, setWindowsSize] = useState(window.innerWidth);
     console.log(auth);
 
     const logout = () => {
         localStorage.removeItem('token');
         dispatch(authLogout());
         navigate(routes.home);
+        location.href = routes.home;
     };
 
     return (
@@ -37,6 +39,7 @@ const Navbar = () => {
                         <li><Link to={routes.cart}>Carrito de compras</Link></li>
                         
                         {!auth.logged && <li><Link to={routes.login}>Login</Link></li>}
+                        {!auth.logged && <li><Link to={routes.register}>Register</Link></li>}
 
                         {auth.logged && <li><Link to={routes.dashboard}>Dashboard</Link></li>}
                         {auth.logged && <li><Link onClick={() => logout()}>Logout</Link></li>}
@@ -55,15 +58,15 @@ const Navbar = () => {
                 <FontAwesomeIcon icon={faXmark} onClick={() => setMenuToggle(false)} id='close-overlay-menu' />
 
                 <ul id="menu">
-                    <li><Link to={routes.home}>Inicio</Link></li>
-                    <li><Link to={routes.products}>Productos</Link></li>
-                    <li><Link to={routes.cart}>Carrito de compras</Link></li>
-                    {!auth.logged && <li><Link to={routes.login}>Login</Link></li>}
-                    {auth.logged && <li><Link onClick={() => logout()}>Logout</Link></li>}
-                    {auth.logged && <li><Link to={routes.dashboard}>Dashboard</Link></li>}
-                    {auth.logged && <li><Link to={routes.profile}>Editar perfil</Link></li>}
-                    {auth.logged && <li><Link to={routes.orders}>Mis pedidos</Link></li>}
-                    {auth.logged && <li><Link to={routes.wishlist}>Usuarios</Link></li>}
+                    <li onClick={() => setMenuToggle(false)}><Link to={routes.home}>Inicio</Link></li>
+                    <li onClick={() => setMenuToggle(false)}><Link to={routes.products}>Productos</Link></li>
+                    <li onClick={() => setMenuToggle(false)}><Link to={routes.cart}>Carrito de compras</Link></li>
+                    {!auth.logged && <li onClick={() => setMenuToggle(false)}><Link to={routes.login}>Login</Link></li>}
+                    {auth.logged && <li onClick={() => setMenuToggle(false)}><Link onClick={() => logout()}>Logout</Link></li>}
+                    {auth.logged && <li onClick={() => setMenuToggle(false)}><Link to={routes.dashboard}>Dashboard</Link></li>}
+                    {auth.logged && <li onClick={() => setMenuToggle(false)}><Link to={routes.profile}>Editar perfil</Link></li>}
+                    {auth.logged && <li onClick={() => setMenuToggle(false)}><Link to={routes.orders}>Mis pedidos</Link></li>}
+                    {auth.logged && <li onClick={() => setMenuToggle(false)}><Link to={routes.wishlist}>Usuarios</Link></li>}
 
                     {auth.roles && auth.roles.includes('admin') && <li><Link to={routes.adminPanel}>Admin</Link></li>}
                 </ul>

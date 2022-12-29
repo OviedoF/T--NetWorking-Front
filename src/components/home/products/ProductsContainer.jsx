@@ -12,6 +12,7 @@ const ProductsContainer = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
     const [categorySelected, setCategorySelected] = useState(undefined);
+    const [windowsSize, setWindowsSize] = useState(window.innerWidth);
 
     useEffect(() => {
         setIsLoading(true);
@@ -31,6 +32,11 @@ const ProductsContainer = () => {
             });
         
         setIsLoading(false);
+
+        window.addEventListener('resize', () => {
+            setWindowsSize(window.innerWidth);
+            console.log(window.innerWidth);
+        });
     }, []);
 
     if(isLoading) return (
@@ -52,18 +58,18 @@ const ProductsContainer = () => {
 
     return (
         <div>
-            <CategoriesPicker categories={categories} setCategorySelected={setCategorySelected}/>
+            <CategoriesPicker windowsSize={windowsSize} categories={categories} setCategorySelected={setCategorySelected}/>
 
             <div className="products_container" style={{display: 'flex', padding: '40px', justifyContent: 'flex-start', flexWrap: 'wrap', width: '100%'}}>
                 {products.map(product => {
                     if(categorySelected === undefined) {
                         return (
-                            <ProductCard key={product.id} product={product} width={'19%'}/>
+                            <ProductCard key={product.id} product={product} width={windowsSize > 500 ? '20%' : '100%'}/>
                         );
                     } else {
                         if(product.category === categorySelected) {
                             return (
-                                <ProductCard key={product.id} product={product} width={'20%'}/>
+                                <ProductCard key={product.id} product={product} width={windowsSize > 500 ? '20%' : '100%'}/>
                             );
                         }
                     }

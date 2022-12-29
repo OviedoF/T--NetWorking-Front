@@ -11,6 +11,7 @@ export default {
     userPagePath: '/user',
     userSearch: '/user-search',
     userConfig: '/user-config',
+    register: '/register',
 
     // Admin Create/edit
     createCategory: '/admin-panel/create-category',

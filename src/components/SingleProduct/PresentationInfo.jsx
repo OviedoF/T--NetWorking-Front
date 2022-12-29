@@ -10,6 +10,7 @@ const PresentationInfo = ({product}) => {
     const shoppingCart = useSelector(state => state.shoppingCart);
     const [isAddedToCart, setIsAddedToCart] = useState(false);
     const navigate= useNavigate();
+    const auth = useSelector(state => state.auth);
 
     useEffect(() => {
         const isAdded = shoppingCart.products.find(el => el._id === product._id);
@@ -32,15 +33,17 @@ const PresentationInfo = ({product}) => {
             <b data-animation="appear">{product.price}</b>
             <p data-animation="appear">{product.description}</p>
 
-            {!isAddedToCart && <div className='presentation__info__quantity' data-animation="appear">
+            {!isAddedToCart && auth.logged && <div className='presentation__info__quantity' data-animation="appear">
                 <button onClick={() => setQuantity(quantity - 1)}>-</button>
                 <span>{quantity}</span>
                 <button onClick={() => setQuantity(quantity + 1)}>+</button>
             </div>}
 
             <div className='presentation__info__buttons'>
-                {!isAddedToCart ? <button className='btn btn--primary' data-animation="appear" onClick={() => handleAddToCart()}>Agregar al carrito</button>
-                : <button className='btn btn--primary' data-animation="appear" onClick={() => navigate(routes.cart)}>Ver carrito</button>}
+                {!isAddedToCart && auth.logged ? <button className='btn btn--primary' data-animation="appear" onClick={() => handleAddToCart()}>Agregar al carrito</button>
+                : auth.logged && <button className='btn btn--primary' data-animation="appear" onClick={() => navigate(routes.cart)}>Ver carrito</button>}
+
+                {!auth.logged && <button className='btn btn--primary' data-animation="appear" onClick={() => navigate(routes.login)}>Iniciar sesión</button>}
             </div>
         </div>
     );

@@ -11,6 +11,7 @@ const Product = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        
         axios.get(`${env.API_URL}/product/${id}`)
             .then(res => {
                 setProduct(res.data);

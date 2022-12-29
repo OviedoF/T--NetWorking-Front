@@ -249,11 +249,15 @@
         .preview{
             width: 80%;
             padding: 0 20px;
+            min-height: 80vh;
 
             button{
                 margin-bottom: 20px;
             }
+
+            .media_viewer{}
         }
+        
     }
 }
 

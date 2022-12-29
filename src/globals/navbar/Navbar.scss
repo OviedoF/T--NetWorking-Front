@@ -131,7 +131,7 @@
       top: 20px;
       height: 23px;
       width: 27px;
-      z-index: 12;
+      z-index: 9999999999999999;
     }
   
     /* Icon Bars */
@@ -261,6 +261,7 @@
   .overlay-menu {
     background: lightblue;
     color: rgb(13, 26, 38);
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;

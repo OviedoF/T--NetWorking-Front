@@ -42,7 +42,7 @@ const ProductsContainer = ({}) => {
 
             <div className='products_container' data-animation="appear">
                 {products && products.map((el, index) => {
-                    return <ProductCard key={index} product={el} width={windowsSize > 500 ? '23%' : '45%'} />
+                    return <ProductCard key={index} product={el} width={windowsSize > 500 ? '23%' : '100%'} />
                 })}
             </div> 
         </div>
