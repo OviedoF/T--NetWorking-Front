@@ -12,7 +12,7 @@ const PageNotFound = () => {
     });
 
     let bgStyle = {
-        background: `url( ${this.state.url} ) no-repeat center center fixed`,
+        background: `url( ${url} ) no-repeat center center fixed`,
         backgroundSize: 'cover',
         position: 'absolute',
         width: '100vw',

@@ -12,6 +12,7 @@ export default {
     userSearch: '/user-search',
     userConfig: '/user-config',
     register: '/register',
+    comment: '/comment',
 
     // Admin Create/edit
     createCategory: '/admin-panel/create-category',

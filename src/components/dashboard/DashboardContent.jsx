@@ -7,6 +7,7 @@ import { faGlobe, faXmark } from '@fortawesome/free-solid-svg-icons';
 import {modalAppearAnimation, sizeUpXAnimation} from '../../styles/animations.js';
 import DashboardAddContact from './DashboardAddContact';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PreviewCard from './PreviewCard';
 
 const socialIcons = {
     Facebook: faFacebook,
@@ -32,8 +33,8 @@ export default function DashboardContent({auth}) {
         <motion.div className="container_data" transition={{duration: transitionDuration}} animate={{opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'}}>
             <div className="membership">
                 <motion.h2 transition={{duration: transitionDuration*1.5}} animate={{bottom: 0}} >Tipo de membresía</motion.h2 >
-                <motion.img transition={{duration: transitionDuration*1.5}} animate={{transform: 'scale(1)'}} src={auth.imageSubscription} alt='logo' />
-                <motion.p transition={{duration: transitionDuration*1.5}} animate={{top: 0}} >Tiempo de membresía vigente: 54 días</motion.p>
+                <motion.img transition={{duration: transitionDuration*1.5}} animate={{transform: 'scale(1)'}} src={auth.membership[0].image} alt='logo' />
+                <motion.p transition={{duration: transitionDuration*1.5}} animate={{top: 0}} >Tiempo de membresía vigente: {auth.daysMembership} días</motion.p>
             </div>
 
             <div className="qr">
@@ -43,7 +44,9 @@ export default function DashboardContent({auth}) {
             </div>
         </motion.div>
 
-        <motion.div className="preview" transition={{duration: transitionDuration}} animate={{opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'}}>
+        <PreviewCard auth={auth} />
+
+        {/* <motion.div className="preview" transition={{duration: transitionDuration}} animate={{opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'}}>
             <motion.h2  transition={{duration: transitionDuration*1.5}} animate={{bottom: 0}}>Previsualización</motion.h2>
 
             <motion.div transition={{duration: transitionDuration*1.5}} animate={{transform: 'scale(1)'}} className="preview_container">
@@ -61,10 +64,14 @@ export default function DashboardContent({auth}) {
                         </div>
                     )
                 })}
-            </motion.div>   
+            </motion.div>
+
+            <motion.a href={`tel:${auth.cellphone}`} transition={{duration: transitionDuration*1.5}} animate={{transform: 'scale(1)'}} className="add_contact">
+                Añadir contacto
+            </motion.a>
             
             <motion.button transition={{duration: transitionDuration*1.5}} animate={{top: 0}} onClick={() => setActiveSocial(true)}>Agregar método de contacto</motion.button>
-        </motion.div>
+        </motion.div> */}
         
         <DashboardAddContact activeSocial={activeSocial} setActiveSocial={setActiveSocial} />
     </div>

@@ -1,10 +1,10 @@
 
     :root {
-      background-color: #e7e7e7;
-      --card-color: #434242;
+      background-color: #ffffff;
+      --card-color: #5e5e5e;
       --color-danger: #dc3545;
       --color-success: #28a745;
-      --color-text-card: #e7e7e7;
+      --color-text-card: #ffffff;
     }
 
     *{

@@ -31,6 +31,7 @@ import EditAdminForm from '../pages/admin/manage/EditAdminForm';
 import UserSearch from '../pages/UserSearch';
 import UserConfig from '../pages/UserConfig.jsx';
 import Register from '../pages/Register';
+import Comment from '../pages/Comment';
 
 const AppRouter = () => {
     const dispatch = useDispatch();
@@ -69,6 +70,7 @@ const AppRouter = () => {
                 <Route exact path={routes.userSearch} element={<UserSearch />} />
                 <Route exact path={routes.userConfig} element={<UserConfig />} />
                 <Route exact path={routes.register} element={<Register />} />
+                <Route exact path={routes.comment} element={<Comment />} />
 
                 {/* ADMIN ROUTES */}
                 <Route exact path={routes.adminPanel} element={ 
