@@ -13,6 +13,7 @@ export default {
     userConfig: '/user-config',
     register: '/register',
     successPayment: '/success/:purchase_id/:buyer',
+    comment: '/comment',
 
     // Admin Create/edit
     createCategory: '/admin-panel/create-category',
