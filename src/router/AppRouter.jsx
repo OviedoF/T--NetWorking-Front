@@ -27,6 +27,7 @@ import ManageNews from '../pages/admin/manage/ManageNews';
 import ManageCoupons from '../pages/admin/manage/ManageCoupons';
 import ManageUsers from '../pages/admin/manage/ManageUsers';
 import ManageProducts from '../pages/admin/manage/ManageProducts';
+import ManageOrders from '../pages/admin/manage/ManageOrders';
 import EditAdminForm from '../pages/admin/manage/EditAdminForm';
 import UserSearch from '../pages/UserSearch';
 import UserConfig from '../pages/UserConfig.jsx';
@@ -69,6 +70,7 @@ const AppRouter = () => {
                 <Route exact path={routes.userSearch} element={<UserSearch />} />
                 <Route exact path={routes.userConfig} element={<UserConfig />} />
                 <Route exact path={routes.register} element={<Register />} />
+                <Route exact path={routes.successPayment} element={<Register />} />
 
                 {/* ADMIN ROUTES */}
                 <Route exact path={routes.adminPanel} element={ 
@@ -116,6 +118,8 @@ const AppRouter = () => {
                 <Route exact path={routes.manageUsers} element={ <ProtectedRoute condition={'admin'}> <ManageUsers /> </ProtectedRoute> }/>
 
                 <Route exact path={routes.manageProducts} element={ <ProtectedRoute condition={'admin'}> <ManageProducts /> </ProtectedRoute> }/>
+
+                <Route exact path={routes.manageOrders} element={ <ProtectedRoute condition={'admin'}> <ManageOrders /> </ProtectedRoute> }/>
 
                 <Route exact path={routes.editAdmin} element={ <ProtectedRoute condition={'admin'}> <EditAdminForm /> </ProtectedRoute> }/>
 

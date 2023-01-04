@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import env from '../../../env';
 import './CreateProductSection.scss';
 
@@ -8,6 +9,7 @@ const CreateProductSection = () => {
     const [form, setForm] = useState({});
     const [principalImageFake, setPrincipalImageFake] = useState(false);
     const [imagesFake, setImagesFake] = useState(false);
+    const auth = useSelector(state => state.auth)
 
     const changePrincipalImage = (e) => {
         const fakeURL = URL.createObjectURL(e.target.files[0]);
@@ -47,7 +49,10 @@ const CreateProductSection = () => {
             formData.append('images', image);
         }
 
-        axios.post(`${env.API_URL}/product/create`, formData)
+        axios.post(`${env.API_URL}/product/create`, formData, {
+            headers: {
+                userid: auth._id
+            }})
             .then(res => alert('Producto creado correctamente'))
             .catch(err => alert('Error al crear el producto'));
 

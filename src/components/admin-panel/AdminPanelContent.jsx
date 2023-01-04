@@ -24,7 +24,7 @@ const adminPanelActions = [
     {
         name: 'Gestionar pedidos',
         category: 'manage',
-        path: '/admin-panel/orders'
+        path: routes.manageOrders
     },
     {
         name: 'Gestionar cupones',
