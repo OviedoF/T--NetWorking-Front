@@ -12,6 +12,7 @@ export default {
     userSearch: '/user-search',
     userConfig: '/user-config',
     register: '/register',
+    successPayment: '/success/:purchase_id/:buyer',
     comment: '/comment',
 
     // Admin Create/edit
@@ -31,5 +32,6 @@ export default {
     manageCoupons: '/admin-panel/manage-coupons',
     manageNews: '/admin-panel/manage-news',
     manageUsers: '/admin-panel/manage-users',
+    manageOrders: '/admin-panel/manage-orders'
 
 }
