@@ -32,6 +32,7 @@ import UserSearch from '../pages/UserSearch';
 import UserConfig from '../pages/UserConfig.jsx';
 import Register from '../pages/Register';
 import Comment from '../pages/Comment';
+import CreateMembership from '../pages/admin/CreateMembership';
 
 const AppRouter = () => {
     const dispatch = useDispatch();
@@ -106,6 +107,12 @@ const AppRouter = () => {
                 <Route exact path={routes.createModUser} element={ 
                     <ProtectedRoute condition={'admin'}>
                         <CreateModUser />
+                    </ProtectedRoute> 
+                }/>
+
+                <Route exact path={routes.createMembership} element={ 
+                    <ProtectedRoute condition={'admin'}>
+                        <CreateMembership />
                     </ProtectedRoute> 
                 }/>
 

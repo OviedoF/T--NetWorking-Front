@@ -23,6 +23,7 @@ export default {
     createNews: '/admin-panel/create-news',
     createModUser: '/admin-panel/create-mod-user',
     editAdmin: '/admin-panel/edit-admin',
+    createMembership: '/admin-panel/create-membership',
 
     // Admin Manage
     manageCategories: '/admin-panel/manage-categories',

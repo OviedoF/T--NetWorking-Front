@@ -59,7 +59,7 @@ const adminPanelActions = [
     {
         name: 'Crear membresía',
         category: 'create',
-        path: '/admin-panel/create-membership'
+        path: routes.createMembership
     },
     {
         name: 'Crear cupón',
