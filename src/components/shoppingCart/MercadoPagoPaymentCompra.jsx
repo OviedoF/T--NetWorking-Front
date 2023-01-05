@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import env from "../../env";
+import { useSelector } from "react-redux";
 
 const MercadoPagoPaymentCompra = ({ cart, setPaymentID, paymentID }) => {
+  const auth = useSelector(state => state.auth);
   console.log(cart);
   const [state, setState] = useState(false);
   //Mercado Pago
   const FORM_ID = "payment-form";
 
   const getData = async () => {
-    const response = await axios.post(`${env.API_URL}/payments`, { cart });
+    const response = await axios.post(`${env.API_URL}/payments`, { cart, buyer: auth._id });
     const data = response.data;
     console.log('peticion hecha');
 

@@ -24,7 +24,7 @@ const adminPanelActions = [
     {
         name: 'Gestionar pedidos',
         category: 'manage',
-        path: '/admin-panel/orders'
+        path: routes.manageOrders
     },
     {
         name: 'Gestionar cupones',
@@ -59,7 +59,7 @@ const adminPanelActions = [
     {
         name: 'Crear membresía',
         category: 'create',
-        path: '/admin-panel/create-membership'
+        path: routes.createMembership
     },
     {
         name: 'Crear cupón',

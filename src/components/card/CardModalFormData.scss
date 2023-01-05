@@ -54,6 +54,7 @@
             input{
                 padding: 5px;
                 font-size: 0.8em;
+                color: $colortext;
 
                 &[type="text"], &[type="email"], &[type="password"],
                 &[type="number"], &[type="tel"], &[type="date"]{
@@ -64,6 +65,10 @@
                     height: 30px;
                     color: $colortext;
                     border-bottom: 1px solid $colortext;
+                }
+
+                &[type="file"]{
+                    background-color: transparent;
                 }
 
                 &[type="checkbox"]{

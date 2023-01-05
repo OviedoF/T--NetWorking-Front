@@ -3,7 +3,7 @@ import { CardDataContext } from '../CardData.provider.jsx';
 import '../DesignForm.scss';
 
 const SocialButtonsDesign = () => {
-    const {cardData, handleStyles} = useContext(CardDataContext);
+    const {cardData, handleStyles, } = useContext(CardDataContext);
 
     return (
         <>

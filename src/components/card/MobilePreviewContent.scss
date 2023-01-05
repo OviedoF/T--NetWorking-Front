@@ -41,6 +41,8 @@
     }
 
     .preview_body{
+        padding: 0 5px;
+
         .preview_body_user{
             #preview_username{
                 font-size: 1.5rem;
@@ -77,6 +79,7 @@
         }
 
         .preview_body_vcard{
+            text-decoration: none;
             display: flex;
             flex-direction: column;
             align-items: center;

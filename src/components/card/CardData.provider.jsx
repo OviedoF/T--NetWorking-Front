@@ -68,22 +68,41 @@ const CardDataProvider = ({ children }) => {
         setCardData({ ...cardData, socialMedia: auxSocial });
     };
 
-    const handleStyles = (e) => {
-        console.log('-----------------------------------');
+    const resetStyles = (e) => { 
+        e.preventDefault()
 
-        console.log(e.target.name, 'name');
-        console.log(e.target.value, 'value');
-        console.log(e.target.id, 'id');
-        console.log(e.target.className, 'class');     
+        setCardData({
+            ...cardData,
+            styles: defaultStyles
+        });
+
+        console.log('reset');
+    };
+
+    const resetSocialColors = (e) => {
+        e.preventDefault()
+
+        setCardData({
+            ...cardData,
+            styles: {
+                ...cardData.styles,
+                buttonSocialFavorite: {
+                    color: undefined,
+                    backgroundColor: undefined,
+                },
+                buttonSocial: {
+                    color: undefined,
+                    backgroundColor: undefined,
+                }
+            }
+        });
+    };
+
+    const handleStyles = (e) => {
         const isPercent = e.target.id.includes('percent');
         const isColor = e.target.id.includes('color');
         const isPixels = e.target.id.includes('pixels');
         const isText = e.target.id.includes('text');
-        console.log(isText, 'isText');
-        
-        console.log('-----------------NOMBRE ESTILO------------------');
-        console.log(`${e.target.className} ${e.target.name}`)
-        console.log(cardData.styles[e.target.className][e.target.name], 'valor anterior');
 
         if (isPercent) {
             setCardData({
@@ -130,7 +149,16 @@ const CardDataProvider = ({ children }) => {
                 }
             });
         }
-    }
+    };
+
+    const resetAll = (e) => {
+        e.preventDefault()
+        
+        setCardData({
+            ...initialState,
+            styles: defaultStyles
+        });
+    };
 
     const data = { 
         cardData, 
@@ -140,7 +168,10 @@ const CardDataProvider = ({ children }) => {
         handleSocialMedia, 
         handleRemoveSocial,
         actualizeSocial,
-        handleStyles
+        handleStyles,
+        resetStyles,
+        resetSocialColors,
+        resetAll
     }
 
     return (

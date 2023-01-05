@@ -43,7 +43,7 @@ const ManageCoupons = () => {
         axios.get(`${env.API_URL}/coupon`)
             .then(res => setCoupons(res.data))
             .catch(err => alert('Error al cargar los cupones.'));
-    }, []);
+    }, [selectedId]);
 
     useEffect(() => {
         if(selectedId && coupons) {
@@ -76,17 +76,23 @@ const ManageCoupons = () => {
         setForm({});
     }
 
+    const actualizeCoupons = () => {
+        axios.get(`${env.API_URL}/coupon`)
+            .then(res => setCoupons(res.data))
+            .catch(err => alert('Error al cargar los productos.'));
+    }
+
     return (
         <main style={{minHeight: '100vh', display: 'flex'}}>
             <DashboardNav auth={auth}/>
 
-            <div className="container" style={{width: '100%', minHeight: '100%', display: 'flex',
-            flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-                <h1 style={{marginBottom: '30px', fontSize: '20px'}}>Manejar categorías</h1>
+            <div className="container" style={{width: '100%', minHeight: '100%', marginTop: '30px', display: 'flex',
+            flexDirection: 'column', alignItems: 'center'}}>
+                <h1 style={{marginBottom: '30px', fontSize: '20px'}}>Gestionar cupones</h1>
 
                 {coupons.map(coupon => (
                     <motion.div layoutId={coupon._id} key={coupon._id} style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
-                        <CouponCard key={coupon._id} coupon={coupon} setSelectedId={setSelectedId}/>
+                        <CouponCard key={coupon._id} coupon={coupon} setSelectedId={setSelectedId} actualizeCoupons={actualizeCoupons}/>
                     </motion.div>
                 ))}
             </div>

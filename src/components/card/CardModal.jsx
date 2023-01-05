@@ -28,7 +28,7 @@ const CardModal = ({setIsCreating}) => {
                     {section === 'data' && <CardModalFormData />}
                     {section === 'socialMedia' && <CardModalSocialMedia />}
                     {section === 'design' && <DesignForm />}
-                    {section === 'finish' && <FinishCard />}
+                    {section === 'finish' && <FinishCard setIsCreating={setIsCreating}/>}
                 </div>
 
 

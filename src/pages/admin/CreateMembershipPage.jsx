@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import DashboardNav from '../../components/dashboard/DashboardNav';
 import CreateMembership from '../../components/admin-panel/create-membership/CreateMembership';
+import { MembershipDataProvider } from '../../components/admin-panel/create-membership/CreateMembershipData.provider';
 
 const CreateMembershipPage = () => {
     const auth = useSelector(state => state.auth)
@@ -14,7 +15,9 @@ const CreateMembershipPage = () => {
             flexDirection: 'column', paddingTop: 20, alignItems: 'center'}}>
                 <h1 style={{marginBottom: '30px', fontSize: '20px'}}>Crear categoría</h1>
 
-                <CreateMembership />
+                <MembershipDataProvider>
+                    <CreateMembership />
+                </MembershipDataProvider>
             </div>
         </main>
     );

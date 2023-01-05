@@ -116,6 +116,99 @@
     .cards_container{
         height: 50%;
         width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: hidden;
+
+        .card{
+            width: 19%;
+            margin: 0 10px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .card_dashboard_preview{
+                background-color: white;
+                width: 80%;
+                height: 80%;
+                border-radius: 15px;
+
+                .card_dashboard_preview__header{
+                    width: 100%;
+                    height: 30%;
+                    position: relative;
+
+                    .card_dashboard_preview__header__userphoto{
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        margin: 10px;
+                        position: absolute;
+                        top: 60%;
+                        left: calc(50% - 35px);
+
+                        .perfil_photo{
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 50%;
+                            object-fit: cover;
+                        }
+
+                        .enterprise_logo{
+                            width: 50%;
+                            height: 50%;
+                            border-radius: 50%;
+                            object-fit: cover;
+                            position: absolute;
+                            bottom: -5px;
+                            right: -5px;
+                        }
+                    }
+                }
+
+                .card_dashboard_preview__header__info{
+                    margin-top: 40px;
+                    
+                    h3{
+                        margin: 0;
+                    }
+
+                    .position{
+                        display: flex;
+                        font-size: 13px;
+                        text-align: center;
+                        align-items: center;
+                        justify-content: center;
+                        margin-top: 10px;
+                    }
+                }
+
+                .link{
+                    color: white;
+                    text-decoration: none;
+                    font-size: 13px;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 10px;
+                    background-color: black;
+                    width: 80%;
+                    height: 30px;
+                    border-radius: 5px;
+                    margin: 0 auto;
+                    margin-top: 20px;
+                    cursor: pointer;
+                    transition: all 0.3s ease-in-out;
+
+                    &:hover{
+                        transform: scale(1.05);
+                    }
+
+                }
+            }
+        }
     }
 
     .no_cards{

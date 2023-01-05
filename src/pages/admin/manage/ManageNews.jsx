@@ -33,8 +33,8 @@ const ManageNews = () => {
         <main style={{minHeight: '100vh', display: 'flex'}}>
             <DashboardNav auth={auth}/>
 
-            <div className="container" style={{width: '100%', minHeight: '100%', display: 'flex',
-            flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+            <div className="container" style={{width: '100%', minHeight: '100%', marginTop: '30px', display: 'flex',
+            flexDirection: 'column', alignItems: 'center'}}>
                 <h1 style={{marginBottom: '30px', fontSize: '20px'}}>Manejar noticias</h1>
 
                 {news.map((news) => (

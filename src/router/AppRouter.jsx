@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, HashRouter} from "react-router-dom";
 import Footer from '../globals/footer/Footer';
 import NavbarRenderer from '../globals/navbar/NavbarRenderer';
 import Home from '../pages/Home';
@@ -27,8 +27,10 @@ import ManageNews from '../pages/admin/manage/ManageNews';
 import ManageCoupons from '../pages/admin/manage/ManageCoupons';
 import ManageUsers from '../pages/admin/manage/ManageUsers';
 import ManageProducts from '../pages/admin/manage/ManageProducts';
+import ManageOrders from '../pages/admin/manage/ManageOrders';
 import EditAdminForm from '../pages/admin/manage/EditAdminForm';
 import UserSearch from '../pages/UserSearch';
+import CardPage from '../pages/CardPage';
 import UserConfig from '../pages/UserConfig.jsx';
 import Register from '../pages/Register';
 import Comment from '../pages/Comment';
@@ -36,6 +38,7 @@ import CreateMembershipPage from '../pages/admin/CreateMembershipPage';
 
 const AppRouter = () => {
     const dispatch = useDispatch();
+
 
     const identifyUser = () => {
         const token = localStorage.getItem('token');
@@ -50,86 +53,91 @@ const AppRouter = () => {
         .catch(err => console.log(err));
     };
 
-
     useEffect(() => {
         identifyUser();
     }, []);
 
     return (
-        <BrowserRouter>
-            <NavbarRenderer />
+        <HashRouter>
 
-            <Routes>
-                {/* USER ROUTES */}
-                <Route exact path={routes.home} element={<Home/>} />
-                <Route exact path={routes.products} element={<Products />} />
-                <Route exact path={routes.product} element={<Product />} />
-                <Route exact path={routes.login} element={<Login />} />
-                <Route exact path={routes.cart} element={<ShoppingCart />} />
-                <Route exact path={routes.dashboard} element={<Dashboard />} />
-                <Route exact path={routes.userPage} element={<UserPage />} />
-                <Route exact path={routes.userSearch} element={<UserSearch />} />
-                <Route exact path={routes.userConfig} element={<UserConfig />} />
-                <Route exact path={routes.register} element={<Register />} />
-                <Route exact path={routes.comment} element={<Comment />} />
+                <Routes>
+                    <Route exact path={routes.cardPage} element={<CardPage />} />
 
-                {/* ADMIN ROUTES */}
-                <Route exact path={routes.adminPanel} element={ 
-                    <ProtectedRoute condition={'admin'}>
-                        <AdminPanel />
-                    </ProtectedRoute> 
-                }/>
+                    <Route element={<NavbarRenderer />} >                    
+                        {/* USER ROUTES */}
+                        <Route exact path={routes.home} element={<Home/>} />
+                        <Route exact path={routes.products} element={<Products />} />
+                        <Route exact path={routes.product} element={<Product />} />
+                        <Route exact path={routes.login} element={<Login />} />
+                        <Route exact path={routes.cart} element={<ShoppingCart />} />
+                        <Route exact path={routes.dashboard} element={<Dashboard />} />
+                        <Route exact path={routes.userPage} element={<UserPage />} />
+                        <Route exact path={routes.userSearch} element={<UserSearch />} />
+                        <Route exact path={routes.userConfig} element={<UserConfig />} />
+                        <Route exact path={routes.register} element={<Register />} />
+                        <Route exact path={routes.successPayment} element={<Register />} />
+                        <Route exact path={routes.comment} element={<Comment />} />
 
-                <Route exact path={routes.createCategory} element={ 
-                    <ProtectedRoute condition={'admin'}>
-                        <CreateCategory />
-                    </ProtectedRoute> 
-                }/>
+                        {/* ADMIN ROUTES */}
+                        <Route exact path={routes.adminPanel} element={ 
+                            <ProtectedRoute condition={'admin'}>
+                                <AdminPanel />
+                            </ProtectedRoute> 
+                        }/>
 
-                <Route exact path={routes.createProduct} element={ 
-                    <ProtectedRoute condition={'admin'}>
-                        <CreateProduct />
-                    </ProtectedRoute> 
-                }/>
+                        <Route exact path={routes.createCategory} element={ 
+                            <ProtectedRoute condition={'admin'}>
+                                <CreateCategory />
+                            </ProtectedRoute> 
+                        }/>
 
-                <Route exact path={routes.createCoupon} element={ 
-                    <ProtectedRoute condition={'admin'}>
-                        <CreateCoupon />
-                    </ProtectedRoute> 
-                }/>
+                        <Route exact path={routes.createProduct} element={ 
+                            <ProtectedRoute condition={'admin'}>
+                                <CreateProduct />
+                            </ProtectedRoute> 
+                        }/>
 
-                <Route exact path={routes.createNews} element={ 
-                    <ProtectedRoute condition={'admin'}>
-                        <CreateNews />
-                    </ProtectedRoute> 
-                }/>
+                        <Route exact path={routes.createCoupon} element={ 
+                            <ProtectedRoute condition={'admin'}>
+                                <CreateCoupon />
+                            </ProtectedRoute> 
+                        }/>
 
-                <Route exact path={routes.createModUser} element={ 
-                    <ProtectedRoute condition={'admin'}>
-                        <CreateModUser />
-                    </ProtectedRoute> 
-                }/>
+                        <Route exact path={routes.createNews} element={ 
+                            <ProtectedRoute condition={'admin'}>
+                                <CreateNews />
+                            </ProtectedRoute> 
+                        }/>
 
-                <Route exact path={routes.createMembership} element={ <ProtectedRoute condition={'admin'}> <CreateMembershipPage /> </ProtectedRoute> }/>
+                        <Route exact path={routes.createModUser} element={ 
+                            <ProtectedRoute condition={'admin'}>
+                                <CreateModUser />
+                            </ProtectedRoute> 
+                        }/>
 
-                <Route exact path={routes.manageCategories} element={ <ProtectedRoute condition={'admin'}> <ManageCategories /> </ProtectedRoute> }/>
+                        <Route exact path={routes.createMembership} element={ <ProtectedRoute condition={'admin'}> <CreateMembershipPage /> </ProtectedRoute> }/>
 
-                <Route exact path={routes.manageNews} element={ <ProtectedRoute condition={'admin'}> <ManageNews /> </ProtectedRoute> }/>
+                        <Route exact path={routes.manageCategories} element={ <ProtectedRoute condition={'admin'}> <ManageCategories /> </ProtectedRoute> }/>
 
-                <Route exact path={routes.manageCoupons} element={ <ProtectedRoute condition={'admin'}> <ManageCoupons/> </ProtectedRoute> }/>
+                        <Route exact path={routes.manageNews} element={ <ProtectedRoute condition={'admin'}> <ManageNews /> </ProtectedRoute> }/>
 
-                <Route exact path={routes.manageUsers} element={ <ProtectedRoute condition={'admin'}> <ManageUsers /> </ProtectedRoute> }/>
+                        <Route exact path={routes.manageCoupons} element={ <ProtectedRoute condition={'admin'}> <ManageCoupons/> </ProtectedRoute> }/>
 
-                <Route exact path={routes.manageProducts} element={ <ProtectedRoute condition={'admin'}> <ManageProducts /> </ProtectedRoute> }/>
+                        <Route exact path={routes.manageUsers} element={ <ProtectedRoute condition={'admin'}> <ManageUsers /> </ProtectedRoute> }/>
 
-                <Route exact path={routes.editAdmin} element={ <ProtectedRoute condition={'admin'}> <EditAdminForm /> </ProtectedRoute> }/>
+                        <Route exact path={routes.manageProducts} element={ <ProtectedRoute condition={'admin'}> <ManageProducts /> </ProtectedRoute> }/>
+
+                        <Route exact path={routes.manageOrders} element={ <ProtectedRoute condition={'admin'}> <ManageOrders /> </ProtectedRoute> }/>
+
+                        <Route exact path={routes.editAdmin} element={ <ProtectedRoute condition={'admin'}> <EditAdminForm /> </ProtectedRoute> }/>
 
 
-                <Route path={'/*'} element={<PageNotFound />} />
+                        <Route path={'/*'} element={<PageNotFound />} />
+                </Route>
             </Routes>
 
             <Footer />
-        </BrowserRouter>
+        </HashRouter>
     );
 }
 

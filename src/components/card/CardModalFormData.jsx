@@ -50,6 +50,15 @@ const CardModalFormData = () => {
                     <label htmlFor="biography">Descríbete en 140 carácteres</label>
                     <textarea name="biography" id="biography" value={cardData.biography} onChange={(e) => handleInputs(e)} maxLength={140}/>
                 </div>
+
+                <div className="form_group full">
+                    <label htmlFor="cardLink">¿Cómo quieres que encuentren tu tarjeta?</label>
+
+                    <div className="cardlink_input" style={{display: 'flex', alignItems: 'flex-start'}}>
+                        <p style={{fontSize: 20, marginTop: 10}}>https://biznescard.cl/</p>
+                        <input type="text" name="cardLink" id="cardLink" value={cardData.cardLink} onChange={(e) => handleInputs(e)} />
+                    </div>
+                </div>
             </div>
 
             <div className="form_section">
@@ -72,7 +81,6 @@ const CardModalFormData = () => {
             </div>
 
             <div className="form_section">
-
                 <div className="form_group full vcard">
                         <h3>Habilitar botón de añadir contacto</h3>
                         

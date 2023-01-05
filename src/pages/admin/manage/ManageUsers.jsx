@@ -27,15 +27,16 @@ const ManageUsers = () => {
             <DashboardNav auth={auth}/>
 
             <div className="container" style={{
-                width: '100%', minHeight: '100%', display: 'flex',
-                flexDirection: 'column', justifyContent: 'center', alignItems: 'center'
+                width: '100%', minHeight: '100%', marginTop: '30px', display: 'flex',
+                flexDirection: 'column', alignItems: 'center'
             }}>
-                <h1 style={{ marginBottom: '30px', fontSize: '20px' }}>Eliminar usuarios</h1>
+                <h1 style={{ marginBottom: '30px', fontSize: '20px' }}>Gestionar usuarios</h1>
 
                 {users.map(user => (
                     <motion.div layoutId={user._id} key={user._id} style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                         <div className='card'>
-                            <h3>{user.name}</h3>
+                            <h3>Username: {user.username}</h3>
+                            <h3>UserId: {user.userId}</h3>
                             <h3 style={{marginRight: 30}}>{user.email}</h3>
                             {
                                 user.roles && user.roles.map(role => (

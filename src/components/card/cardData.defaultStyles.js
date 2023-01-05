@@ -1,4 +1,7 @@
 export default {
+    body: {
+        backgroundColor: '#fff',
+    },
     profilePhoto: {
         borderRadius: '50%',
         borderColor: '#fff',

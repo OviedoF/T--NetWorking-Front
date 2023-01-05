@@ -12,7 +12,9 @@ export default {
     userSearch: '/user-search',
     userConfig: '/user-config',
     register: '/register',
+    successPayment: '/success/:purchase_id/:buyer',
     comment: '/comment',
+    cardPage: '/card/:link',
 
     // Admin Create/edit
     createCategory: '/admin-panel/create-category',
@@ -24,6 +26,7 @@ export default {
     createModUser: '/admin-panel/create-mod-user',
     createMembership: '/admin-panel/create-membership',
     editAdmin: '/admin-panel/edit-admin',
+    createMembership: '/admin-panel/create-membership',
 
     // Admin Manage
     manageCategories: '/admin-panel/manage-categories',
@@ -31,5 +34,6 @@ export default {
     manageCoupons: '/admin-panel/manage-coupons',
     manageNews: '/admin-panel/manage-news',
     manageUsers: '/admin-panel/manage-users',
+    manageOrders: '/admin-panel/manage-orders'
 
 }

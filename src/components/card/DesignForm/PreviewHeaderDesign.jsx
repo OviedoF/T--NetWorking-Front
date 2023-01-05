@@ -9,7 +9,16 @@ const PreviewHeaderDesign = () => {
     return (
         <>
             <div className="form_section">
-                <h2 style={{marginTop: 0}}>Foto de perfil</h2>
+                <h2 style={{marginTop: 0}}>Fondo</h2>
+
+                <div className="form_group" style={{width: '15%', justifyContent: 'flex-start'}}>
+                    <label htmlFor="backgroundColor">Color de fondo</label>
+                    <input className='body' onChange={(e) => handleStyles(e) } type="color" name="backgroundColor" id="background_color" />
+                </div>
+            </div>
+
+            <div className="form_section">
+                <h2 >Foto de perfil</h2>
 
                 <div className="form_group">
                     <label htmlFor="profile_picture">Radio del borde</label>
@@ -35,17 +44,18 @@ const PreviewHeaderDesign = () => {
 
                 <div className="form_group">
                     <label htmlFor="logo">Radio del borde</label>
-                    <input onChange={(e) => handleStyles(e) } type="range" name="logo" id="logo_percent" min="0" max="50" />
+                    <input className='logo' onChange={(e) => handleStyles(e) } type="range" name="borderRadius" id="logo_percent" min="0" max="50" />
                 </div>
 
                 <div className="form_group">
                     <label htmlFor="logo">Color del borde</label>
-                    <input onChange={(e) => handleStyles(e) } type="color" name="logo" id="logo_color" />
+                    <input className='logo' onChange={(e) => handleStyles(e) } type="color" name="borderColor" id="logo_color" 
+                    style={{height: 30}}/>
                 </div>
 
                 <div className="form_group">
                     <label htmlFor="profile_picture">Ancho del borde</label>
-                    <input onChange={(e) => handleStyles(e) } type="range" name="profile_picture" id="profile_picture_pixels" min="0" max="10" />
+                    <input className='logo' onChange={(e) => handleStyles(e) } type="range" name="borderWidth" id="profile_picture_pixels" min="0" max="10" />
                 </div>
             </div>
         </>

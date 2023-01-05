@@ -3,6 +3,7 @@ import './MobilePreviewContent.scss'
 import CardDataContext from './CardData.provider';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import {motion} from 'framer-motion';
 import SocialMedia from './CardModalSocialMedia.data'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -18,54 +19,54 @@ const MobilePreviewContent = () => {
     }
 
     return (
-        <div className='preview_content'>
-            <div className="preview_header">
+        <div className='preview_content' style={{backgroundColor: cardData.styles.body.backgroundColor}}>
+            <motion.div animate={{transform: 'scale(1)'}} className="preview_header">
                 <img src={cardData.coverPhotoUrl || greyImage} alt="Prevista portada" id='preview_cover_photo' />
 
-                <div className="preview_header_user">
+                <motion.div animate={{transform: 'scale(1)'}} className="preview_header_user">
                     <img src={cardData.profilePhotoUrl || greyImage} alt="Prevista foto de perfil" id='preview_profile_photo' 
                     style={cardData.styles.profilePhoto}/>
                     <img src={cardData.logoUrl || greyImage} alt="Prevista del logo" id='preview_profile_logo' 
                     style={cardData.styles.logo}/>
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
 
-            <div className="preview_body">
-                <div className="preview_body_user">
+            <motion.div animate={{transform: 'scale(1)'}} className="preview_body">
+                <motion.div animate={{transform: 'scale(1)'}} className="preview_body_user">
                     <h2 id='preview_username' style={{...cardData.styles.name, textAlign: cardData.styles.name.textAlign}}>{auth.firstName} {auth.lastName}</h2>
 
-                    <div className="preview_body_user_job">
+                    <motion.div animate={{transform: 'scale(1)'}} className="preview_body_user_job">
                         <h3 id='preview_job_position' style={cardData.styles.job}>{cardData.jobPosition || 'Puesto'} - {cardData.jobEntity || 'Empresa'}</h3>
-                    </div>
+                    </motion.div>
 
-                    <div className="preview_body_user_email">
+                    <motion.div animate={{transform: 'scale(1)'}} className="preview_body_user_email">
                         <h3 id='preview_email' style={cardData.styles.email}>{cardData.email || 'biznes@contacto.com'}</h3>
-                    </div>
+                    </motion.div>
 
-                    <div className="preview_body_user_biography">
+                    <motion.div animate={{transform: 'scale(1)'}} className="preview_body_user_biography">
                         <p id='preview_biography' style={cardData.styles.biography}>{cardData.biography || 'Una breve descripción suya.'}</p>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
 
                 {cardData.vcard &&
-                    <div className="preview_body_vcard" >
+                    <motion.div animate={{transform: 'scale(1)'}} className="preview_body_vcard" >
                         <button style={cardData.styles.buttonVCard}>Descargar tarjeta personal</button>       
-                    </div>
+                    </motion.div>
                 }
 
                 {cardData.addContact && 
-                    <div className="preview_body_vcard">
+                    <motion.div animate={{transform: 'scale(1)'}} className="preview_body_vcard">
                         <button style={cardData.styles.buttonContact}>
                             <a href={''} style={{color: cardData.styles.buttonContact.color, textDecoration: 'none'}} onClick={(e) => e.preventDefault()}>
                                 Agregar a {`+56-${cardData.cellphone || '...'}`}
                             </a>
                         </button>
-                    </div>
+                    </motion.div>
                 }
 
-                <div className="preview_body_social">
-                    <div className="preview_body_social_icons">
-                        <div className="favorites">
+                <motion.div animate={{transform: 'scale(1)'}} className="preview_body_social">
+                    <motion.div animate={{transform: 'scale(1)'}} className="preview_body_social_icons">
+                        <motion.div animate={{transform: 'scale(1)'}} className="favorites">
                             {cardData.socialMedia.filter((el) => el.favorite).map((icon, index) => (
                                 <a href={icon.url} key={index} target='_blank' rel='noreferrer' style={{borderRadius: cardData.styles.buttonSocialFavorite.borderRadius, 
                                 backgroundColor: cardData.styles.buttonSocialFavorite.backgroundColor || icon.color}} 
@@ -73,7 +74,7 @@ const MobilePreviewContent = () => {
                                     <FontAwesomeIcon icon={findIconSocial(icon.name)} style={{color: cardData.styles.buttonSocialFavorite.color || icon.contrast}}/>
                                 </a>
                             ))}
-                        </div>
+                        </motion.div>
 
 
                         {cardData.socialMedia.filter((el) => !el.favorite).map((icon, index) => (
@@ -82,9 +83,9 @@ const MobilePreviewContent = () => {
                                 <FontAwesomeIcon icon={findIconSocial(icon.name)} style={{color: cardData.styles.buttonSocial.color || icon.contrast}}/>
                             </a>
                         ))}
-                    </div>
-                </div>
-            </div>
+                    </motion.div>
+                </motion.div>
+            </motion.div>
         </div>
     );
 }
