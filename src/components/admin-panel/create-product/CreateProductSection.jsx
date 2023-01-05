@@ -3,12 +3,16 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import env from '../../../env';
 import './CreateProductSection.scss';
+import routes from '../../../router/routes';
 
 const CreateProductSection = () => {
     const [categories, setCategories] = useState([]);
     const [form, setForm] = useState({});
     const [principalImageFake, setPrincipalImageFake] = useState(false);
     const [imagesFake, setImagesFake] = useState(false);
+    const [redirecting, setRedirecting] = useState(5);
+    const [error, setError] = useState(false);
+    const [success, setSuccess] = useState(false);
     const auth = useSelector(state => state.auth)
 
     const changePrincipalImage = (e) => {
@@ -35,6 +39,12 @@ const CreateProductSection = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        if(!form.name || !form.description || !form.category || !form.category || !form.price || !form.stock || !form.principalImage) {
+            setError('Todos los campos son obligatorios');
+            setSuccess(false);
+            return;
+        }
+
         const formData = new FormData();
         formData.append('name', form.name);
         formData.append('description', form.description);
@@ -51,10 +61,30 @@ const CreateProductSection = () => {
 
         axios.post(`${env.API_URL}/product/create`, formData, {
             headers: {
-                userid: auth._id
+                userid: auth._id,
+                token: auth.token
             }})
-            .then(res => alert('Producto creado correctamente'))
-            .catch(err => alert('Error al crear el producto'));
+            .then(res => {
+                setSuccess(true)
+                setError(false);
+                setTimeout(() => {
+                    window.location.href = routes.adminPanel;
+                }, 5000);
+    
+                setInterval(() => {
+                    setRedirecting(redirecting - 1);
+                }, 1000);
+            })
+            .catch(err => {
+                if(err.status === 400) {
+                    setError(err.response.data.message);
+                    setSuccess(false);
+                    return;
+                };
+
+                setError(err.response.data.message)
+                setSuccess(false);
+            });
 
     };
 
@@ -121,7 +151,14 @@ const CreateProductSection = () => {
                     </div>
                 </div>
 
-                <button type="submit" className="btn btn-primary">CREAR</button>
+                <button type="submit" className="btn btn-primary" onClick={handleSubmit}>CREAR</button>
+
+                {success && <>
+                <p className="text-success">Producto creado correctamente.</p>
+                <p className="text-success">Redireccionando en {redirecting} segundos...</p>    
+            </>}
+
+            {error && <p className="text-danger">{error}</p>}
 
             </form>
         </div>
