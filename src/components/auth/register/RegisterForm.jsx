@@ -19,14 +19,15 @@ const RegisterForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if(!form.name || !form.email || !form.password || !form.confirmPassword || !form.username || !form.cellphone || !form.userId || !form.images) {
+        if(!form.firstName || !form.lastName || !form.email || !form.password || !form.confirmPassword || !form.username || !form.cellphone || !form.userId || !form.images) {
             setError('Todos los campos son obligatorios');
             setSuccess(false);
             return;
         }
 
         const formData = new FormData();
-        formData.append('name', form.name);
+        formData.append('firstName', form.firstName);
+        formData.append('lastName', form.lastName);
         formData.append('email', form.email);
         formData.append('password', form.password);
         formData.append('confirmPassword', form.confirmPassword);
@@ -78,8 +79,13 @@ const RegisterForm = () => {
             <img src={logo} alt="Logo Networking" />
 
             <div className="form-group">
-                <label htmlFor="name">Titular de la cuenta</label>
-                <input type="text" name="name" id="name" className="form-control" onChange={(e) => handleChange(e)} />
+                <label htmlFor="firstName">Nombre</label>
+                <input type="text" name="firstName" id="firstName" className="form-control" onChange={(e) => handleChange(e)} />
+            </div>
+
+            <div className="form-group">
+                <label htmlFor="lastName">Apellido</label>
+                <input type="text" name="lastName" id="name" className="form-control" onChange={(e) => handleChange(e)} />
             </div>
 
             <div className="form-group">

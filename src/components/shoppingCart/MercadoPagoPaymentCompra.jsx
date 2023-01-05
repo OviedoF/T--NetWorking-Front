@@ -11,7 +11,7 @@ const MercadoPagoPaymentCompra = ({ cart, setPaymentID, paymentID }) => {
   const FORM_ID = "payment-form";
 
   const getData = async () => {
-    const response = await axios.post(`${env.API_URL}/payments`, { cart, buyer: auth._id });
+    const response = await axios.post(`${env.API_URL}/payments`, { cart, buyer: auth._id, email: auth.email });
     const data = response.data;
     console.log('peticion hecha');
 

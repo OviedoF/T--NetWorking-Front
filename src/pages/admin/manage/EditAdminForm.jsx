@@ -10,9 +10,14 @@ import { useSelector } from 'react-redux';
 
 const inputs = [
     {
-        name: 'name',
+        name: 'firstName',
         type: 'text',
         label: 'Nombre'
+    },
+    {
+        name: 'lastName',
+        type: 'text',
+        label: 'Apellido'
     },
     {
         name: 'email',
@@ -52,15 +57,15 @@ const EditAdminForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const send = sendForm.put(inputs, form, `/coupon/${couponSelected._id}`, {
+        const send = sendForm.put(inputs, form, `/users/${adminData._id}/updateUser`, {
             headers: {
                 userid: auth._id,
             }
         }, setSuccess, setErrores)
 
-        if (send.success) axios.get(`${env.API_URL}/coupon`)
+        if (send.success) axios.get(`${env.API_URL}/users/admin`)
             .then(res => setCoupons(res.data))
-            .catch(err => alert('Error al cargar los cupones.'));
+            .catch(err => alert('Error al cargar el usuario.'));
     }
 
     const reset = () => {

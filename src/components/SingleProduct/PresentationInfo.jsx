@@ -1,8 +1,12 @@
+import axios from 'axios';
 import React, { useState, useEffect, useReducer } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addToShoppingCart } from '../../redux/actions/shoppingCart.actions';
 import routes from '../../router/routes';
+import env from '../../env';
+import {authLogin} from '../../redux/actions/auth.actions';
+
 
 const PresentationInfo = ({product}) => {
     const [quantity, setQuantity] = useState(1);
@@ -13,8 +17,10 @@ const PresentationInfo = ({product}) => {
     const auth = useSelector(state => state.auth);
 
     useEffect(() => {
-        const isAdded = shoppingCart.products.find(el => el._id === product._id);
-        if(isAdded) setIsAddedToCart(true);
+        if (auth.logged) {
+            const isAdded = auth.shoppingCart.find(el => el._id === product._id);
+            if(isAdded) setIsAddedToCart(true);
+        }
     }, [shoppingCart]);
 
     useEffect(() => {
@@ -23,6 +29,13 @@ const PresentationInfo = ({product}) => {
     }, [quantity]);
 
     const handleAddToCart = () => {
+        axios.put(`${env.API_URL}/users/${auth._id}/updateShoppingCart`, {
+            type: 'add',
+            product: JSON.stringify({...product, quantity})
+        })
+        .then(res => dispatch(authLogin(res.data)))
+        .catch(err => console.log(err));
+
         dispatch(addToShoppingCart({...product, quantity}));
     }
 

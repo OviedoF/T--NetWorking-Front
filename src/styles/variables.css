@@ -1,4 +1,7 @@
-
+*{
+  
+  color: #222222;
+}
     :root {
       background-color: #ffffff;
       --card-color: #5e5e5e;

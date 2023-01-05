@@ -6,12 +6,16 @@ import DashboardNav from "../../../components/dashboard/DashboardNav";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faPencil, faPlusSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import '../../../components/admin-panel/CardStyle.scss'
+import { AnimatePresence } from "framer-motion";
+import logo from '../../../assets/logo.png';
+import EditOrders from '../../../components/admin-panel/edit-order/EditOrders'
 
 const ManageOrders = () => {
     const [purchase, setPurchase] = useState([]);
     const [selectedId, setSelectedId] = useState(null);
+    const [currentPurchase, setCurrentPurchase] = useState(null);
     const auth = useSelector(state => state.auth);
 
     useEffect(() => {
@@ -32,15 +36,15 @@ const ManageOrders = () => {
             }}>
                 <h1 style={{ marginBottom: '30px', fontSize: '20px' }}>Gestionar ordenes</h1>
 
-                {purchase.map(user => (
-                    <motion.div layoutId={user._id} key={user._id} style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                {purchase.map(purchase => (
+                    <motion.div layoutId={purchase._id} key={purchase._id} style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                         <div className='card'>
-                            <h3>{user.state}</h3>
-                            <h3 style={{marginRight: 30}}> El comprador es: {user.buyer} </h3>
-                            <h3 style={{marginRight: 30}}> Id de la orden: {user._id} </h3>
+                            <button className="btn" type="button" onClick={() => setSelectedId(purchase._id)}>{purchase.state}</button>
+
+                            <h3 style={{marginRight: 30}}> El comprador es: {purchase.buyer.firstName} {purchase.buyer.lastName} </h3>
+                            <h3 style={{marginRight: 30}}> Id de la orden: {purchase._id} </h3>
 
                             <div className="card__buttons">
-                                <FontAwesomeIcon icon={faPencil} className='edit' />
                                 <FontAwesomeIcon icon={faTrash} className='delete' />
                             </div>
                         </div>
@@ -48,6 +52,14 @@ const ManageOrders = () => {
                 ))}
             </div>
 
+            <AnimatePresence>
+                {
+                    selectedId && <motion.div style={{width: '100vw', height: '100vh', position: 'fixed', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#00000080', zIndex: '999999999999999999999999999999999999999999999999999'}}>
+                        <EditOrders itemId={selectedId} purchases={purchase}
+                        setSelectedId={setSelectedId} userid={auth._id} setPurchase={setPurchase}/>
+                    </motion.div>
+                }
+            </AnimatePresence>
         </main>
     )
 }

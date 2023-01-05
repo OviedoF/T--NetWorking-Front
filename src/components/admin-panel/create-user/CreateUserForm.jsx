@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import logo from '../../../assets/logo.png';
 import env from '../../../env';
+import routes from '../../../router/routes';
 import '../CreateForm.scss';
 
 const CreateUserForm = () => {
@@ -13,6 +14,7 @@ const CreateUserForm = () => {
     const [success, setSuccess] = useState(false);
     const [roles, setRoles] = useState([]);
     const auth = useSelector(state => state.auth);
+    const [redirecting, setRedirecting] = useState(5);
 
     useEffect(() => {
         axios.get(`${env.API_URL}/auth/roles`)
@@ -25,8 +27,15 @@ const CreateUserForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        if(!form.firstName || !form.lastName || !form.email || !form.password || !form.confirmPassword || !form.username || !form.cellphone || !form.userId || !form.images) {
+            setError('Todos los campos son obligatorios');
+            setSuccess(false);
+            return;
+        }
+
         const formData = new FormData();
-        formData.append('name', form.name);
+        formData.append('firstName', form.firstName);
+        formData.append('lastName', form.lastName);
         formData.append('email', form.email);
         formData.append('password', form.password);
         formData.append('confirmPassword', form.confirmPassword);
@@ -48,8 +57,21 @@ const CreateUserForm = () => {
         .then(res => {
             setSuccess(true)
             setError(false);
+            setTimeout(() => {
+                window.location.href = routes.adminPanel;
+            }, 5000);
+    
+            const timer = setInterval(() => {
+                setRedirecting(redirecting - 1);
+            }, 1000);
         })
         .catch(err => {
+            if(err.status === 400) {
+                setError(err.response.data.message);
+                setSuccess(false);
+                return;
+            };
+
             setError(err.response.data.message)
             setSuccess(false);
         });
@@ -85,8 +107,13 @@ const CreateUserForm = () => {
             <img src={logo} alt="Logo Networking" />
 
             <div className="form-group">
-                <label htmlFor="name">Titular de la cuenta</label>
-                <input type="text" name="name" id="name" className="form-control" onChange={(e) => handleChange(e)} />
+                <label htmlFor="firstName">Nombre</label>
+                <input type="text" name="firstName" id="firstName" className="form-control" onChange={(e) => handleChange(e)} />
+            </div>
+
+            <div className="form-group">
+                <label htmlFor="lastName">Apellido</label>
+                <input type="text" name="lastName" id="lastName" className="form-control" onChange={(e) => handleChange(e)} />
             </div>
 
             <div className="form-group">
@@ -143,7 +170,10 @@ const CreateUserForm = () => {
 
             <button type="submit" className="btn btn-primary" onClick={handleSubmit}>CREAR</button>
 
-            {success && <p className="text-success">Usuario creado correctamente.</p>}
+            {success && <>
+                <p className="text-success">Usuario creado correctamente.</p>
+                <p className="text-success">Redireccionando en {redirecting} segundos...</p>    
+            </>}
 
             {error && <p className="text-danger">{error}</p>}
         </form>

@@ -52,7 +52,7 @@ export default function DashboardContent({auth}) {
         <motion.div className="container_data" transition={{duration: transitionDuration}} animate={{opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'}}>
             <div className="membership">
                 <motion.h2 transition={{duration: transitionDuration*1.5}} animate={{bottom: 0}} >Tipo de membresía</motion.h2 >
-                <motion.img transition={{duration: transitionDuration*1.5}} animate={{transform: 'scale(1)'}} src={auth.membership[0].image} alt='logo' />
+                <motion.img transition={{duration: transitionDuration*1.5}} animate={{transform: 'scale(1)'}} src={auth.membership[0].image || ''} alt='logo' />
                 <motion.p transition={{duration: transitionDuration*1.5}} animate={{top: 0}} >Tiempo de membresía vigente: {auth.daysMembership} días</motion.p>
             </div>
 
