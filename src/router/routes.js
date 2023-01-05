@@ -22,6 +22,7 @@ export default {
     createCoupon: '/admin-panel/create-coupon',
     createNews: '/admin-panel/create-news',
     createModUser: '/admin-panel/create-mod-user',
+    createMembership: '/admin-panel/create-membership',
     editAdmin: '/admin-panel/edit-admin',
 
     // Admin Manage

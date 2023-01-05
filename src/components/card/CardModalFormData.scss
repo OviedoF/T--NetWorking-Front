@@ -1,0 +1,101 @@
+#card_modal_form_data{
+    $colortext: rgb(109, 109, 109);    
+    overflow-y: auto;
+
+    &::-webkit-scrollbar{
+        width: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb{
+        background-color: $colortext;
+        border-radius: 5px;
+    }
+
+    .form_section{
+        padding: 10px 10px 0 0;
+        margin: 10px;
+        border-radius: 5px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        h3{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            color: $colortext;
+            font-size: 1.4em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .form_group{
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+            width: 49%;
+
+            .disclaimer{
+                margin-top: 02px;
+                padding: 0;
+                font-size: 0.9em;
+                color: $colortext;
+                margin-bottom: 5px;
+            }
+
+            label{
+                margin-bottom: 5px;
+                font-size: 1em;
+                color: $colortext;
+                text-transform: uppercase;
+            }
+
+            input{
+                padding: 5px;
+                font-size: 0.8em;
+
+                &[type="text"], &[type="email"], &[type="password"],
+                &[type="number"], &[type="tel"], &[type="date"]{
+                    width: 100%;
+                    background-color: transparent;
+                    border: none;
+                    font-size: 18px;
+                    height: 30px;
+                    color: $colortext;
+                    border-bottom: 1px solid $colortext;
+                }
+
+                &[type="checkbox"]{
+                    width: 20px;
+                    height: 20px;
+                    margin-left: 20px;
+                    cursor: pointer;
+                    background-color: transparent;
+                    border: none;
+                }
+            }
+
+            textarea{
+                padding: 5px;
+                font-size: 0.8em;
+                width: 100%;
+                background-color: transparent;
+                border: none;
+                font-size: 18px;
+                resize: none;
+                height: 100px;
+                color: $colortext;
+                border-bottom: 1px solid $colortext;
+            }
+
+            &.full{
+                width: 100%;
+            }
+        }
+
+        p{
+            color: $colortext;
+        }
+    }
+}

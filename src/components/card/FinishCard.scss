@@ -1,0 +1,32 @@
+.finish_card{
+    width: 85%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h2{
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    button{
+        width: 80%;
+        height: 3rem;
+        border: none;
+        border-radius: 0.5rem;
+        background-color: #000;
+        color: #fff;
+        font-size: 1.5rem;
+        margin-top: 2rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.2s;
+
+        &:hover{
+            background-color: rgb(116, 116, 116);
+            color: #fff;
+        }
+    }
+}

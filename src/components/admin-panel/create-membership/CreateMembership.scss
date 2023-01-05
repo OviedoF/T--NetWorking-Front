@@ -1,0 +1,89 @@
+.form_container{
+    width: 90%;
+    margin-bottom: 100px;
+}
+
+#create_category_submit{
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 400;
+    background-color: black;
+    color: white;
+    margin-top: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover{
+        background-color: #34495e;
+    }
+}
+
+.form_section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    h2{
+        width: 100%;
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin: 2rem 0 1rem 0;
+    }
+
+    .form_subsection{
+        h3{
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            margin: 2rem 0 1rem 0;
+
+        }
+
+        .form_group{
+            width: 100%;
+            flex-direction: row;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+
+        }
+    }
+    
+    .disclaimer {
+        font-size: 0.8rem;
+        font-weight: 400;
+        margin: .5rem 0 2rem 0;
+        width: 100%;
+    }
+
+    .form_group{
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+
+        label{
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+    }
+
+    input[type="text"], input[type="number"], input[type="email"], input[type="password"], textarea{
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: 400;
+        margin-bottom: 2rem;
+        color: black;
+    }
+
+    input[type="checkbox"]{
+        margin: 1rem;
+    }
+}

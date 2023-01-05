@@ -1,0 +1,108 @@
+.card_modal{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 9999999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .close_modal{
+        position: absolute;
+        top: 30px;
+        right: 70px;
+        font-size: 20px;
+        color: #fff;
+        cursor: pointer;
+        height: 40px;
+        fill: red;
+        z-index: 99;
+    }
+
+    .card_modal_container{
+        width: 95%;
+        height: 95%;
+        display: flex;
+        background-color: #fff;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 10px;
+
+        .card_modal_form{
+            width: 69%;
+            height: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            .card_modal_nav{
+                height: 100%;
+                width: 15%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                border-radius: 10px;
+
+                ul{
+                    li{
+                        margin: 10px 0;
+                        font-size: 18px;
+                        text-transform: capitalize;
+                        cursor: pointer;
+                        color: #00000099;
+                        transition: all 0.3s ease-in-out;
+
+                        &.active{
+                            color: #000;
+                        }
+
+                        &:hover{
+                            color: #000;
+                            transform: scale(1.15);
+                        }
+                    }
+                }
+            }
+
+            .card_modal_form_content{
+                width: 85%;
+                height: 100%;
+            }
+        }
+
+        .card_modal_preview{
+            width: 30%;
+            position: relative;
+            padding: 40px 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            select{
+                background-color: transparent;
+                border: none;
+                border-bottom: 1px solid #00000090;
+                padding: 5px 10px;
+                width: 50%;
+
+                option{
+                    text-align: left;
+                }
+            }
+
+            .preview_container{
+                display: flex;
+                justify-content: center;
+                padding: 0px;
+                box-sizing: border-box;
+                align-items: flex-start;
+                height: 100%;
+            }
+        }
+    }
+}

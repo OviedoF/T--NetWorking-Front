@@ -1,35 +1,23 @@
 import React, { useState } from 'react';
 import './Dashboard.scss'
-import { AnimatePresence } from 'framer-motion';
-import {motion} from 'framer-motion';
-import {faFacebook, faTwitter, faTiktok, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faGlobe, faXmark } from '@fortawesome/free-solid-svg-icons';
-import {modalAppearAnimation, sizeUpXAnimation} from '../../styles/animations.js';
-import DashboardAddContact from './DashboardAddContact';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import PreviewCard from './PreviewCard';
-
-const socialIcons = {
-    Facebook: faFacebook,
-    Twitter: faTwitter,
-    TikTok: faTiktok,
-    Instagram: faInstagram,
-    LinkedIn: faLinkedin,
-    'Sitio web': faGlobe
-}
+import {AnimatePresence, motion} from 'framer-motion';
+import NoCards from './NoCards';
+import { CardDataProvider } from '../card/CardData.provider';
+import CardModal from '../card/CardModal';
 
 export default function DashboardContent({auth}) {
-    const [activeSocial, setActiveSocial] = useState(false);
+    const [isCreating, setIsCreating] = useState(false);
     console.log(auth);
 
     const transitionDuration = 1;
 
-    const socialIncludes = (social) => {
-        return auth.socialMedia.some(s => s.name === social);
-    }
-
   return (
     <div className='dashboard_content'>
+        <motion.div className="cards_container" transition={{duration: transitionDuration}} animate={{opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'}}>
+            {auth.cards.length === 0 && <NoCards setIsCreating={setIsCreating}/>}
+
+        </motion.div>
+
         <motion.div className="container_data" transition={{duration: transitionDuration}} animate={{opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'}}>
             <div className="membership">
                 <motion.h2 transition={{duration: transitionDuration*1.5}} animate={{bottom: 0}} >Tipo de membresía</motion.h2 >
@@ -44,36 +32,11 @@ export default function DashboardContent({auth}) {
             </div>
         </motion.div>
 
-        <PreviewCard auth={auth} />
-
-        {/* <motion.div className="preview" transition={{duration: transitionDuration}} animate={{opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'}}>
-            <motion.h2  transition={{duration: transitionDuration*1.5}} animate={{bottom: 0}}>Previsualización</motion.h2>
-
-            <motion.div transition={{duration: transitionDuration*1.5}} animate={{transform: 'scale(1)'}} className="preview_container">
-                <img src={auth.userImage} alt="imágen de perfil" />
-                <h3>{auth.username}</h3>
-                <h4>CEO Versus APP</h4>
-            </motion.div>
-
-            <motion.div transition={{duration: transitionDuration*1.5}} animate={{transform: 'scale(1)'}} style={{display: 'flex', marginBottom: 40, flexWrap: 'wrap'}}>
-                {auth.socialMedia.map((social, index) => {
-                    return (
-                        <div style={{display: 'flex', justifyContent: 'center', marginLeft: 20,  alignItems: 'center', marginTop: 20}}>
-                            <FontAwesomeIcon icon={socialIcons[social.name]} style={{height: 30}}/>
-                            <p style={{marginLeft: 10}}>{social.link}</p>
-                        </div>
-                    )
-                })}
-            </motion.div>
-
-            <motion.a href={`tel:${auth.cellphone}`} transition={{duration: transitionDuration*1.5}} animate={{transform: 'scale(1)'}} className="add_contact">
-                Añadir contacto
-            </motion.a>
-            
-            <motion.button transition={{duration: transitionDuration*1.5}} animate={{top: 0}} onClick={() => setActiveSocial(true)}>Agregar método de contacto</motion.button>
-        </motion.div> */}
-        
-        <DashboardAddContact activeSocial={activeSocial} setActiveSocial={setActiveSocial} />
+        <AnimatePresence>
+            <CardDataProvider auth={auth}>
+                {isCreating && <CardModal setIsCreating={setIsCreating} />}
+            </CardDataProvider>
+        </AnimatePresence>
     </div>
   )
 }
