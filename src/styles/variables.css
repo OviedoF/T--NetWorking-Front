@@ -1,7 +1,4 @@
-*{
-  
-  color: #222222;
-}
+
     :root {
       background-color: #ffffff;
       --card-color: #5e5e5e;
@@ -10,7 +7,7 @@
       --color-text-card: #ffffff;
     }
 
-    h1, h2, h3, h4, h5, h6, p, li, label, select {
+    h1, h2, h3, h4, h5, h6, p, li, label, select,span {
       color: #222222;
     }
 

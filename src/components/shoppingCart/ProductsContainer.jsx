@@ -1,7 +1,39 @@
+import axios from 'axios';
 import React from 'react';
+import { useSelector } from 'react-redux';
+import env from '../../env';
 import './ShoppingCart.scss'
+import { useDispatch } from 'react-redux';
+import { authLogin } from '../../redux/actions/auth.actions';
 
 const ProductsContainer = ({products}) => {
+    const auth = useSelector(state => state.auth);
+    const dispatch = useDispatch();
+    console.log(auth)
+
+    const handleRemoveFromCart = (product) => {
+        axios.put(`${env.API_URL}/users/${auth._id}/updateShoppingCart`, {
+            type: 'remove',
+            product
+        })
+        .then(res => {
+            console.log(res.data);
+            axios.post(`${env.API_URL}/auth/login/identifyUser`, {
+                token: auth.token
+            })
+                .then(res => dispatch(authLogin({
+                    ...res.data,
+                    token: auth.token
+                })))
+                .catch(err => console.log(err))
+
+        } )
+        .catch(err => {
+            console.log(err);
+        })
+
+
+    }
 
     if(products.length === 0 ) return (
         <div className='products_container'>
@@ -22,13 +54,21 @@ const ProductsContainer = ({products}) => {
             {
                 products.map(product => (
                     <div key={product._id} className='product_card'>
+                        <button onClick={(e) => {
+                            handleRemoveFromCart(product);
+                        }} className='quit_from_cart'>
+
+                            Quitar del carrito
+
+                        </button>
+
                         <img src={product.principalImage} alt={product.name} />
 
                         <div className="product_info" >
-                            <h2 style={{fontSize: '15px', color: 'var(--color-text-card)'}}>{product.name}</h2>
-                            <h3 style={{color: 'var(--color-text-card)'}}>${product.price}</h3>
-                            <h4 style={{color: 'var(--color-text-card)'}}>{product.quantity}</h4>
-                            <h3 style={{color: 'var(--color-text-card)'}}>${(product.price * product.quantity).toFixed(3)}</h3>
+                            <h2 style={{}}>{product.name}</h2>
+                            <h3 style={{}}>${product.price}</h3>
+                            <h4 style={{}}>{product.quantity}</h4>
+                            <h3 style={{}}>${(product.price * product.quantity).toFixed(3)}</h3>
                         </div>
 
                     </div>

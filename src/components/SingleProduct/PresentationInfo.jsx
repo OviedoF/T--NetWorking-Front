@@ -33,7 +33,10 @@ const PresentationInfo = ({product}) => {
             type: 'add',
             product: JSON.stringify({...product, quantity})
         })
-        .then(res => dispatch(authLogin(res.data)))
+        .then(res => dispatch(authLogin({
+            ...res.data,
+            token: auth.token
+        })))
         .catch(err => console.log(err));
 
         dispatch(addToShoppingCart({...product, quantity}));
@@ -43,18 +46,27 @@ const PresentationInfo = ({product}) => {
         <div className='presentation__info' >
             <b data-animation="appear">{product.category.name}</b>
             <h1 data-animation="appear">{product.name}</h1>
-            <b data-animation="appear">{product.price}</b>
+            <b data-animation="appear">${product.price}</b>
             <p data-animation="appear">{product.description}</p>
 
-            {!isAddedToCart && auth.logged && <div className='presentation__info__quantity' data-animation="appear">
+            <div className="colors_available">
+                <h3>Colores disponibles</h3>
+                <div className="colors_available__colors">
+                    {product.colors.map((color, index) => (
+                        <div key={index} className="colors_available__colors__color" style={{backgroundColor: color.hex, 
+                        border: '1px solid grey'}} />
+                    ))}
+                </div>    
+            </div>
+
+            {auth.logged && <div className='presentation__info__quantity' data-animation="appear">
                 <button onClick={() => setQuantity(quantity - 1)}>-</button>
                 <span>{quantity}</span>
                 <button onClick={() => setQuantity(quantity + 1)}>+</button>
             </div>}
 
             <div className='presentation__info__buttons'>
-                {!isAddedToCart && auth.logged ? <button className='btn btn--primary' data-animation="appear" onClick={() => handleAddToCart()}>Agregar al carrito</button>
-                : auth.logged && <button className='btn btn--primary' data-animation="appear" onClick={() => navigate(routes.cart)}>Ver carrito</button>}
+                {auth.logged && <button className='btn btn--primary' data-animation="appear" onClick={() => handleAddToCart()}>Agregar al carrito</button>}
 
                 {!auth.logged && <button className='btn btn--primary' data-animation="appear" onClick={() => navigate(routes.login)}>Iniciar sesión</button>}
             </div>

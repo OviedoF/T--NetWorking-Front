@@ -35,6 +35,7 @@ import UserConfig from '../pages/UserConfig.jsx';
 import Register from '../pages/Register';
 import Comment from '../pages/Comment';
 import CreateMembershipPage from '../pages/admin/CreateMembershipPage';
+import ActualizeMembership from '../pages/ActualizeMembership';
 
 const AppRouter = () => {
     const dispatch = useDispatch();
@@ -48,7 +49,10 @@ const AppRouter = () => {
 
         axios.post(`${env.API_URL}/auth/login/identifyUser`, {token})
         .then(res =>{
-            dispatch( authLogin(res.data) )
+            dispatch( authLogin({
+                ...res.data,
+                token
+            }) )
         })
         .catch(err => console.log(err));
     };
@@ -77,6 +81,7 @@ const AppRouter = () => {
                         <Route exact path={routes.register} element={<Register />} />
                         <Route exact path={routes.successPayment} element={<Register />} />
                         <Route exact path={routes.comment} element={<Comment />} />
+                        <Route exact path={routes.actualizeMembership} element={<ActualizeMembership />} />
 
                         {/* ADMIN ROUTES */}
                         <Route exact path={routes.adminPanel} element={ 

@@ -8,6 +8,8 @@ import { useContext } from 'react';
 import CardDataContext from './CardData.provider';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { authLogin } from '../../redux/actions/auth.actions';
 import { FidgetSpinner } from 'react-loader-spinner';
 
 
@@ -15,8 +17,21 @@ const FinishModal = ({setFinishing, setIsCreating}) => {
     const [isLoading, setIsLoading] = useState(false);
     const { cardData, resetAll } = useContext(CardDataContext);
     const auth = useSelector(state => state.auth);
-   
-    console.log(auth)
+    const dispatch = useDispatch();
+    
+    const actualizarUser = () => {
+        if(auth.token) {
+            axios.post(`${env.API_URL}/auth/login/identifyUser`, {
+                token: auth.token
+            })
+            .then(res => dispatch(authLogin({
+                ...res.data,
+                token: auth.token
+            })))
+            .catch(err => console.log(err))
+        }
+    }
+    
      const handleSend = (e) => {
         e.preventDefault();
         setIsLoading(true);
@@ -51,6 +66,7 @@ const FinishModal = ({setFinishing, setIsCreating}) => {
             console.log(res);
             setIsLoading(false);
             setIsCreating(false);
+            actualizarUser();
         })
         .catch((err) => {
             console.log(err);
@@ -77,7 +93,7 @@ const FinishModal = ({setFinishing, setIsCreating}) => {
 
                 <div className="form_buttons">
                     <button onClick={(e) => handleSend(e)} className='btn btn--save'>Sí</button>
-                    <button className='btn btn--cancel'>No</button>
+                    <button className='btn btn--cancel' onClick={(e) => setFinishing(false)}>No</button>
                 </div>
 
                 <FontAwesomeIcon icon={faXmark} onClick={() => setFinishing(false)} className='close_modal' />

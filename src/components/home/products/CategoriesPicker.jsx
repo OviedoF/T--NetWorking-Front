@@ -5,10 +5,11 @@ const CategoriesPicker = ({categories, setCategorySelected, windowsSize}) => {
     if(windowsSize > 768) return (
         <div style={{display: 'flex', justifyContent: 'center', marginTop: '30px'}}>
             {categories.map((category, index) => (
-                <div key={index} style={{display: 'flex', justifyContent: 'center', marginTop: '30px'}}>
+                <div key={index} style={{display: 'flex', justifyContent: 'center', marginTop: '30px', width: '100%'}}>
                     <p className='clicker_category' onClick={() => setCategorySelected(category._id)}>
                         {category.name}
                     </p>
+
                     {index > -1 ? <p style={{margin: '0 10px'}}>/</p> : null}
                 </div>
             ))}

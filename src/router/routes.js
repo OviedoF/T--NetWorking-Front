@@ -15,6 +15,7 @@ export default {
     successPayment: '/success/:purchase_id/:buyer',
     comment: '/comment',
     cardPage: '/card/:link',
+    actualizeMembership: '/actualize-membership',
 
     // Admin Create/edit
     createCategory: '/admin-panel/create-category',

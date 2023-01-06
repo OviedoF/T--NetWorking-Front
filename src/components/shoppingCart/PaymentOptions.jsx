@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
 import env from '../../env';
 import MercadoPagoPaymentCompra from './MercadoPagoPaymentCompra';
 import './PaymentOptions.scss'
@@ -10,6 +11,14 @@ const PaymentOptions = ({products}) => {
     const [aplyingCoupon, setAplyingCoupon] = useState(false);
     const [paymentID, setPaymentID] = useState(null);
     const couponCode = useRef();
+    const auth = useSelector(state => state.auth);
+
+    const handleLocalhost = () => {
+        axios.post(`${env.API_URL}/payments/success/${auth._id}`, {})
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+    }
+
 
     useEffect(() => {
         let total = 0;
@@ -55,6 +64,8 @@ const PaymentOptions = ({products}) => {
             
             <MercadoPagoPaymentCompra cart={products} setPaymentID={setPaymentID} 
             paymentID={paymentID}/>
+
+            <button className='buy' onClick={() => handleLocalhost()}>Comprar en localhost</button>
 
 
             

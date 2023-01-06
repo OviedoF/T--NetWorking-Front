@@ -47,6 +47,16 @@ const CardModalFormData = () => {
                 </div>
 
                 <div className="form_group full">
+                                <label htmlFor="cellphone">Número de teléfono</label>
+
+                                <div style={{display: 'flex', alignItems: 'center'}}>
+                                    <p style={{fontSize: 18, marginRight: 15}}>+56</p>
+                                    <input type="number" name="cellphone" id="cellphone" value={cardData.cellphone} onChange={(e) => handleInputs(e)} 
+                                    defaultValue="+"/>
+                                </div>
+                </div>
+
+                <div className="form_group full">
                     <label htmlFor="biography">Descríbete en 140 carácteres</label>
                     <textarea name="biography" id="biography" value={cardData.biography} onChange={(e) => handleInputs(e)} maxLength={140}/>
                 </div>
@@ -83,18 +93,6 @@ const CardModalFormData = () => {
             <div className="form_section">
                 <div className="form_group full vcard">
                         <h3>Habilitar botón de añadir contacto</h3>
-                        
-                        {cardData.addContact && 
-                            <div className="form_group full">
-                                <label htmlFor="cellphone">Número de teléfono</label>
-
-                                <div style={{display: 'flex', alignItems: 'center'}}>
-                                    <p style={{fontSize: 18, marginRight: 15}}>+56</p>
-                                    <input type="number" name="cellphone" id="cellphone" value={cardData.cellphone} onChange={(e) => handleInputs(e)} 
-                                    defaultValue="+"/>
-                                </div>
-                            </div>
-                            }
 
                         <div className="" style={{display: 'flex', alignItems: 'center'}}>
                             <label htmlFor="addContact" style={{marginBottom: 0}}>Habilitar</label>

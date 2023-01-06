@@ -43,6 +43,7 @@ const Navbar = () => {
 
                         {auth.logged && <li><Link to={routes.cart}>Carrito de compras</Link></li>}
                         {auth.logged && <li><Link to={routes.dashboard}>Dashboard</Link></li>}
+                        {auth.logged && <li><Link to={routes.actualizeMembership}>Membresía</Link></li>}
                         {auth.logged && <li><Link onClick={() => logout()}>Logout</Link></li>}
                         {auth.roles && auth.roles.includes('admin') && <li><Link to={routes.adminPanel}>Admin</Link></li>}
                     </ul>

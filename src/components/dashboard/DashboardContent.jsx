@@ -6,15 +6,24 @@ import { CardDataProvider } from '../card/CardData.provider';
 import CardModal from '../card/CardModal';
 import { Link } from 'react-router-dom';
 import CreateCardButton from './CreateCardButton';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 export default function DashboardContent({auth}) {
     const [isCreating, setIsCreating] = useState(false);
+    const [qrActivated, setQrActivated] = useState(false);
     console.log(auth);
 
     const transitionDuration = 1;
 
   return (
     <div className='dashboard_content'>
+
+        {qrActivated && <motion.div className="qr_modal_container" transition={{duration: transitionDuration}} animate={{opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'}}>
+            <img src={qrActivated} alt="IMÁGEN QR ACTIVADA" />
+            <FontAwesomeIcon icon={faXmark} onClick={(e) => setQrActivated(false)} />
+        </motion.div>}
+
         <motion.div className="cards_container" transition={{duration: transitionDuration}} animate={{opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'}}>
             {auth.cards.length === 0 && <NoCards setIsCreating={setIsCreating}/>}
 
@@ -41,26 +50,15 @@ export default function DashboardContent({auth}) {
                         </div>
 
                         <Link className='link' to={`/card/${card.cardLink}`}>Ver tarjeta</Link>
+
+                        <img src={card.imageQr} alt="imágen QR" style={{width: 50, height: 50, position: 'absolute', left: '40%', bottom: 50, cursor: 'pointer'}} 
+                        onClick={(e) => setQrActivated(card.imageQr)} />
                     </div>
                 </div>
             ))}
 
             {auth.cards.length > 0 && <CreateCardButton width={300} height={300} setIsCreating={setIsCreating}/>}
 
-        </motion.div>
-
-        <motion.div className="container_data" transition={{duration: transitionDuration}} animate={{opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'}}>
-            <div className="membership">
-                <motion.h2 transition={{duration: transitionDuration*1.5}} animate={{bottom: 0}} >Tipo de membresía</motion.h2 >
-                <motion.img transition={{duration: transitionDuration*1.5}} animate={{transform: 'scale(1)'}} src={auth.membership[0].image || ''} alt='logo' />
-                <motion.p transition={{duration: transitionDuration*1.5}} animate={{top: 0}} >Tiempo de membresía vigente: {auth.daysMembership} días</motion.p>
-            </div>
-
-            <div className="qr">
-                <motion.h2 transition={{duration: transitionDuration*1.5}} animate={{bottom: 0}} >QR</motion.h2 >
-                <motion.img transition={{duration: transitionDuration*1.5}} animate={{transform: 'scale(1)'}} src={auth.imageQr} alt='logo' />
-                <motion.p transition={{duration: transitionDuration*1.5}} animate={{top: 0}}  className="info">Escanea esta imágen con la cámara de un dispositivo compatible con QR.</motion.p>
-            </div>
         </motion.div>
 
         <AnimatePresence>

@@ -19,7 +19,10 @@ const LoginForm = ({ setError }) => {
 
         axios.post(`${env.API_URL}/auth/login/identifyUser`, {token})
         .then(res =>{
-            dispatch( authLogin(res.data) )
+            dispatch( authLogin({
+                ...res.data,
+                token
+            }) )
             navigate(routes.dashboard)
         })
         .catch(err => console.log(err));

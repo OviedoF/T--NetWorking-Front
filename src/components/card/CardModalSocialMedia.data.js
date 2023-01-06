@@ -132,7 +132,7 @@ import { faGlobe } from '@fortawesome/free-solid-svg-icons';
     }, {
         name: 'Web',
         icon: faGlobe,
-        color: '#000000',
+        color: '#1992CF',
         contrast: '#FFFFFF',
         favorite: false
     }];

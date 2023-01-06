@@ -15,7 +15,7 @@ const PresentationImages = ({product}) => {
 
     return (
         <div className='presentation__image'>
-            <div className='galery'>
+            <div className='galery' style={{gridTemplateRows: `400px repeat(${parseInt((images.length - 1) / 3)}, 200px)`}}>
                 {images.map((el, index) => {
                     return (
                         <img key={index} src={el} alt={product.name} data-animation="appear" className={indexSelected === index ? 'primary' : 'normal'}

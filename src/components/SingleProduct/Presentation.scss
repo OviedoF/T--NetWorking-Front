@@ -1,8 +1,26 @@
 .presentation{
     display: flex;
     padding: 2em;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+
+    .colors_available__colors{
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0px 0;
+
+        div{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+
+            &:hover{
+                transform: scale(1.2);
+            }
+        }
+    }
 
     .presentation__image{
         width: 50%;
@@ -13,8 +31,7 @@
             width: 100%;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            grid-gap: 10px;
-            margin-top: 20px;
+            grid-template-rows: 400px repeat(1, 200px);
 
             img{
                 width: 100%;
@@ -22,10 +39,13 @@
                 transition: all 0.3s ease-in-out;
                 grid-column: auto;
                 grid-row: auto;
+                height: 100%;
+                object-fit: contain;
 
                 &.primary{
                     grid-column: 1 / 4;
-                    grid-row: 1 / 3;
+                    grid-row: 1 / 1;
+                    height: 100%;
                     width: 100%;
                     margin-bottom: 20px;
                 }
@@ -38,16 +58,20 @@
     }
 
     .presentation__info{
-        width: 50%;
         padding: 0 2em;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
 
         *{
-            margin: 20px 0;
+            margin: 10px 0;
         }
 
         b{
             font-size: 1.5em;
             font-weight: bold;
+            color: black;
         }
 
         h1{
@@ -64,7 +88,6 @@
         .presentation__info__quantity{
             width: 100%;
             display: flex;
-            justify-content: center;
             align-items: center;
 
             *{
@@ -76,12 +99,12 @@
             }
 
             button{
-                padding: 10px 20px;
+                padding: 5px 20px;
                 border: none;
-                border-radius: 5px;
                 font-size: 1.2em;
                 font-weight: bold;
                 cursor: pointer;
+                background-color: black;
                 transition: all 0.3s ease-in-out;
 
                 &:hover{
@@ -95,22 +118,21 @@
         .presentation__info__buttons{
             width: 100%;
             display: flex;
-            justify-content: center;
-            align-items: center;
             margin-top: 30px;
 
             button{
-                padding: 10px 20px;
+                padding: 20px 40px;
                 border: none;
-                border-radius: 5px;
-                font-size: 1.2em;
+                font-size: 1.1em;
                 font-weight: bold;
                 cursor: pointer;
                 transition: all 0.3s ease-in-out;
                 margin: 0 10px;
+                background-color: black;
 
                 &:hover{
-                    transform: scale(1.2);
+                    background-color: white;
+                    color: black;
                 }
             }
         }

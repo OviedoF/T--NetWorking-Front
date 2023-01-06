@@ -11,8 +11,19 @@ export default function DashboardNav({auth}) {
     return (
         <motion.div transition={{duration: transitionDuration}} animate={{opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'}} className='dashboard_nav'>
             <img src={auth.userImage} alt='perfil' />
+            <h2>{auth.firstName} {auth.lastName}</h2>
+            <h3>{auth.username}</h3>
+            <h4>{auth.email}</h4>
 
-            <ul>
+            <div className="membership">
+                <p>{auth.membership[0].name}</p>
+            </div>
+
+            <div className="membership">
+                <p>{auth.daysMembership} días </p>
+            </div>
+
+            <ul style={{paddingTop: 50}}>
                 <motion.li transition={{duration: transitionDuration*1}} animate={{opacity: 1, top: 0}} ><Link to={routes.dashboard}>Dashboard</Link></motion.li>
                 <motion.li transition={{duration: transitionDuration*1.4}} animate={{opacity: 1, top: 0}} ><Link to={routes.userConfig}>Configurar perfil</Link></motion.li>
                 <motion.li transition={{duration: transitionDuration*1.8}} animate={{opacity: 1, top: 0}} ><Link to={routes.history}>Historial de compras</Link></motion.li>
