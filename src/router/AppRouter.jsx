@@ -140,8 +140,6 @@ const AppRouter = () => {
                         <Route path={'/*'} element={<PageNotFound />} />
                 </Route>
             </Routes>
-
-            <Footer />
         </HashRouter>
     );
 }

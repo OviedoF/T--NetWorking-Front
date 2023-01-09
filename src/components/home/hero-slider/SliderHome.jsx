@@ -21,8 +21,7 @@ export default () => {
 
     return (
     <div data-animation="appear">
-      <Slider className="slider-wrapper" previousButton={<FontAwesomeIcon icon={faCaretLeft} size={30}/>}
-      nextButton={<FontAwesomeIcon icon={faCaretRight} size={30}/>}>
+      <Slider className="slider-wrapper" >
         
         {content.map((item, index) => (
           <div
@@ -31,8 +30,18 @@ export default () => {
             style={{ background: `url('${item.image}') no-repeat center center` }}
           >
             <div className="inner">
+              <p className="disclaimer">{item.disclaimer}</p>
               <h1>{item.title}</h1>
               <p>{item.description}</p>
+
+              <div className="buttons">
+                <a href={item.link} target="_blank" rel="noopener noreferrer">{item.textButtonOne}</a>
+                
+                <a href={item.link} target="_blank" rel="noopener noreferrer"
+                style={{backgroundColor: '#cccccc', color: 'black'}}>{item.textButtonTwo}</a> 
+              </div>
+
+
             </div>
 
             <section>

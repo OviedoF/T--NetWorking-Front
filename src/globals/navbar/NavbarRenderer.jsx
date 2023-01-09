@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
+import Footer from '../footer/Footer';
 import Navbar from './Navbar';
 
 const NavbarRenderer = () => {
@@ -13,6 +14,8 @@ const NavbarRenderer = () => {
             </header>
 
             {<Outlet />}
+
+            <Footer />
         </>
     );
 }

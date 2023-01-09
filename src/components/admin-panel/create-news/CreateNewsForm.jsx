@@ -6,23 +6,38 @@ import env from '../../../env';
 import '../CreateForm.scss';
 
 const CreateNewsForm = () => {
-    const [title, setTitle] = useState(null);
-    const [description, setDescription] = useState(null);
+    const [form, setForm] = useState({});
     const [image, setImage] = useState(null);
     const [error, setError] = useState(false);
     const [success, setSuccess] = useState(false);
     const auth = useSelector(state => state.auth);
 
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+
+        setForm({
+            ...form,
+            [name]: value
+        });
+    }
+    
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const formData = new FormData();
-        formData.append('title', title);
-        formData.append('description', description);
+        formData.append('title', form.title);
+        formData.append('description', form.description);
+        formData.append('disclaimer', form.disclaimer);
+        formData.append('textButtonOne', form.textButtonOne);
+        formData.append('linkButtonOne', form.linkButtonOne);
+        formData.append('textButtonTwo', form.textButtonTwo);
+        formData.append('linkButtonTwo', form.linkButtonTwo);
         formData.append('images', image);
         formData.append('authorId', auth._id);
 
-        if(!title || !description || !image) return setError('Todos los campos son obligatorios.');
+
+        if(!title || !description || !image) return setError('Título, descripción e imágen son requeridos.');
         if(description.length > 200) return setError('La descripción debe tener menos de 200 caracteres.');
 
         axios.post(`${env.API_URL}/news`, formData, {
@@ -42,19 +57,50 @@ const CreateNewsForm = () => {
     }
 
     return (
-        <form action="" id='create-category-form' style={{width: '40%'}}>
+        <form action="" id='create-category-form' style={{width: '60%'}}>
             <img src={logo} alt="Logo Networking" />
+
+            <div className="form-group">
+                <label htmlFor="disclaimer">Disclaimer de la noticia</label>
+                <p className="disclaimer" style={{color: 'white', fontSize: 13}}>Tal se mostrará arriba del título.</p>
+
+                <input type="text" name="disclaimer" id="disclaimer" className="form-control" onChange={(e) => handleChange(e)} />
+            </div>
 
             <div className="form-group">
                 <label htmlFor="title">Titular de la noticia</label>
 
-                <input type="text" name="title" id="title" className="form-control" onChange={(e) => setTitle(e.target.value)} />
+                <input type="text" name="title" id="title" className="form-control" onChange={(e) => handleChange(e)} />
             </div>
 
             <div className="form-group">
                 <label htmlFor="description">Descripción</label>
 
-                <textarea type="text" name="description" id="description" className="form-control" onChange={(e) => setDescription(e.target.value)} />
+                <textarea type="text" name="description" id="description" className="form-control" onChange={(e) => handleChange(e)} />
+            </div>
+
+            <div className="form-group">
+                <label htmlFor="textButtonOne">Texto botón izquierdo</label>
+
+                <input type="text" name="textButtonOne" id="textButtonOne" className="form-control" onChange={(e) => handleChange(e)} />
+            </div>
+
+            <div className="form-group">
+                <label htmlFor="linkButtonOne">¿A dónde rediccionará el botón izquierdo?</label>
+
+                <input type="text" name="linkButtonOne" id="linkButtonOne" className="form-control" onChange={(e) =>  handleChange(e)} />
+            </div>
+
+            <div className="form-group">
+                <label htmlFor="textButtonTwo">Texto botón derecho</label>
+
+                <input type="text" name="textButtonTwo" id="textButtonTwo" className="form-control" onChange={(e) => handleChange(e)} />
+            </div>
+
+            <div className="form-group">
+                <label htmlFor="linkButtonTwo">¿A dónde rediccionará el botón derecho?</label>
+
+                <input type="text" name="linkButtonTwo" id="linkButtonTwo" className="form-control" onChange={(e) => handleChange(e)} />
             </div>
 
             <div className="form-group">

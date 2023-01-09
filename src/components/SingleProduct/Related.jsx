@@ -17,7 +17,7 @@ const Related = ({category, product_id}) => {
             .catch(err => console.log(err));
     }, [product_id]);
 
-    return (
+    if(products.length > 0 ) return (
         <div className='related_container'>
             <h2>Productos relacionados</h2>
 

@@ -8,6 +8,7 @@ import ProductData from './ProductData';
 import SelectCategory from './SelectCategory';
 import SelectImages from './SelectImages';
 import ColorsData from './ColorsData';
+import PriceWithOffer from './PriceWithOffer';
 
 const CreateProductSection = () => {
     const [categories, setCategories] = useState([]);
@@ -45,9 +46,12 @@ const CreateProductSection = () => {
         formData.append('images', form.principalImage);
         formData.append('colors', JSON.stringify(form.colors));
         formData.append('requiredQR', JSON.stringify(form.requiredQR));
+        formData.append('priceWithOffer', form.priceWithOffer || 0);
 
-        for (const image of form.galleryImages) {
-            formData.append('images', image);
+        if(form.galleryImages) {
+            for (const image of form.galleryImages) {
+                formData.append('images', image);
+            }
         }
 
         axios.post(`${env.API_URL}/product/create`, formData, {
@@ -85,6 +89,8 @@ const CreateProductSection = () => {
         <div className='create_product_section'>
             <form className='create_product_form' onSubmit={(e) => handleSubmit(e)}>
                 <ProductData setForm={setForm} form={form} />
+                
+                <PriceWithOffer setForm={setForm} form={form} />
 
                 <ColorsData setForm={setForm} form={form} />
 

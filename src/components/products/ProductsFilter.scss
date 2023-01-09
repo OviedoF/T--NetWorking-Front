@@ -128,20 +128,35 @@
 
   .actions_filters{
       display: flex;
+      flex-direction: column-reverse;
       justify-content: space-between;
       margin-top: 20px;
 
       button{
-          width: 49%;
+          width: 100%;
+          margin-bottom: 10px;
           font-size: 12px;
           padding: 10px 0;
           cursor: pointer;
-          border-radius: 10px;
+          border-radius: 50px;
           background: none;
           box-sizing: border-box;
           border: 1px solid var(--card-color);
           color: white;
           background-color: var(--card-color);
+          transition: all .2s ease-in; 
+
+          &:hover{
+            background-color: black;
+            border: 1px solid black;
+          }
+      }
+
+      .clear{
+        &:hover{
+          background-color: black !important;
+          border: 1px solid black;
+        }
       }
   }
 }

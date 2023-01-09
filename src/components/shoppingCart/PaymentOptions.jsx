@@ -5,6 +5,12 @@ import env from '../../env';
 import MercadoPagoPaymentCompra from './MercadoPagoPaymentCompra';
 import './PaymentOptions.scss'
 
+const formatNumbers = (number) => {
+    const exp = /(\d)(?=(\d{3})+(?!\d))/g;
+    const rep = '$1,';
+    return number.toString().replace(exp,rep);
+}
+
 const PaymentOptions = ({products}) => {
     const [total, setTotal] = useState(0);
     const [totalWithCoupon, setTotalWithCoupon] = useState(0);
@@ -25,7 +31,7 @@ const PaymentOptions = ({products}) => {
         products.forEach(product => {
             total += product.price * product.quantity;
         });
-        setTotal(total.toFixed(3));
+        setTotal(total.toFixed(0));
     }, [products]);
 
     const handleAplyingCoupon = () => {
@@ -48,7 +54,7 @@ const PaymentOptions = ({products}) => {
                     {totalWithCoupon > 0 && `$${totalWithCoupon}`}
                 </span>
                 <span className={totalWithCoupon ? 'second' : 'first'}>
-                    ${total}
+                    ${formatNumbers(total)}
                 </span>
             </h3>
 
@@ -65,7 +71,7 @@ const PaymentOptions = ({products}) => {
             <MercadoPagoPaymentCompra cart={products} setPaymentID={setPaymentID} 
             paymentID={paymentID}/>
 
-            <button className='buy' onClick={() => handleLocalhost()}>Comprar en localhost</button>
+            {/* <button className='buy' onClick={() => handleLocalhost()}>Comprar en localhost</button> */}
 
 
             

@@ -1,10 +1,12 @@
 import React from 'react'
 import routes from '../../router/routes'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import './Dashboard.scss'
 import {motion} from 'framer-motion';
 
 export default function DashboardNav({auth}) {
+    const location = useLocation();
+    console.log(location.pathname)
 
     const transitionDuration = 1;
 
@@ -19,16 +21,20 @@ export default function DashboardNav({auth}) {
                 <p>{auth.membership[0].name}</p>
             </div>
 
-            <div className="membership">
+            <div className="membership" style={{backgroundColor: 'white'}}>
                 <p>{auth.daysMembership} días </p>
             </div>
 
             <ul style={{paddingTop: 50}}>
-                <motion.li transition={{duration: transitionDuration*1}} animate={{opacity: 1, top: 0}} ><Link to={routes.dashboard}>Dashboard</Link></motion.li>
-                <motion.li transition={{duration: transitionDuration*1.4}} animate={{opacity: 1, top: 0}} ><Link to={routes.userConfig}>Configurar perfil</Link></motion.li>
-                <motion.li transition={{duration: transitionDuration*1.8}} animate={{opacity: 1, top: 0}} ><Link to={routes.history}>Historial de compras</Link></motion.li>
-                <motion.li transition={{duration: transitionDuration*2}} animate={{opacity: 1, top: 0}} ><Link to={routes.userSearch}>Usuarios</Link></motion.li>
-                <motion.li transition={{duration: transitionDuration*2.2}} animate={{opacity: 1, top: 0}} ><Link to={routes.comment}>Manda tu comentario!</Link></motion.li>
+                <motion.li transition={{duration: transitionDuration*1}} animate={{opacity: 1, top: 0}} ><Link className={location.pathname === "/dashboard" ? 'active' : ''} to={routes.dashboard}>Dashboard</Link></motion.li>
+                
+                <motion.li transition={{duration: transitionDuration*1.4}} animate={{opacity: 1, top: 0}} ><Link className={location.pathname === "/user-config" ? 'active' : ''} to={routes.userConfig}>Configurar perfil</Link></motion.li>
+                
+                <motion.li transition={{duration: transitionDuration*1.8}} animate={{opacity: 1, top: 0}} ><Link className={location.pathname === "/user-history" ? 'active' : ''} to={routes.history}>Historial de compras</Link></motion.li>
+                
+                <motion.li transition={{duration: transitionDuration*2}} animate={{opacity: 1, top: 0}} ><Link className={location.pathname === "/user-search" ? 'active' : ''} to={routes.userSearch}>Usuarios</Link></motion.li>
+                
+                <motion.li transition={{duration: transitionDuration*2.2}} animate={{opacity: 1, top: 0}} ><Link className={location.pathname === "/comment" ? 'active' : ''} to={routes.comment}>Manda tu comentario!</Link></motion.li>
             </ul>
         </motion.div>
     )

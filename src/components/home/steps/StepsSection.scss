@@ -1,0 +1,43 @@
+#steps_section{
+    background-color: rgb(224, 224, 224);
+    margin-top: 70px;
+    display: flex;
+    padding: 50px 70px;
+    justify-content: space-between;
+
+    .step_card{
+        width: 20%;
+        .step_card__header{
+            display: flex;
+            justify-content: left;
+            margin-bottom: 20px;
+
+            svg{
+                color: var(--color-logo);
+                font-size: 40px;
+            }
+
+            h3{
+                margin-left: 30px;
+                color: black;
+                font-size: 20px;
+                width: 150px;
+                font-weight: bold;
+            }
+        }
+
+        .step_card__body{
+            p{
+                color: black;
+                font-size: 15px;
+                font-weight: 500;
+            }
+        }
+    }
+
+    .step_card__icon{
+        color: var(--gray-background);
+        font-size: 40px;
+        align-self: center;
+    }
+}

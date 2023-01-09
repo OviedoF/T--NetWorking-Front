@@ -4,27 +4,27 @@ import './CardModalFormData.scss'
 
 const CardModalFormData = () => {
     const {cardData, handleInputs, handleImages, handleBoolean} = useContext(CardDataContext);
-    console.log(cardData);
-    console.log('<-------------- DATA CONTEXT')
 
     return (
         <form className="card_modal_form_content" id='card_modal_form_data'>
+            <h2>TARJETA PERSONAL</h2>
+
             <div className="form_section images" >
                 <h3>Imagenes</h3>
 
                 <div className="form_group">
                     <label htmlFor="coverPhoto">Imágen de portada</label>
-                    <input type="file" name="coverPhoto" id="coverPhoto" onChange={(e) => handleImages(e)} />
+                    <input type="file" style={{cursor: 'pointer'}} name="coverPhoto" id="coverPhoto" onChange={(e) => handleImages(e)} />
                 </div>
 
                 <div className="form_group">
                     <label htmlFor="profilePhoto">Imágen de perfil</label>
-                    <input type="file" name="profilePhoto" id="profilePhoto" onChange={(e) => handleImages(e)} />
+                    <input type="file" style={{cursor: 'pointer'}} name="profilePhoto" id="profilePhoto" onChange={(e) => handleImages(e)} />
                 </div>
 
-                <div className="form_group full">
+                <div className="form_group">
                     <label htmlFor="logo">Logo de empresa</label>
-                    <input type="file" name="logo" id="logo" onChange={(e) => handleImages(e)} />
+                    <input type="file" style={{cursor: 'pointer'}} name="logo" id="logo" onChange={(e) => handleImages(e)} />
                 </div>
             </div>
 

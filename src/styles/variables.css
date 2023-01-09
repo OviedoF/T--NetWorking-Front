@@ -1,14 +1,17 @@
 
     :root {
       background-color: #ffffff;
-      --card-color: #5e5e5e;
+      --card-color: #160CE8;
       --color-danger: #dc3545;
       --color-success: #28a745;
       --color-text-card: #ffffff;
+      --text-color: #4a4a4a;
+      --gray-background: rgb(139, 139, 139);
+      --color-logo: #62b5e5;
     }
 
     h1, h2, h3, h4, h5, h6, p, li, label, select,span {
-      color: #222222;
+      color: black
     }
 
     input, textarea{

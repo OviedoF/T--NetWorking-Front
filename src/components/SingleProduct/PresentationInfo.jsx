@@ -7,6 +7,11 @@ import routes from '../../router/routes';
 import env from '../../env';
 import {authLogin} from '../../redux/actions/auth.actions';
 
+const formatNumbers = (number) => {
+    const exp = /(\d)(?=(\d{3})+(?!\d))/g;
+    const rep = '$1,';
+    return number.toString().replace(exp,rep);
+}
 
 const PresentationInfo = ({product}) => {
     const [quantity, setQuantity] = useState(1);
@@ -46,7 +51,8 @@ const PresentationInfo = ({product}) => {
         <div className='presentation__info' >
             <b data-animation="appear">{product.category.name}</b>
             <h1 data-animation="appear">{product.name}</h1>
-            <b data-animation="appear">${product.price}</b>
+            {!product.priceWithOffer && <p style={{color: 'var(--card-color)', fontSize: 23}}>${formatNumbers(parseInt(product.price))}</p>}
+            {product.priceWithOffer && <p style={{color: 'var(--card-color)', fontSize: 23}}><span style={{textDecoration: 'line-through'}}>${formatNumbers(parseInt(product.price))}</span> ${formatNumbers(parseInt(product.priceWithOffer))}</p>}
             <p data-animation="appear">{product.description}</p>
 
             <div className="colors_available">

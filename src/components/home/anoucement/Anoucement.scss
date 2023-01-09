@@ -1,0 +1,91 @@
+.anoucement_container{
+    width: 100vw;
+    height: 80vh;
+    margin-top: 10vh;
+    position: relative;
+
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+
+    .data_container{
+        background-color: white;
+        width: 40%;
+        height: 100%;
+        clip-path: polygon(0 0, 86% 0, 100% 100%, 0% 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 5%;
+
+        #data_disclaimer{
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #FEFEFE;
+            text-align: center;
+            padding: 4px 0;
+            margin-bottom: 10px;
+            background-color: var(--gray-background);
+        }
+
+        h2{
+            font-size: 2rem;
+            font-weight: 600;
+            color: black;
+            margin: 20px 0;
+        }
+
+        #anouncement_description{
+            font-size: 1rem;
+            font-weight: 600;
+            color: black;
+            margin-bottom: 20px;
+        }
+        
+        .buttons{
+            margin-top: 50px;
+
+            .btn-primary{
+                background-color: var(--card-color);
+                border: none;
+                padding: 15px 40px;
+                border-radius: 50px;
+                font-size: 1rem;
+                text-decoration: none;
+                font-weight: 600;
+                color: white;
+                margin-right: 10px;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+
+                &:hover{
+                    background-color: black;
+                }
+            }
+
+            .btn-secondary{
+                background-color: var(--gray-background);
+                border: none;
+                padding: 15px 40px;
+                border-radius: 50px;
+                font-size: 1rem;
+                text-decoration: none;
+                font-weight: 600;
+                color: white;
+                margin-left: 10px;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+
+                &:hover{
+                    background-color: black;
+                }
+            }
+        }
+    }
+}

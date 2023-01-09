@@ -5,6 +5,8 @@ import ProductsFilter from './ProductsFilter';
 import ProductCard from '../../globals/ProductCard';
 import './ProductsContainer.scss';
 
+
+
 const ProductsContainer = ({}) => {
     const [products, setProducts] = useState([]);
     const [filters, setFilters] = useState(false);

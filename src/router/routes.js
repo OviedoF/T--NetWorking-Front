@@ -1,5 +1,5 @@
 export default {
-    home: '/',
+    home: '',
     products: '/products',
     product: '/products/:id',
     login: '/login',

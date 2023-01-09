@@ -36,13 +36,15 @@
         align-items: center;
         justify-content: center;
         margin-top: 20px;
-        background-color: black;
+        background-color: var(--color-logo);
         width: 70%;
         padding: 10px 0;
         border-radius: 15px;
 
         p{ 
-            color: white;
+            color: black;
+            font-weight: bold;
+            font-size: 18px;
         }
     }
 
@@ -72,6 +74,11 @@
 
             &:hover{
                 transform: scale(1.1);
+            }
+
+            &.active{
+                font-weight: bold;
+                font-size: 20px;
             }
         }
     }

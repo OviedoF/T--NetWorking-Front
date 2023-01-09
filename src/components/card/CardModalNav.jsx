@@ -3,6 +3,8 @@ import React from 'react';
 const CardModalNav = ({setSection, section}) => {
     return (
         <div className='card_modal_nav'>
+            <h3>Navegación</h3>
+
             <ul>
                 <li className={section === 'data' ? 'active' : ''} onClick={() => setSection('data')}>
                     Datos

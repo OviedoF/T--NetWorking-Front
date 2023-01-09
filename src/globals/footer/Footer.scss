@@ -1,27 +1,26 @@
 footer{
-    background-color: var(--card-color);
-    padding: 2rem;
-    font-size: 0.8rem;
-    width: 100%;
-    display: none !important;
+    display: flex  !important;
+    justify-content: space-between;
+    padding: 100px !important;
 
-    &.absolute{
-        position: absolute;
-        bottom: 0;
-    }
+    .footer_section{
+        .footer_section_title{
+            h3{
+                font-size: 1.3rem;
+                font-weight: 700;
+                margin-bottom: 20px;
+            }
+        }
 
-    img{
-        width: 150px;
-        height: 150px;
-        object-fit: cover;
-        margin: 1rem;
-    }
+        .footer_section_content{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
 
-    a{
-        color: inherit;
-        text-decoration: none;
-        &:hover{
-            text-decoration: underline;
+            p{
+                margin: 6px 0;
+                font-weight: 700;
+            }
         }
     }
 }

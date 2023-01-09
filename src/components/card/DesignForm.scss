@@ -1,13 +1,14 @@
 .design_form{
     height: 100%;
     width: 85%;
-    $colortext: rgb(109, 109, 109);    
+    $colortext: rgb(36, 36, 36);    
     overflow-y: auto;
     padding: 20px 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
+    
 
     &::-webkit-scrollbar{
         width: 4px;
@@ -16,6 +17,18 @@
     &::-webkit-scrollbar-thumb{
         background-color: $colortext;
         border-radius: 5px;
+    }
+
+    h2{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        color: $colortext;
+        font-size: 1.6em;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin: 20px 0;
+        text-align: center;
     }
 
     .form_buttons{
@@ -36,6 +49,7 @@
             font-size: 15px;
             cursor: pointer;
             transition: all 0.3s ease-in-out;
+            
 
             &:last-child{
                 width: 100%;
@@ -53,17 +67,36 @@
     .form_section{
         width: 100%;
         margin: 20px 0;
+        display: flex;
+        
+
+        &::after{
+            content: "";
+            width: 100%;
+            height: 2px;
+            background-color: red;
+            display: block;
+            margin: 20px 0;
+            border-radius: 50px;
+            background-color: #cccccc80;
+        }
         
         
         h2{
+            margin: 0;
+            padding: 0;
+            width: 100%;
             color: $colortext;
-            font-size: 23px;
+            font-size: 1.6em;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
         }
 
         .form_group{
             margin: 10px 0;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
 
 

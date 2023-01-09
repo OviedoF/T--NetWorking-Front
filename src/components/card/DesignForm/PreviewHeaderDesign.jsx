@@ -9,9 +9,8 @@ const PreviewHeaderDesign = () => {
     return (
         <>
             <div className="form_section">
-                <h2 style={{marginTop: 0}}>Fondo</h2>
 
-                <div className="form_group" style={{width: '15%', justifyContent: 'flex-start'}}>
+                <div className="form_group" style={{width: '100%', justifyContent: 'flex-start'}}>
                     <label htmlFor="backgroundColor">Color de fondo</label>
                     <input className='body' onChange={(e) => handleStyles(e) } type="color" name="backgroundColor" id="background_color" />
                 </div>

@@ -30,7 +30,7 @@ const SocialButtonsDesign = () => {
             </div>
 
             <div className="form_section">
-                <h2>Demás redes sociales </h2>
+                <h2>Otras redes sociales </h2>
 
                 <div className="form_group">
                     <label htmlFor="name">Color del ícono</label>

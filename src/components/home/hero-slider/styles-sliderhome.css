@@ -1,11 +1,11 @@
 .slider-wrapper {
     position: relative;
-    height: 70vh;
+    height: 80vh;
     overflow: hidden;
   }
   
   .slide {
-    height: 70vh;
+    height: 80vh;
     background-size: cover !important;
   }
   
@@ -48,7 +48,7 @@
   }
   
   .previousButton {
-    left: 0;
+    left: 10px;
     -webkit-transform: rotate(180deg) translateY(calc(50% + 0px));
     transform: rotate(180deg) translateY(calc(50% + 0px));
   }
@@ -65,16 +65,12 @@
     right: -10px;
   }
   
-  .slider-content {
-    text-align: center;
-  }
-  
   .slider-content .inner {
-    padding: 0 70px;
+    padding: 0 80px;
     box-sizing: border-box;
     position: absolute;
     width: 100%;
-    top: 50%;
+    top: 40%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
@@ -84,22 +80,48 @@
     -webkit-transition-delay: 0s;
     transition-delay: 0s;
   }
+
+  .slider-content .inner .disclaimer {
+    font-size: 16px;
+    padding: 0 10px;
+  }
   
   .slider-content .inner h1 {
-    font-weight: 900;
-    margin: 0 auto;
+    font-weight: 500;
     max-width: 840px;
-    color: #ffffff;
-    font-size: 64px;
+    color: #000000;
+    font-size: 80px;
     line-height: 1;
   }
   
   .slider-content .inner p {
-    color: #ffffff;
-    font-size: 14px;
+    color: #000000;
+    font-size: 18px;
     line-height: 1.5;
-    margin: 20px auto 30px;
+    margin: 20px 0;
     max-width: 640px;
+  }
+
+  .slider-content .inner .buttons{
+    margin-top: 50px;
+  }
+
+  .slider-content .inner .buttons a {
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+    margin: 20px;
+    background-color: var(--card-color);
+    padding: 15px 45px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 1px solid var(--card-color);
+    font-size: 18px;
+  }
+
+  .slider-content .inner .buttons a:hover {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
   }
   
   .slider-content section {

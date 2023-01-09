@@ -14,6 +14,8 @@ const DesignForm = () => {
 
     return (
         <form className='design_form'>
+            <h2 style={{fontWeight: 'bold', fontSize: 30}}>DISEÑO DE SU TARJETA VIRTUAL</h2>
+
             <PreviewHeaderDesign />
 
             <UserDataDesign />
@@ -27,13 +29,13 @@ const DesignForm = () => {
             }
 
             <div className="form_buttons">
-                <button onClick={(e) => resetStyles(e)} className='btn btn--primary'>Volver al estilo predeterminado</button>
-                <button onClick={(e) => resetSocialColors(e)} className='btn btn--primary'>Restaurar colores de redes sociales</button>
+                <button  style={{backgroundColor: '#ccc', color: 'black', fontSize: 16}} onClick={(e) => resetStyles(e)} className='btn btn--primary'>Volver al estilo predeterminado</button>
+                <button  style={{backgroundColor: '#ccc', color: 'black', fontSize: 16}} onClick={(e) => resetSocialColors(e)} className='btn btn--primary'>Restaurar colores de redes sociales</button>
                 
                 <button onClick={(e) => {
                     e.preventDefault();
                     setSaving(true);
-                }} className='btn btn--primary' >Guardar</button>
+                }} className='btn btn--primary' style={{backgroundColor: 'var(--color-logo)', textTransform: 'uppercase', fontSize: 20, color: 'black'}}>Guarda tu diseño</button>
             </div>
         </form>
     );

@@ -49,7 +49,7 @@ export default function DashboardContent({auth}) {
                                 </div>
                         </div>
 
-                        <Link className='link' to={`/card/${card.cardLink}`}>Ver tarjeta</Link>
+                        <Link className='link' to={`/card/${card.cardLink}`} style={{background: 'var(--color-logo)', color: 'black'}}>Ver tarjeta</Link>
 
                         <img src={card.imageQr} alt="imágen QR" style={{width: 50, height: 50, position: 'absolute', left: '40%', bottom: 50, cursor: 'pointer'}} 
                         onClick={(e) => setQrActivated(card.imageQr)} />

@@ -6,6 +6,12 @@ import './ShoppingCart.scss'
 import { useDispatch } from 'react-redux';
 import { authLogin } from '../../redux/actions/auth.actions';
 
+const formatNumbers = (number) => {
+    const exp = /(\d)(?=(\d{3})+(?!\d))/g;
+    const rep = '$1,';
+    return number.toString().replace(exp,rep);
+}
+
 const ProductsContainer = ({products}) => {
     const auth = useSelector(state => state.auth);
     const dispatch = useDispatch();
@@ -66,9 +72,9 @@ const ProductsContainer = ({products}) => {
 
                         <div className="product_info" >
                             <h2 style={{}}>{product.name}</h2>
-                            <h3 style={{}}>${product.price}</h3>
+                            <h3 style={{}}>${formatNumbers(parseInt(product.price))}</h3>
                             <h4 style={{}}>{product.quantity}</h4>
-                            <h3 style={{}}>${(product.price * product.quantity).toFixed(3)}</h3>
+                            <h3 style={{}}>${formatNumbers((product.price * product.quantity).toFixed(0))}</h3>
                         </div>
 
                     </div>

@@ -31,6 +31,12 @@ const ProductData = ({ setForm, form }) => {
                         <input type="checkbox" name="requiredQR" id="requiredQR" style={{cursor: 'pointer',height: 25, width: 25}} 
                         onChange={(e) => setForm({...form, requiredQR: e.target.checked})}/>
                 </div> 
+
+                <div className="form-group" style={{width: '100%'}}>
+                        <label htmlFor="requireImageEditable" style={{fontSize: 20}}>¿Este producto requiere de una imágen, es decir, es editable?</label>
+                        <input type="checkbox" name="requireImageEditable" id="requireImageEditable" style={{cursor: 'pointer',height: 25, width: 25}} 
+                        onChange={(e) => setForm({...form, requireImageEditable: e.target.checked})}/>
+                </div> 
             </div>
         </>
 

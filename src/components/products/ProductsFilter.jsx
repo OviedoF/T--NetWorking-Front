@@ -38,22 +38,26 @@ const ProductsFilter = ({setProducts, setFilters}) => {
           <h1>Todos Los Productos</h1>
 
           <div className={'filter_categories'}>
-            <p>CATEGORÍA</p>
+            <p style={{color: 'black'}}>CATEGORÍA</p>
 
             <CategoryFilter categories={categories} handleChange={handleChange} />
           </div>
 
           <div className={'filter_prices'}>
-            <p>PRECIO</p>
+            <p style={{color: 'black'}}>PRECIO</p>
 
             <PricesFilter handleChange={handleChange}/>
           </div>
 
           <div className={'actions_filters'}>
+            
             <button className={'clear'} onClick={() => {
               setFilter({})
               handleSubmit()
-            }}>Limpiar filtros</button>
+            }} style={{background: 'var(--gray-background)', border: 'none'}}>
+              Limpiar filtros
+            </button>
+
             <button className={'goFilter'} onClick={() => handleSubmit()}>Filtrar</button>
           </div>
         </section>

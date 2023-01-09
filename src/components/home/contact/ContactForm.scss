@@ -1,16 +1,52 @@
+.contact_we{
+    background-color: var(--card-color);
+    width: 34%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    padding-left: 100px;
+
+    h2{
+        margin: 150px 0;
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: white;
+    }
+
+    ul{
+        margin-top: 60px;
+        li{
+            margin-bottom: 10px;
+            color: white;
+            font-weight: bold;
+
+            a{
+                text-decoration: none;
+                color: white;
+            }
+        }
+    }
+
+    .social{
+        margin-top: 10px;
+        svg{
+            margin-right: 10px;
+            color: white;
+            height: 30px;
+        }
+    }
+}
+
 .contact_form{
-    width: 49%;
+    width: 40%;
     margin: 0 auto;
     padding: 20px;
     border-radius: 5px;
     position: relative;
-    
-    .contact_form_title{
-        text-align: center;
-        font-size: 1.7rem;
-        font-weight: 600;
-        margin-bottom: 20px;
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     .form-group{
         margin-top: 20px;
@@ -18,38 +54,35 @@
     }
 
     label{
-        font-size: 1rem;
+        font-size: .8rem;
         margin-bottom: 5px;
         display: block;
     }
 
     .contact_form_input{
         width: 100%;
-        padding: 10px;
+        height: 40px;
         border: none;
-        border-bottom: 1px solid #ccc;
-        background: #00000030;
+        border: 1px solid #ccc;
+        background: transparent;
         color: black;
         border-radius: 5px;
-        margin-bottom: 10px;
         font-size: 18px;
-        min-width: 100%;
     }
 
     select{
-        min-width: 100%;
+        width: 100%;
     }
 
     .contact_form_button{
-        width: calc(100% - 20px);
-        padding: 10px;
+        width: calc(100%);
+        padding: 10px 0;
         border: 1px solid #ccc;
         border-radius: 5px;
         color: var(--color-text-card);
         background-color: var(--card-color);
         font-weight: 600;
         cursor: pointer;
-        position: absolute;
         right: 0;
         transition: all .5s;
 

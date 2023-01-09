@@ -4,7 +4,7 @@ import './Navbar.scss';
 import routes from '../../router/routes';
 import { useDispatch, useSelector } from 'react-redux';
 import { authLogout } from '../../redux/actions/auth.actions';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/logo.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
@@ -28,9 +28,9 @@ const Navbar = () => {
             <nav id="navbar" class="">
                 <div class="nav-wrapper">
                     <div class="logo" style={{padding: 1}}>
-                        <a href="#home">
-                            <img src={logo} alt="logo" style={{height: '100%'}} />
-                        </a>
+                        <Link to={routes.home}>
+                            <img src={logo} alt="logo" style={{height: '100%', objectFit: 'cover', transform: 'scale(3)'}} />
+                        </Link>
                     </div>
 
                     <ul id="menu">
