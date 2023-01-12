@@ -47,6 +47,7 @@ const CreateProductSection = () => {
         formData.append('colors', JSON.stringify(form.colors));
         formData.append('requiredQR', JSON.stringify(form.requiredQR));
         formData.append('priceWithOffer', form.priceWithOffer || 0);
+        formData.append('requireImageEditable', form.requireImageEditable);
 
         if(form.galleryImages) {
             for (const image of form.galleryImages) {

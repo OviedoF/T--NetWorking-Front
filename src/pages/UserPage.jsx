@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { HashLoader } from 'react-spinners';
 import DashboardContent from '../components/dashboard/DashboardContent';
@@ -11,12 +12,14 @@ export default function UserPage() {
     const [user, setUser] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+    const auth = useSelector(state => state.auth)
 
     useEffect(() => {
         console.log(id);
         axios.get(`${env.API_URL}/users/${id}`)
             .then(res => {
                 setUser(res.data)
+                console.log(res.data);
                 setIsLoading(false);
             })
             .catch(err => {
@@ -34,7 +37,7 @@ export default function UserPage() {
 
   if(user) return (
     <main className='dashboard_main' style={{display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center'}}>
-        <DashboardContent auth={user}/>
+        <DashboardContent auth={user} isBlocked={auth._id === id}/>
     </main>
   )
 }

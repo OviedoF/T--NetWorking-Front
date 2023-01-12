@@ -7,11 +7,14 @@ import {motion } from 'framer-motion';
 import './CardPage.scss'
 import SocialMedia from '../components/card/CardModalSocialMedia.data';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import logo from '../assets/logo.png';
+import logoSmall from '../assets/logoSmall.png';
 
 const CardPage = () => {
     const { link } = useParams();
     const [isLoading, setIsLoading] = useState(true);
     const [card, setCard] = useState({});
+    console.log(card);
 
     const greyImage = 'https://res.cloudinary.com/syphhy/image/upload/v1672684987/grey-background-07_w4ukhq.jpg';
 
@@ -46,12 +49,12 @@ const CardPage = () => {
     if(!isLoading) return (
         <div className='preview_content' style={{backgroundColor: card.cardStyle.body.backgroundColor || 'black'}}>
             <motion.div animate={{transform: 'scale(1)'}} className="preview_header">
-                <img src={card.coverPhoto || greyImage} alt="Prevista portada" id='preview_cover_photo' />
+                <img src={card.coverPhoto !== "false" ? card.coverPhoto : logo} alt="Prevista portada" id='preview_cover_photo' />
 
                 <motion.div animate={{transform: 'scale(1)'}} className="preview_header_user">
                     <img src={card.perfilImage || greyImage} alt="Prevista foto de perfil" id='preview_profile_photo' 
                     style={card.cardStyle.profilePhoto}/>
-                    <img src={card.logoPhoto || greyImage} alt="Prevista del logo" id='preview_profile_logo' 
+                    <img src={card.logoPhoto !== "false" ? card.logoPhoto : logoSmall} alt="Prevista del logo" id='preview_profile_logo' 
                     style={card.cardStyle.logo}/>
                 </motion.div>
             </motion.div>

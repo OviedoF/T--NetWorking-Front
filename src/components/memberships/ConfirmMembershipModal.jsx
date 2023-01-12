@@ -5,13 +5,17 @@ import env from '../../env';
 import { useDispatch } from 'react-redux';
 import { TailSpin } from 'react-loader-spinner';
 import { authLogin } from '../../redux/actions/auth.actions';
+import MercadoPagoMembresia from '../actualize-membership/MercadoPagoMembresía';
 
 const ConfirmMembershipModal = ({membership, setIsPurchasing}) => {
     const auth = useSelector(state => state.auth);
     const [isLoading, setIsLoading] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const [isError, setIsError] = useState(false);
+    const [paymentID, setPaymentID] = useState(null);
+    const [paymentLink, setPaymentLink] = useState(null);
     const dispatch = useDispatch();
+    console.log(membership);
 
     const actualizeUser = () => {
         console.log(auth.token)
@@ -93,6 +97,16 @@ const ConfirmMembershipModal = ({membership, setIsPurchasing}) => {
                     <button className='cancel' onClick={() => setIsPurchasing(false)}>Cancelar</button>
                     <button className='confirm' onClick={(e) => handleSend(e)}>Confirmar</button>
                 </div>
+
+                <MercadoPagoMembresia paymentID={paymentID} setPaymentID={setPaymentID} 
+                cart={membership} setPaymentLink={setPaymentLink} />
+                
+                {paymentLink && 
+                    <a href={paymentLink} target="_blank" rel="noreferrer" style={{color: 'black', textAlign: 'center'}}>
+                        {paymentLink}
+                    </a>
+                }
+                
             </form>
         </div>
     );

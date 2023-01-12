@@ -16,6 +16,9 @@ export default {
     comment: '/comment',
     cardPage: '/card/:link',
     actualizeMembership: '/actualize-membership',
+    aboutWe: '/about-we',
+    termsAndConditions: '/terms-and-conditions',
+    faqs: '/faqs',
 
     // Admin Create/edit
     createCategory: '/admin-panel/create-category',
@@ -28,6 +31,8 @@ export default {
     createMembership: '/admin-panel/create-membership',
     editAdmin: '/admin-panel/edit-admin',
     createMembership: '/admin-panel/create-membership',
+    createHeroCard: '/admin-panel/create-presentation-card',
+    createFAQ: '/admin-panel/create-faq',
 
     // Admin Manage
     manageCategories: '/admin-panel/manage-categories',

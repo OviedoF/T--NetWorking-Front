@@ -36,6 +36,11 @@ import Register from '../pages/Register';
 import Comment from '../pages/Comment';
 import CreateMembershipPage from '../pages/admin/CreateMembershipPage';
 import ActualizeMembership from '../pages/ActualizeMembership';
+import AboutWe from '../pages/AboutWe';
+import TermsAndConditions from '../pages/TermsAndConditions';
+import FAQS from '../pages/FAQS';
+import CreateHeroCard from '../pages/admin/CreateHeroCard';
+import CreateFAQ from '../pages/admin/CreateFAQ';
 
 const AppRouter = () => {
     const dispatch = useDispatch();
@@ -82,6 +87,9 @@ const AppRouter = () => {
                         <Route exact path={routes.successPayment} element={<Register />} />
                         <Route exact path={routes.comment} element={<Comment />} />
                         <Route exact path={routes.actualizeMembership} element={<ActualizeMembership />} />
+                        <Route exact path={routes.aboutWe} element={<AboutWe />} />
+                        <Route exact path={routes.termsAndConditions} element={<TermsAndConditions />} />
+                        <Route exact path={routes.faqs} element={<FAQS />} />
 
                         {/* ADMIN ROUTES */}
                         <Route exact path={routes.adminPanel} element={ 
@@ -136,6 +144,9 @@ const AppRouter = () => {
 
                         <Route exact path={routes.editAdmin} element={ <ProtectedRoute condition={'admin'}> <EditAdminForm /> </ProtectedRoute> }/>
 
+                        <Route exact path={routes.createHeroCard} element={ <ProtectedRoute condition={'admin'}> <CreateHeroCard /> </ProtectedRoute> }/>
+
+                        <Route exact path={routes.createFAQ} element={ <ProtectedRoute condition={'admin'}> <CreateFAQ /> </ProtectedRoute> }/>
 
                         <Route path={'/*'} element={<PageNotFound />} />
                 </Route>

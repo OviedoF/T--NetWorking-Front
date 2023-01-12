@@ -1,6 +1,8 @@
 import { faFacebook, faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { Link } from 'react-router-dom';
+import routes from '../../router/routes';
 import './Footer.scss';
 
 const Footer = () => {
@@ -12,11 +14,11 @@ const Footer = () => {
                 </div>
 
                 <div className="footer_section_content">
-                    <p>Av. Siempre Viva 742</p>
-                    <p>Springfield</p>
-                    <p>EEUU</p>
-                    <p>info@misitio.com</p>
-                    <p>+52-1-33-123455678</p>
+                    <p>Santa Magdalena 75, of. 304</p>
+                    <p>Metro Los Leones</p>
+                    <p>Providencia – SCL</p>
+                    <p>correo contacto@biznes.cl</p>
+                    <p>+56 9999999</p>
 
                     <div className="footer_section_content_social">
                         <FontAwesomeIcon icon={faFacebook} />
@@ -62,9 +64,9 @@ const Footer = () => {
 
                 <div className="footer_section_content">
                     <p>Envío y devoluciones</p>
-                    <p>Términos y condiciones</p>
+                    <Link to={routes.termsAndConditions}>Términos y condiciones</Link>
                     <p>Métodos de pago</p>
-                    <p>FAQ</p>
+                    <Link to={routes.faqs}>FAQ</Link>
                 </div>
             </div>
         </footer>

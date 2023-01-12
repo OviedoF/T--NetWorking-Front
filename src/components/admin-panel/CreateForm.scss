@@ -1,6 +1,6 @@
 #create-category-form{
     padding: 40px 20px;
-    background-color: #646464;
+    background-color: #CCC;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -8,13 +8,12 @@
     align-items: center;
 
     img{
-        width: 90px;
+        width: 100px;
         margin-bottom: 30px;
         height: 90px;
     }
 
     .text-danger{
-        color: var(--color-text-card);
         padding: 10px 30px;
         border-radius: 5px;
         background-color: var(--color-danger);
@@ -23,7 +22,6 @@
     }
 
     .text-success{
-        color: var(--color-text-card);
         padding: 10px 30px;
         border-radius: 5px;
         background-color: var(--color-success);
@@ -41,7 +39,7 @@
         label{
             font-size: 1.2rem;
             margin-bottom: 10px;
-            color: var(--color-text-card);
+
         }
 
         input[type="text"], input[type="password"], input[type="email"], input[type="number"],
@@ -56,7 +54,7 @@
             font-size: 15px;
             padding: 0 5px;
             min-width: 100%;
-            color: var(--color-text-card);
+            color: black;
 
             &:focus{
                 border-color: #ccc;
@@ -68,7 +66,7 @@
             border-radius: 0;
             border: none;
             background-color: transparent;
-            color: var(--color-text-card);
+            color: black;
             border-bottom: 1px solid #00000050;
             box-shadow: none;
             height: 100px;
@@ -102,7 +100,6 @@
         padding: 10px 0;
         border-radius: 10px;
         background-color: var(--card-color);
-        color: var(--color-text-card);
 
         border: none;
         cursor: pointer;

@@ -1,7 +1,7 @@
 footer{
     display: flex  !important;
     justify-content: space-between;
-    padding: 100px !important;
+    padding: 100px;
 
     .footer_section{
         .footer_section_title{
@@ -17,9 +17,43 @@ footer{
             flex-direction: column;
             justify-content: space-between;
 
-            p{
+            p, a{
+                color: black;
+                text-decoration: none;
                 margin: 6px 0;
                 font-weight: 700;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px){
+    footer{
+        padding: 10px 30px;
+        flex-wrap: wrap;
+
+        .footer_section{
+            width: 48%;
+            margin-bottom: 50px;
+
+            .footer_section_title{
+                h3{
+                    font-size: 1rem;
+                }
+            }
+
+            .footer_section_content{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                p, a{
+                    color: black;
+                    text-decoration: none;
+                    font-size: 15px;
+                    margin: 6px 0;
+                    font-weight: 700;
+                }
             }
         }
     }

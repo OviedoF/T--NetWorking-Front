@@ -28,6 +28,15 @@ const inputs = [
         name: 'username',
         type: 'text',
         label: 'Nombre de usuario'
+    },
+    {
+        name: 'password',
+        type: 'password',
+        label: 'Contraseña'
+    }, {
+        name: 'password2',
+        type: 'password',
+        label: 'Confirmar contraseña'
     }
 ]
 
@@ -55,17 +64,26 @@ const EditAdminForm = () => {
     }, []);
 
     const handleSubmit = (e) => {
+        
         e.preventDefault();
 
-        const send = sendForm.put(inputs, form, `/users/${adminData._id}/updateUser`, {
+        if(form.password !== form.password2) return setErrores('Las contraseñas no coinciden.');
+
+        axios.put(`${env.API_URL}/users/${adminData._id}/updateUser`, form, {
             headers: {
                 userid: auth._id,
             }
-        }, setSuccess, setErrores)
-
-        if (send.success) axios.get(`${env.API_URL}/users/admin`)
-            .then(res => setCoupons(res.data))
-            .catch(err => alert('Error al cargar el usuario.'));
+        })
+            .then(res => {
+                console.log(res.data);
+                setSuccess('Actualizado correctamente');
+                setErrores(false);
+            })
+            .catch(err => {
+                console.log(err);
+                setErrores('Error al actualizar los datos.');
+                setSuccess(false);
+            });
     }
 
     const reset = () => {
@@ -81,7 +99,7 @@ const EditAdminForm = () => {
 
             <motion.div style={{ width: windowsSize > 530 ? '80%' : '100%', height: '100vh', top: 0, left: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 9999 }}>
                 <EditItemForm inputs={inputs} item={adminData} form={form} setForm={setForm}
-                handleSubmit={handleSubmit} width={windowsSize > 530 ? '25%' : '80%'} success={success} errores={errores}
+                handleSubmit={handleSubmit} width={windowsSize > 530 ? '35%' : '80%'} success={success} errores={errores}
                 reset={reset} />
             </motion.div>
         </main>

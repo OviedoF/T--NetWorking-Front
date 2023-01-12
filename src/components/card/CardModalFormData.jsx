@@ -1,9 +1,18 @@
 import React, { useState, useEffect, useContext } from 'react';
 import CardDataContext from './CardData.provider';
 import './CardModalFormData.scss'
+import { useSelector } from 'react-redux';
+import CheckIfMembership from './CheckIfMembership';
 
 const CardModalFormData = () => {
     const {cardData, handleInputs, handleImages, handleBoolean} = useContext(CardDataContext);
+    const auth = useSelector(state => state.auth);
+
+    const descriptionLimit = () => {
+        const permission = auth.membership[0].permissions.find(permission => permission.permission === 'Descripción');
+        
+        return permission.limit
+    }
 
     return (
         <form className="card_modal_form_content" id='card_modal_form_data'>
@@ -14,7 +23,11 @@ const CardModalFormData = () => {
 
                 <div className="form_group">
                     <label htmlFor="coverPhoto">Imágen de portada</label>
-                    <input type="file" style={{cursor: 'pointer'}} name="coverPhoto" id="coverPhoto" onChange={(e) => handleImages(e)} />
+
+                    <CheckIfMembership value='Foto de portada'>
+                        <input type="file" style={{cursor: 'pointer'}} name="coverPhoto" id="coverPhoto" onChange={(e) => handleImages(e)} />
+                    </CheckIfMembership>
+
                 </div>
 
                 <div className="form_group">
@@ -24,7 +37,10 @@ const CardModalFormData = () => {
 
                 <div className="form_group">
                     <label htmlFor="logo">Logo de empresa</label>
-                    <input type="file" style={{cursor: 'pointer'}} name="logo" id="logo" onChange={(e) => handleImages(e)} />
+                    
+                    <CheckIfMembership value='Foto de empresa'>
+                        <input type="file" style={{cursor: 'pointer'}} name="logo" id="logo" onChange={(e) => handleImages(e)} />
+                    </CheckIfMembership>
                 </div>
             </div>
 
@@ -57,8 +73,8 @@ const CardModalFormData = () => {
                 </div>
 
                 <div className="form_group full">
-                    <label htmlFor="biography">Descríbete en 140 carácteres</label>
-                    <textarea name="biography" id="biography" value={cardData.biography} onChange={(e) => handleInputs(e)} maxLength={140}/>
+                    <label htmlFor="biography">Descríbete en {descriptionLimit()} carácteres {descriptionLimit() < 100 && '(para más carácteres, actualice su membresía)'}</label>
+                    <textarea name="biography" id="biography" value={cardData.biography} onChange={(e) => handleInputs(e)} maxLength={descriptionLimit()}/>
                 </div>
 
                 <div className="form_group full">
@@ -66,7 +82,10 @@ const CardModalFormData = () => {
 
                     <div className="cardlink_input" style={{display: 'flex', alignItems: 'flex-start'}}>
                         <p style={{fontSize: 20, marginTop: 10}}>https://biznescard.cl/</p>
-                        <input type="text" name="cardLink" id="cardLink" value={cardData.cardLink} onChange={(e) => handleInputs(e)} />
+
+                        <CheckIfMembership value={'Cambiar URL'}>
+                            <input type="text" name="cardLink" id="cardLink" value={cardData.cardLink} onChange={(e) => handleInputs(e)} />
+                        </CheckIfMembership>
                     </div>
                 </div>
             </div>

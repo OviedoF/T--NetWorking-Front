@@ -36,6 +36,7 @@ const Navbar = () => {
                     <ul id="menu">
                         <li><Link to={routes.home}>Inicio</Link></li>
                         <li><Link to={routes.products}>Productos</Link></li>
+                        <li><Link to={routes.aboutWe}>Sobre nosotros</Link></li>
                         
                         
                         {!auth.logged && <li><Link to={routes.login}>Login</Link></li>}
@@ -62,7 +63,8 @@ const Navbar = () => {
                 <ul id="menu">
                     <li onClick={() => setMenuToggle(false)}><Link to={routes.home}>Inicio</Link></li>
                     <li onClick={() => setMenuToggle(false)}><Link to={routes.products}>Productos</Link></li>
-                    <li onClick={() => setMenuToggle(false)}><Link to={routes.cart}>Carrito de compras</Link></li>
+                    <li onClick={() => setMenuToggle(false)}><Link to={routes.aboutWe}>Sobre nosotros</Link></li>
+                    {auth.logged && <li onClick={() => setMenuToggle(false)}><Link to={routes.cart}>Carrito de compras</Link></li>}
                     {!auth.logged && <li onClick={() => setMenuToggle(false)}><Link to={routes.login}>Login</Link></li>}
                     {auth.logged && <li onClick={() => setMenuToggle(false)}><Link onClick={() => logout()}>Logout</Link></li>}
                     {auth.logged && <li onClick={() => setMenuToggle(false)}><Link to={routes.dashboard}>Dashboard</Link></li>}

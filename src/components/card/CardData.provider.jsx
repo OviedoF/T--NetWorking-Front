@@ -162,6 +162,7 @@ const CardDataProvider = ({ children }) => {
 
     const data = { 
         cardData, 
+        setCardData,
         handleInputs, 
         handleImages, 
         handleBoolean, 

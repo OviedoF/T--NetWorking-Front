@@ -1,0 +1,96 @@
+.buy_data_modal{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999999999999999999999999999999999;
+
+    .error{
+        font-size: 1.2em;
+        font-weight: bold;
+        margin: 10px 0;
+        width: 50%;
+        margin: 10px auto;
+        background-color: var(--color-danger);
+        padding: 10px 20px;
+        color: white;
+        text-align: center;
+    }
+
+    .success{
+        font-size: 1.2em;
+        font-weight: bold;
+        margin: 10px 0;
+        width: 50%;
+        margin: 10px auto;
+        background-color: var(--color-success);
+        padding: 10px 20px;
+        color: white;
+        text-align: center;
+    }
+
+    form{
+        width: 80%;
+        height: 90%;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    #buy_data_modal_close{
+        position: absolute;
+        top: 10px;
+        right: 40px;
+        font-size: 30px;
+        cursor: pointer;
+    }
+
+    .add_to_cart{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 60px;
+
+        button{
+            padding: 15px 40px;
+            border: none;
+            width: 50%;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            margin: 0 10px;
+            background-color: black;
+
+            &:hover{
+                background-color: white;
+                color: black;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .buy_data_modal{
+        form{
+            width: 90%;
+            height: 90%;
+
+            *{
+                width: 95% !important;
+            }
+        }
+    }
+}

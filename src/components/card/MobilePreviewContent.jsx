@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import {motion} from 'framer-motion';
 import SocialMedia from './CardModalSocialMedia.data'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import logo from '../../assets/logo.png';
+import logoSmall from '../../assets/logoSmall.png';
 
 const MobilePreviewContent = () => {
     const {cardData, handleInputs} = useContext(CardDataContext);
@@ -21,12 +23,12 @@ const MobilePreviewContent = () => {
     return (
         <div className='preview_content' style={{backgroundColor: cardData.styles.body.backgroundColor}}>
             <motion.div animate={{transform: 'scale(1)'}} className="preview_header">
-                <img src={cardData.coverPhotoUrl || greyImage} alt="Prevista portada" id='preview_cover_photo' />
+                <img src={cardData.coverPhotoUrl !== "false" ? cardData.coverPhotoUrl || logo : logo} alt="Prevista portada" id='preview_cover_photo' />
 
                 <motion.div animate={{transform: 'scale(1)'}} className="preview_header_user">
-                    <img src={cardData.profilePhotoUrl || greyImage} alt="Prevista foto de perfil" id='preview_profile_photo' 
+                    <img src={cardData.profilePhotoUrl !== "false" ? cardData.profilePhotoUrl || greyImage : greyImage} alt="Prevista foto de perfil" id='preview_profile_photo' 
                     style={cardData.styles.profilePhoto}/>
-                    <img src={cardData.logoUrl || greyImage} alt="Prevista del logo" id='preview_profile_logo' 
+                    <img src={cardData.logoUrl !== "false" ? cardData.logoUrl || logoSmall : logoSmall} alt="Prevista del logo" id='preview_profile_logo' 
                     style={cardData.styles.logo}/>
                 </motion.div>
             </motion.div>

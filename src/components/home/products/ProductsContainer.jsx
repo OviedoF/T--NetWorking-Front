@@ -55,7 +55,7 @@ const ProductsContainer = () => {
 
     return (
         <div>
-            <h2 style={{textAlign: 'center', fontSize: 40, marginTop: 30}}>¡Aprovecha nuestro descuento de lanzamiento!</h2>
+            <h2 style={{textAlign: 'center', fontSize: 40, marginTop: 30}}>¡Adquiere productos biznes para tu networking!</h2>
 
             <div className="products_container" style={{display: 'flex', padding: '40px', justifyContent: 'flex-start', flexWrap: 'wrap', width: '100%'}}>
                 {products.map((product, index) => {

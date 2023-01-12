@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Slider from "react-animated-slider";
 import "./slider-animations.css";
-import "./styles-sliderhome.css";
+import "./styles-sliderhome.scss";
 import "react-animated-slider/build/horizontal.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
@@ -43,13 +43,6 @@ export default () => {
 
 
             </div>
-
-            <section>
-              <img src={item.author.userImage} alt={item.user} />
-              <span>
-                Posted by <strong>{item.author.name}</strong>
-              </span>
-            </section>
           </div>
         ))}
         

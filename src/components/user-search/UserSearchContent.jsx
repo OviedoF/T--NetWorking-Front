@@ -1,6 +1,8 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState, useEffect } from 'react';
 import UserCard from './UserCard';
 import './UserSearch.scss';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const UserSearchContent = ({users}) => {
     const [search, setSearch] = useState('');
@@ -8,7 +10,9 @@ const UserSearchContent = ({users}) => {
 
     useEffect(() => {
         const finded = users.filter(user => {
-            if(user.name.toLowerCase().includes(search.toLowerCase()) || user.username.toLowerCase().includes(search.toLowerCase())) {
+            const name = `${user.firstName} ${user.lastName}`
+
+            if(name.toLowerCase().includes(search.toLowerCase()) || user.username.toLowerCase().includes(search.toLowerCase())) {
                 return user;
             }
         })
@@ -19,9 +23,14 @@ const UserSearchContent = ({users}) => {
     return (
         <div className='user_search_container'>
             <div className="finder">
-                <h1>Busca a un usuario por su nombre o nombre de usuario</h1>
+                <FontAwesomeIcon icon={faSearch} />
                 <input type='text' value={search} onChange={e => setSearch(e.target.value)} />
             </div>
+
+            <p className="disclaimer">
+            La Agenda Biznes es un listado de networking de todos los clientes que tienen pública su tipo de cuenta. 
+            Si un usuario tiene cuenta privada, aparecerá en la lista pero no podrá ser visto su perfil.
+            </p>
 
             <div className="users">
                 {usersFiltered.map(user => (

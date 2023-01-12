@@ -4,39 +4,50 @@
     display: flex;  
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 
     .finder{
         display: flex;
-        flex-direction: column;
+        margin-top: 40px;
+        padding: 5px 20px;
+        width: 80%;
         align-items: center;
         justify-content: center;
+        border-radius: 20px;
 
-        h1{
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-bottom: 1rem;
+        svg{
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            color: #ccc;
         }
 
         input{
             width: 100%;
             height: 2rem;
-            border: 1px solid #ccc;
             border-radius: 5px;
             padding: 0 0.5rem;
+            background-color: transparent;
             margin-bottom: 1rem;
-            background-color: #cccccc80;
             height: 50px;
             font-size: 1.2rem;
             margin-top: 10px;
             border: none;
+            color: black;
             border-bottom: 1px solid #ccc;
         }
     }
 
+    p.disclaimer{
+        width: 80%;
+        color: #00000090;
+    }
+
     .users{
         display: flex;
+        flex-direction: column;
         width: 100%;
+        justify-content: center;
+        align-items: center;
         padding: 0 40px;
         flex-wrap: wrap;
         overflow-y: scroll;
@@ -47,18 +58,46 @@
         }
 
         .user_card{
-            width: 15%;
+            width: 80%;
             background-color: #cccccc80;
             padding: 20px;
+            display: grid;
             margin: 15px;
-            height: 200px;
+            height: 100px;
+            grid-template-columns: 130px 1fr 1fr 1fr;
+            grid-template-rows: 100%;
+            align-items: center;
+
+            svg{
+                width: 30px;
+                height: 30px;
+                color: #00000090;
+                cursor: pointer;
+                transition: all 0.2s ease-in-out;
+                &:hover{
+                    color: #000000;
+                }
+            }
             
             img{
                 width: 100%;
                 height: 80%;
                 object-fit: cover;
             }
-    
+   
+            button{
+                width: 100%;
+                height: 100%;
+                border: none;
+                background-color: transparent;
+                color: #00000090;
+                font-size: 1.2rem;
+                cursor: pointer;
+                transition: all 0.2s ease-in-out;
+                &:hover{
+                    color: #000000;
+                }
+            }
     
         }
     }

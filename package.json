@@ -16,10 +16,12 @@
     "axios": "^1.2.1",
     "dotenv": "^16.0.3",
     "framer-motion": "^7.10.0",
+    "gapi-script": "^1.2.0",
     "react": "^18.2.0",
     "react-animated-slider": "^2.0.0",
     "react-device-preview": "^1.0.6",
     "react-dom": "^18.2.0",
+    "react-google-login": "^5.2.2",
     "react-loader-spinner": "^5.3.4",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.5",
@@ -28,7 +30,8 @@
     "react-spinners": "^0.13.7",
     "redux": "^4.2.0",
     "sanity": "^3.1.2",
-    "sass": "^1.56.2"
+    "sass": "^1.56.2",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",

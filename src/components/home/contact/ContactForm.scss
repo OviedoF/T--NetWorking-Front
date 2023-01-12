@@ -78,7 +78,7 @@
         width: calc(100%);
         padding: 10px 0;
         border: 1px solid #ccc;
-        border-radius: 5px;
+        border-radius: 50px;
         color: var(--color-text-card);
         background-color: var(--card-color);
         font-weight: 600;
@@ -94,12 +94,105 @@
 }
 
 @media screen and (max-width: 768px){
-    .image_form{
-        display: none;
+    .contact_we{
+        width: 100%;
+        height: 100vh;
+        padding: 0;
+        padding-left: 20px;
+
+        h2{
+            margin: 50px 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        ul{
+            margin-top: 60px;
+            li{
+                margin-bottom: 10px;
+                color: white;
+                font-weight: bold;
+
+                a{
+                    text-decoration: none;
+                    color: white;
+                }
+            }
+        }
+
+        .social{
+            margin-top: 10px;
+            svg{
+                margin-right: 10px;
+                color: white;
+                height: 30px;
+            }
+        }
+    }
+
+    .contact_container{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .contact_form{
         width: 100%;
-        padding: 0;
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 5px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .form-group{
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        label{
+            font-size: .8rem;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .contact_form_input{
+            width: 100%;
+            height: 40px;
+            border: none;
+            border: 1px solid #ccc;
+            background: transparent;
+            color: black;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        select{
+            width: 100%;
+        }
+
+        .contact_form_button{
+            width: calc(100%);
+            padding: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 50px;
+            color: var(--color-text-card);
+            background-color: var(--card-color);
+            font-weight: 600;
+            cursor: pointer;
+            right: 0;
+            transition: all .5s;
+
+            &:hover{
+                background-color: #6d6c6cf3;
+                color: var(--color-text-card);
+            }
+        }
     }
 }

@@ -4,7 +4,7 @@
     padding: 0 70px;
     align-items: center;
     justify-content: flex-start;
-    height: 70vh;
+    height: 80vh;
     justify-content: center;
     position: relative;
 
@@ -33,5 +33,19 @@
         height: 88px;
         border-radius: 50%;
         object-fit: cover;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .comment_card{
+        padding: 0 20px;
+        height: 40vh;
+        justify-content: flex-start;
+
+        .description{
+            font-size: 30px;
+            width: 100%;
+            margin: 20px 0;
+        }
     }
 }

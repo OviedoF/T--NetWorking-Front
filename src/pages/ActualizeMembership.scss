@@ -11,6 +11,20 @@
         margin-bottom: 1rem;
     }
 
+    .period_choose{
+        p{
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            transition: all .3s ease-in-out;
+
+            &:hover{
+                cursor: pointer;
+                transform: scale(1.2);
+            }
+        }
+    }
+
     .confirm_membership_modal{
         width: 100vw;
         height: 100vh;
@@ -93,16 +107,36 @@
                 height: 30%;
             }
 
-            h3{
+            h2{
                 font-size: 1.5rem;
                 font-weight: 600;
                 margin: 1rem 0;
             }
 
-            p{
-                font-size: 1rem;
+            p.price_text{
+                font-size: 1.5rem;
                 font-weight: 400;
                 margin: .3rem 0;
+
+                .price_number{
+                    font-size: 2.5rem;
+                    font-weight: 600;
+                }
+            }
+
+            ul{
+                width: 80%;
+
+                li{
+                    font-size: 1rem;
+                    font-weight: 400;
+                    margin: 1rem 0;
+                }
+
+                svg{
+                    color: var(--color-success);
+                    margin-right: 10px;
+                }
             }
 
             .price_membership{
@@ -114,9 +148,9 @@
             .membership_add_button{
                 width: 100%;
                 height: 40px;
-                background-color: #000;
+                background-color: var(--card-color);
                 border: none;
-                border-radius: 5px;
+                border-radius: 50px;
                 color: #fff;
                 font-size: 1rem;
                 font-weight: 600;

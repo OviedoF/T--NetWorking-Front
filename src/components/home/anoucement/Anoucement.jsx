@@ -11,9 +11,9 @@ const data = {
         destacadoTwo: 'DTO',
         partTwo: 'y primer accesorio'
     },
-    description: `Cantidades limitadas.
-
-Disponible en la página del producto.`,
+    descriptionOne: 'Usa el cupón: ',
+    descriptionTwo: ' al momento de pagar.',
+    descriptionThree: 'Cantidades limitadas a 50 usos. ¿Qué esperas?',
     buttonOne: {
         text: 'Ver productos',
         link: routes.products
@@ -43,7 +43,11 @@ const Anoucement = ({anoucementData}) => {
                     <h2>{data.title.partTwo}</h2>
                 </div>
 
-                <pre id='anouncement_description'>{data.description}</pre>
+                <p id='anouncement_description'>
+                    {data.descriptionOne} <b>BIZNESLAUNCH</b> {data.descriptionTwo}
+                </p>
+
+                <p id='anouncement_description'>{data.descriptionThree}</p>
 
                 <div className="buttons">
                     <Link to={data.buttonOne.link} className="btn btn-primary">{data.buttonOne.text}</Link>

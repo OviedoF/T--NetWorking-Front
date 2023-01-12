@@ -8,6 +8,7 @@
       --text-color: #4a4a4a;
       --gray-background: rgb(139, 139, 139);
       --color-logo: #62b5e5;
+      --form-bg-color: #ccc;
     }
 
     h1, h2, h3, h4, h5, h6, p, li, label, select,span {

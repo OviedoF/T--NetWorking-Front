@@ -104,11 +104,6 @@ const RegisterForm = () => {
             </div>
 
             <div className="form-group">
-                <label htmlFor="userId">Número identificativo</label>
-                <input type="text" name="userId" id="userId" className="form-control" onChange={(e) => handleChange(e)} />
-            </div>
-
-            <div className="form-group">
                 <label htmlFor="password">Contraseña</label>
                 <input type="password" name="password" id="password" className="form-control" onChange={(e) => handleChange(e)} />
             </div>

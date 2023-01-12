@@ -13,9 +13,7 @@ const formatNumbers = (number) => {
     return number.toString().replace(exp,rep);
 }
 
-const PresentationInfo = ({product}) => {
-    const [quantity, setQuantity] = useState(1);
-    const dispatch = useDispatch()
+const PresentationInfo = ({product, setIsModalOpen, quantity, setQuantity}) => {
     const shoppingCart = useSelector(state => state.shoppingCart);
     const [isAddedToCart, setIsAddedToCart] = useState(false);
     const navigate= useNavigate();
@@ -33,19 +31,19 @@ const PresentationInfo = ({product}) => {
         if(quantity > product.stock) setQuantity(1)
     }, [quantity]);
 
-    const handleAddToCart = () => {
-        axios.put(`${env.API_URL}/users/${auth._id}/updateShoppingCart`, {
-            type: 'add',
-            product: JSON.stringify({...product, quantity})
-        })
-        .then(res => dispatch(authLogin({
-            ...res.data,
-            token: auth.token
-        })))
-        .catch(err => console.log(err));
+    // const handleAddToCart = () => {
+    //     axios.put(`${env.API_URL}/users/${auth._id}/updateShoppingCart`, {
+    //         type: 'add',
+    //         product: JSON.stringify({...product, quantity})
+    //     })
+    //     .then(res => dispatch(authLogin({
+    //         ...res.data,
+    //         token: auth.token
+    //     })))
+    //     .catch(err => console.log(err));
 
-        dispatch(addToShoppingCart({...product, quantity}));
-    }
+    //     dispatch(addToShoppingCart({...product, quantity}));
+    // }
 
     return (
         <div className='presentation__info' >
@@ -72,7 +70,7 @@ const PresentationInfo = ({product}) => {
             </div>}
 
             <div className='presentation__info__buttons'>
-                {auth.logged && <button className='btn btn--primary' data-animation="appear" onClick={() => handleAddToCart()}>Agregar al carrito</button>}
+                {auth.logged && <button className='btn btn--primary' data-animation="appear" onClick={() => setIsModalOpen(true)}>Agregar al carrito</button>}
 
                 {!auth.logged && <button className='btn btn--primary' data-animation="appear" onClick={() => navigate(routes.login)}>Iniciar sesión</button>}
             </div>

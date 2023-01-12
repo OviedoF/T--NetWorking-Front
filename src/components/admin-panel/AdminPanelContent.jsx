@@ -17,11 +17,6 @@ const adminPanelActions = [
         path: routes.manageProducts
     },
     {
-        name: 'Lista de membresías',
-        category: 'manage',
-        path: '/admin-panel/memberships'
-    },
-    {
         name: 'Gestionar pedidos',
         category: 'manage',
         path: routes.manageOrders
@@ -57,11 +52,6 @@ const adminPanelActions = [
         path: routes.createProduct
     },
     {
-        name: 'Crear membresía',
-        category: 'create',
-        path: routes.createMembership
-    },
-    {
         name: 'Crear cupón',
         category: 'create',
         path: routes.createCoupon
@@ -75,6 +65,16 @@ const adminPanelActions = [
         name: 'Crear categoría',
         category: 'create',
         path: routes.createCategory
+    },
+    {
+        name: 'Crear tarjeta de presentación',
+        category: 'create',
+        path: routes.createHeroCard
+    },
+    {
+        name: 'Crear FAQ',
+        category: 'create',
+        path: routes.createFAQ
     }
 ];
 

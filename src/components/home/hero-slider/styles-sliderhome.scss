@@ -49,8 +49,6 @@
   
   .previousButton {
     left: 10px;
-    -webkit-transform: rotate(180deg) translateY(calc(50% + 0px));
-    transform: rotate(180deg) translateY(calc(50% + 0px));
   }
   
   .previousButton:hover {
@@ -168,19 +166,39 @@
   @media (max-width: 640px) {
     .slider-wrapper,
     .slide {
-      height: calc(80vh - 75px);
+      height: calc(50vh - 75px);
     }
   }
-  
-  @media (max-height: 600px) {
-    .slider-content .inner h1 {
-      font-size: 32px;
-    }
-  }
-  
   @media (max-width: 640px) {
-    .slider-content .inner h1 {
-      font-size: 32px;
+    .slider-content .inner{
+      padding: 0 50px;
+      h1 {
+        font-size: 20px;
+      }
+
+      p {
+        font-size: 14px;
+        margin: 5px 0;
+      }
+
+
+    }
+
+    .slider-content .inner .buttons {
+      margin-top: 20px;
+
+      a {
+        -webkit-transition-delay: 0s;
+        transition-delay: 0s;
+        margin: 10px 0;
+        background-color: var(--card-color);
+        padding: 5px 5px;
+        border-radius: 50px;
+        cursor: pointer;
+        border: 1px solid var(--card-color);
+        font-size: 13px;
+        margin-right: 20px;
+      }
     }
   }
   

@@ -2,14 +2,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import './StepsSection.scss';
 import { faGlobe, faIdCard, faIdCardClip, faUser, faChevronRight, faShareNodes, faAddressBook, faImagePortrait } from '@fortawesome/free-solid-svg-icons';
+import routes from '../../../router/routes';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const StepsSection = () => {
+    const auth = useSelector(state => state.auth);
     return (
         <div id='steps_section'>
             <div className="step_card">
                 <div className="step_card__header">
                     <FontAwesomeIcon icon={faUser} color={'black'}/>
-                    <h3>Crea tu cuenta</h3>
+                    <Link to={routes.register}>Crea tu cuenta</Link>
                 </div>
 
                 <div className="step_card__body">
@@ -24,7 +28,7 @@ const StepsSection = () => {
             <div className="step_card">
                 <div className="step_card__header">
                     <FontAwesomeIcon icon={faImagePortrait}/>
-                    <h3>Diseña tu tarjeta digital</h3>
+                    <Link to={auth.logged ? routes.dashboard : routes.login}>Diseña tu tarjeta digital</Link>
                 </div>
 
                 <div className="step_card__body">
@@ -38,7 +42,7 @@ const StepsSection = () => {
             <div className="step_card">
                 <div className="step_card__header">
                     <FontAwesomeIcon icon={faIdCardClip} />
-                    <h3>Compra tu tarjeta física</h3>
+                    <Link to={routes.products}>Compra tu tarjeta física</Link>
                 </div>
 
                 <div className="step_card__body">
@@ -53,7 +57,7 @@ const StepsSection = () => {
             <div className="step_card">
                 <div className="step_card__header">
                     <FontAwesomeIcon icon={faShareNodes} />
-                    <h3>Comparte tus datos</h3>
+                    <Link to={routes.home}>Comparte tus datos</Link>
                 </div>
 
                 <div className="step_card__body">

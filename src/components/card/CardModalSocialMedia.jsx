@@ -4,21 +4,37 @@ import SocialMedia from './CardModalSocialMedia.data'
 import './CardModalSocialMedia.scss';
 import CardDataContext from './CardData.provider';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { useSelector } from 'react-redux';
 
 const CardModalSocialMedia = () => {
     const [pickedMedia, setPickedMedia] = useState([]);
     const [mediaData, setMediaData] = useState(SocialMedia);
+    const [error, setError] = useState(false);
+    const [socialMediaMembership, setSocialMediaMembership] = useState({
+        access: true,
+        limit: 3
+    });
+
+    const [favoriteSocialMembership, setFavoriteSocialMembership] = useState({
+        access: true,
+        limit: 3
+    });
+    const auth = useSelector((state) => state.auth);
+
     const {cardData, handleSocialMedia, handleRemoveSocial, actualizeSocial} = useContext(CardDataContext);
 
     const handlePick = (icon) => {
         const isPicker = pickedMedia.find((pickedIcon) => pickedIcon.name === icon.name);
-        console.log(isPicker)
 
         if (isPicker) {
             const newPickedMedia = pickedMedia.filter((pickedIcon) => pickedIcon.name !== icon.name);
             setPickedMedia(newPickedMedia);
             handleRemoveSocial(icon);
         } else {
+            if(pickedMedia.length + 1 > socialMediaMembership.limit || cardData.socialMedia.length > socialMediaMembership.limit) {
+                return setError(`No puede agregar más de ${socialMediaMembership.limit} redes sociales, actualize su membresía.`);
+            };
+            
             setPickedMedia([...pickedMedia, icon]);
         }
     }
@@ -35,6 +51,10 @@ const CardModalSocialMedia = () => {
     };
 
     const handleFavorite = (icon) => {
+        if(!favoriteSocialMembership.access) {
+            return setError('No tiene permisos para agregar redes favoritas, actualize su membresía.');
+        }
+
         const item = pickedMedia.find((pickedIcon) => pickedIcon.name === icon.name);
         const newPickedMedia = pickedMedia.filter((pickedIcon) => pickedIcon.name !== icon.name);
         const url = cardData.socialMedia.find((socialMedia) => socialMedia.name === icon.name).url;
@@ -68,9 +88,15 @@ const CardModalSocialMedia = () => {
             if(newMediaData) fakePickedMedia.push(icon);
         });
 
-        console.log(fakePickedMedia);
-
         setPickedMedia(fakePickedMedia);
+
+        setFavoriteSocialMembership(auth.membership[0].permissions.find((permission) => {
+            return permission.permission === 'Redes favoritas';
+        }))
+
+        setSocialMediaMembership(auth.membership[0].permissions.find((permission) => {
+            return permission.permission === 'Redes sociales adicionales';
+        }))
     }, [])
 
     return (
@@ -92,6 +118,8 @@ const CardModalSocialMedia = () => {
             </div>
 
             <div className="socialmedia_container" style={{marginLeft: 20}}>
+                {error && <p style={{color: 'red'}}>{error}</p>}
+
                 <h2 style={{marginLeft: 0}}>Escriba cómo pueden encontrarlo</h2>
 
                 {pickedMedia.map((pickedIcon, index) => (
