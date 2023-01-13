@@ -35,6 +35,9 @@
         flex-direction: column;
         justify-content: center;
         width: 80%;
+        input{
+            color: black;
+        }
 
         label{
             font-size: 1.2rem;
@@ -54,7 +57,7 @@
             font-size: 15px;
             padding: 0 5px;
             min-width: 100%;
-            color: black;
+            color: black !important;
 
             &:focus{
                 border-color: #ccc;

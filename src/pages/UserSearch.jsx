@@ -20,6 +20,8 @@ const UserSearch = () => {
             setUsers(res.data);
         })
         .catch(err => console.log(err));
+
+        window.scrollTo(0, 0);
     }, []);
 
     return (

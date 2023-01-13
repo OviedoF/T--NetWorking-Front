@@ -1,7 +1,7 @@
 import { faPinterest, faReddit, faDailymotion, faDeviantart, faFacebook, faFlickr, faSnapchat,
     faSoundcloud, faSpotify, faApple, faTelegram, faGooglePlus, faTumblr, faTwitter, faInstagram,
-    faVimeo, faLinkedin, faWhatsapp, faYoutube, faTiktok, faBehance} from '@fortawesome/free-brands-svg-icons';
-import { faGlobe } from '@fortawesome/free-solid-svg-icons';
+    faVimeo, faLinkedin, faWhatsapp, faYoutube, faTiktok, faBehance, faInternetExplorer} from '@fortawesome/free-brands-svg-icons';
+import { faGlobe, faWifi, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
     const socialMedia = [{
         name: 'Pinterest',
@@ -135,6 +135,21 @@ import { faGlobe } from '@fortawesome/free-solid-svg-icons';
         color: '#1992CF',
         contrast: '#FFFFFF',
         favorite: false
+    }, {
+        name: 'GoogleMaps',
+        icon: faLocationDot,
+        color: '#4285F4',
+        contrast: '#FFFFFF',
+    }, {
+        name: 'Web2',
+        icon: faWifi,
+        color: '#1992CF',
+        contrast: '#FFFFFF',
+    }, {
+        name: 'Web3',
+        icon: faInternetExplorer,
+        color: '#1992CF',
+        contrast: '#FFFFFF',
     }];
     
     export default socialMedia;

@@ -16,6 +16,11 @@ const Login = () => {
     const clientId = '63248102455-je3ia8b7ki4aftef0kfjovdmk5jl145t.apps.googleusercontent.com';
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        
+    }, []);
     
     useEffect(() => {
         gapi.load('client:auth2', () => {

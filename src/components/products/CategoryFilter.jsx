@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styles from './ProductsFilter.scss?inline';
+import { useSearchParams } from 'react-router-dom';
 
-const CategoryFilter = ({ categories, handleChange }) => {
+const CategoryFilter = ({ categories, handleChange, filters }) => {
   const [inputs, setInputs] = useState({});
+  const [categoryQuery, setCategoryQuery] = useState(false);
+  const [searchParams] = useSearchParams();
 
   const handleInput = (e) => {
     setInputs({
@@ -12,6 +15,11 @@ const CategoryFilter = ({ categories, handleChange }) => {
   };
 
   useEffect(() => {
+
+    if(searchParams.get('category')) { 
+        setCategoryQuery(searchParams.get('category'));
+    }
+
     const aux = [];
     const keys = Object.keys(inputs);
 
@@ -30,7 +38,8 @@ const CategoryFilter = ({ categories, handleChange }) => {
           style={{ marginTop: index === 0 ? "0" : "30px" }}
           key={index}
         >
-          <input type="checkbox" id={el.name} onChange={(e) => handleInput(e)}/>
+          <input type="checkbox" id={el.name} onChange={(e) => handleInput(e)}  
+          defaultChecked={el.name === categoryQuery}/>
           <label htmlFor={el.name} style={{ cursor: "pointer" }}>
             {el.name}
           </label>

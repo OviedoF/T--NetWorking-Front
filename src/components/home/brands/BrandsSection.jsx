@@ -1,28 +1,52 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import env from '../../../env';
 import './BrandsSection.scss';
-
-const brands = [
-    "https://static.wixstatic.com/media/c837a6_9117ead0c4e54c489723093e91f1a0c2~mv2.png/v1/fill/w_261,h_147,q_90/c837a6_9117ead0c4e54c489723093e91f1a0c2~mv2.webp",
-    "https://static.wixstatic.com/media/c837a6_00d04f5724314ec689946e22d4b8b49c~mv2.png/v1/fill/w_261,h_147,q_90/c837a6_00d04f5724314ec689946e22d4b8b49c~mv2.webp",
-    "https://static.wixstatic.com/media/c837a6_184d980948c744d6a2ce33533cfaab1e~mv2.png/v1/fill/w_260,h_147,q_90/c837a6_184d980948c744d6a2ce33533cfaab1e~mv2.webp",
-    "https://static.wixstatic.com/media/c837a6_59362db94e2d47f299879adb4156d23b~mv2.png/v1/fill/w_261,h_147,q_90/c837a6_59362db94e2d47f299879adb4156d23b~mv2.webp",
-    "https://static.wixstatic.com/media/c837a6_e4058f072b2c40bf9e8857c180342582~mv2.png/v1/fill/w_260,h_147,q_90/c837a6_e4058f072b2c40bf9e8857c180342582~mv2.webp",
-    "https://static.wixstatic.com/media/c837a6_59362db94e2d47f299879adb4156d23b~mv2.png/v1/fill/w_261,h_147,q_90/c837a6_59362db94e2d47f299879adb4156d23b~mv2.webp",
-    "https://static.wixstatic.com/media/c837a6_e4058f072b2c40bf9e8857c180342582~mv2.png/v1/fill/w_260,h_147,q_90/c837a6_e4058f072b2c40bf9e8857c180342582~mv2.webp",
-    "https://static.wixstatic.com/media/c837a6_59362db94e2d47f299879adb4156d23b~mv2.png/v1/fill/w_261,h_147,q_90/c837a6_59362db94e2d47f299879adb4156d23b~mv2.webp",
-    "https://static.wixstatic.com/media/c837a6_e4058f072b2c40bf9e8857c180342582~mv2.png/v1/fill/w_260,h_147,q_90/c837a6_e4058f072b2c40bf9e8857c180342582~mv2.webp"
-]
+import { useSelector } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import DeleteModal from '../../DeleteModal';
 
 const BrandsSection = () => {
+    const [brands, setBrands] = useState([]);
+    const auth = useSelector(state => state.auth);
+    const [isDeleting, setIsDeleting] = useState(false);
+
+    useEffect(() => {
+        axios.get(`${env.API_URL}/brands`)
+        .then(response => setBrands(response.data))
+        .catch(error => console.log(error));
+    }, []);
+
+    const handleDelete = () => {
+        axios.delete(`${env.API_URL}/brands/${isDeleting._id}`)
+        .then(response => {
+            setBrands(brands.filter(brand => brand._id !== isDeleting._id));
+            setIsDeleting(false);
+        })
+        .catch(error => console.log(error));
+    }
+
     return (
         <section id='brands_section'>
             <h2 style={{fontWeight: 'bold'}}>Marcas</h2>
+
+            {isDeleting && <DeleteModal name={isDeleting.name} handleDelete={handleDelete} handleClose={() => setIsDeleting(false)} />}
 
             <div className="brands_container">
                 <div className="brands_slider" style={{width: `${200 * brands.length}px`}}>
                     {brands.map((brand, index) => (
                         <div key={index} className="brands_item">
-                            <img src={brand} alt="brand" />
+                            <img src={brand.logo} alt="brand" />
+                            {auth.roles.includes('admin') && <FontAwesomeIcon icon={faTrash} 
+                            onClick={() => setIsDeleting(brand)}
+                            style={{
+                                color: 'var(--color-danger)',
+                                position: 'absolute',
+                                top: 10,
+                                right: 10,
+                                cursor: 'pointer'
+                            }} />}
                         </div>
                     ))}
                 </div>
@@ -30,7 +54,16 @@ const BrandsSection = () => {
                 <div className="brands_slider" style={{width: `${200 * brands.length}px`}}>
                     {brands.map((brand, index) => (
                         <div key={index} className="brands_item">
-                            <img src={brand} alt="brand" />
+                            <img src={brand.logo} alt="brand" />
+                            {auth.roles.includes('admin') && <FontAwesomeIcon icon={faTrash} 
+                            onClick={() => setIsDeleting(brand)}
+                            style={{
+                                color: 'var(--color-danger)',
+                                position: 'absolute',
+                                top: 10,
+                                right: 10,
+                                cursor: 'pointer'
+                            }} />}
                         </div>
                     ))}
                 </div>

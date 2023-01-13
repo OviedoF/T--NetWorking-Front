@@ -1,0 +1,100 @@
+.create-form{
+    background-color: var(--form-bg-color);
+    padding: 40px 20px;
+    border-radius: 10px;
+    width: 40%;
+
+    .form_group{
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+
+        label{
+            margin-bottom: 10px;
+
+            &.file_label{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 5px;
+                cursor: pointer;
+                padding: 10px;
+                color: white;
+                font-size: 16px;
+                margin-bottom: 0;
+                background-color: var(--card-color);
+                border-radius: 50px;
+
+                &:hover{
+                    background-color: black;
+
+                }
+            }
+        }
+
+        .preview_image{
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            margin: 10px auto;
+        }
+
+        input{
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid black;
+            outline: none;
+            font-size: 16px;
+            color: black;
+
+            &:focus{
+                border: 1px solid var(--card-color);
+            }
+
+            &[type="file"]{
+                display: none;
+            }
+        }
+
+        textarea{
+            color: black;
+            border: 1px solid black;
+        }
+    }
+
+    .error{
+        font-size: 14px;
+        margin-top: 5px;
+        width: 100%;
+        background-color: var(--color-danger);
+        padding: 10px;
+        text-align: center;
+        color: white;
+        margin-bottom: 10px;
+    }
+
+    .success{
+        font-size: 14px;
+        margin-top: 5px;
+        width: 100%;
+        background-color: var(--color-success);
+        padding: 10px;
+        text-align: center;
+        color: white;
+        margin-bottom: 10px;
+    }
+
+    button{
+        width: 100%;
+        padding: 10px;
+        background-color: var(--card-color);
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 50px;
+    }
+}

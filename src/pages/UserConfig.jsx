@@ -57,6 +57,8 @@ const UserConfig = () => {
             username: auth.username,
             privacyType: auth.privacyType
         });
+
+        window.scrollTo(0, 0);
     }, []);
 
     const handleSubmit = (e) => {

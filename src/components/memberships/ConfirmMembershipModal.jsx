@@ -7,7 +7,7 @@ import { TailSpin } from 'react-loader-spinner';
 import { authLogin } from '../../redux/actions/auth.actions';
 import MercadoPagoMembresia from '../actualize-membership/MercadoPagoMembresía';
 
-const ConfirmMembershipModal = ({membership, setIsPurchasing}) => {
+const ConfirmMembershipModal = ({membership, setIsPurchasing, period}) => {
     const auth = useSelector(state => state.auth);
     const [isLoading, setIsLoading] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
@@ -36,7 +36,7 @@ const ConfirmMembershipModal = ({membership, setIsPurchasing}) => {
     const handleSend = (e) => {
         e.preventDefault();
         setIsLoading(true);
-        axios.post(`${env.API_URL}/membershipPayment/success`, {membership: membership._id}, {headers: {
+        axios.post(`${env.API_URL}/membershipPayment/success`, {membership: membership._id, period}, {headers: {
             idbuyer: auth._id
         }})
         .then(res => {

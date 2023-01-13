@@ -5,9 +5,8 @@ import env from '../../env';
 import CategoryFilter from './CategoryFilter';
 import PricesFilter from './PricesFilter';
 
-const ProductsFilter = ({setProducts, setFilters}) => {
+const ProductsFilter = ({setProducts, setFilters, filters}) => {
     const [categories, setCategories] = useState([]);
-    const [filter, setFilter] = useState({});
   
     useEffect(() => {
       axios
@@ -17,15 +16,15 @@ const ProductsFilter = ({setProducts, setFilters}) => {
     }, []);
   
     const handleChange = (name, value) => {
-      setFilter({
-        ...filter,
+      setFilters({
+        ...filters,
         [name]: value
       })
     }
   
     const handleSubmit = () => {
       console.log('filtrar')
-      axios.post(`${env.API_URL}/product/filters`, filter)
+      axios.post(`${env.API_URL}/product/filters`, filters)
         .then(res => {
           setProducts(res.data);
           console.log(res.data)
@@ -40,7 +39,7 @@ const ProductsFilter = ({setProducts, setFilters}) => {
           <div className={'filter_categories'}>
             <p style={{color: 'black'}}>CATEGORÍA</p>
 
-            <CategoryFilter categories={categories} handleChange={handleChange} />
+            <CategoryFilter categories={categories} handleChange={handleChange} filters={filters} />
           </div>
 
           <div className={'filter_prices'}>
@@ -49,17 +48,17 @@ const ProductsFilter = ({setProducts, setFilters}) => {
             <PricesFilter handleChange={handleChange}/>
           </div>
 
-          <div className={'actions_filters'}>
+          {/* <div className={'actions_filters'}>
             
             <button className={'clear'} onClick={() => {
-              setFilter({})
+              setFilters({})
               handleSubmit()
             }} style={{background: 'var(--gray-background)', border: 'none'}}>
               Limpiar filtros
             </button>
 
             <button className={'goFilter'} onClick={() => handleSubmit()}>Filtrar</button>
-          </div>
+          </div> */}
         </section>
     );
 }

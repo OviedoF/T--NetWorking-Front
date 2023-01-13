@@ -41,6 +41,8 @@ import TermsAndConditions from '../pages/TermsAndConditions';
 import FAQS from '../pages/FAQS';
 import CreateHeroCard from '../pages/admin/CreateHeroCard';
 import CreateFAQ from '../pages/admin/CreateFAQ';
+import CreateBrand from '../pages/admin/CreateBrand';
+import ManageBiznesInfo from '../pages/admin/manage/ManageBiznesInfo';
 
 const AppRouter = () => {
     const dispatch = useDispatch();
@@ -147,6 +149,10 @@ const AppRouter = () => {
                         <Route exact path={routes.createHeroCard} element={ <ProtectedRoute condition={'admin'}> <CreateHeroCard /> </ProtectedRoute> }/>
 
                         <Route exact path={routes.createFAQ} element={ <ProtectedRoute condition={'admin'}> <CreateFAQ /> </ProtectedRoute> }/>
+
+                        <Route exact path={routes.createBrand} element={ <ProtectedRoute condition={'admin'}> <CreateBrand /> </ProtectedRoute> }/>
+                        
+                        <Route exact path={routes.manageInfo} element={ <ProtectedRoute condition={'admin'}> <ManageBiznesInfo /> </ProtectedRoute> }/>
 
                         <Route path={'/*'} element={<PageNotFound />} />
                 </Route>

@@ -13,15 +13,11 @@ const PricesFilter = ({handleChange}) => {
 
   return (
     <div className={styles.price_inputs_container}>
-      <input type="text" name="" id="" placeholder="Min" 
+      <input style={{color: 'black'}} type="text" name="" id="" placeholder="Min" 
       onChange={(e) => setPricesSelected({...pricesSelected, minPrice: parseInt(e.target.value)})}/>
 
-      <input type="text" name="" id="" placeholder="Max" 
+      <input style={{color: 'black'}} type="text" name="" id="" placeholder="Max" 
       onChange={(e) => setPricesSelected({...pricesSelected, maxPrice: parseInt(e.target.value)})}/>
-
-      <button>
-        <FontAwesomeIcon icon={faChevronRight} />
-      </button>
     </div>
   );
 };

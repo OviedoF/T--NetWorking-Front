@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import RegisterForm from '../components/auth/register/RegisterForm';
 
 const Register = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <main style={{minHeight: '100vh', display: 'flex'}}>
             <section style={{width: '100%', minHeight: '100%', display: 'flex',

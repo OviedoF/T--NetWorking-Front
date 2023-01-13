@@ -49,7 +49,7 @@ const ContactForm = () => {
             <div className="form-group">
                 <label htmlFor="message">Mensaje</label>
                 <textarea className='contact_form_input' onChange={(e) => handleChange(e)} name="message" id="message" cols="30" rows="5" placeholder='Ingrese su mensaje'
-                style={{height: '80px', padding: 0, margin: 0}}></textarea>
+                style={{height: '80px', padding: 10, margin: 0, fontFamily: 'inherit'}}></textarea>
             </div>
 
             <button type="submit" onClick={(e) => handleSubmit(e)} className='contact_form_button'>Enviar</button>

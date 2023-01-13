@@ -1,11 +1,34 @@
 import { faFacebook, faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import axios from 'axios';
+import env from '../../env';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import routes from '../../router/routes';
 import './Footer.scss';
 
 const Footer = () => {
+    const [data, setData] = useState({});
+    const [error, setError] = useState(false);
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        axios.get(`${env.API_URL}/networking`).then((response) => {
+            setData(response.data);
+        })
+            .catch((err) => {
+                setError(true);
+        });
+
+        axios.get(`${env.API_URL}/categories`).then((response) => {
+            setCategories(response.data);
+        })
+            .catch((err) => {
+                setError(true);
+        });
+
+    }, []);
+
     return (
         <footer data-animation="appear">
             <div className="footer_section">
@@ -14,11 +37,11 @@ const Footer = () => {
                 </div>
 
                 <div className="footer_section_content">
-                    <p>Santa Magdalena 75, of. 304</p>
-                    <p>Metro Los Leones</p>
-                    <p>Providencia – SCL</p>
-                    <p>correo contacto@biznes.cl</p>
-                    <p>+56 9999999</p>
+                    <p>{data.street}</p>
+                    <p>{data.city}</p>
+                    <p>{data.region}</p>
+                    <p>{data.email}</p>
+                    <p>{data.phone}</p>
 
                     <div className="footer_section_content_social">
                         <FontAwesomeIcon icon={faFacebook} />
@@ -35,13 +58,14 @@ const Footer = () => {
                 </div>
 
                 <div className="footer_section_content">
-                    <p>Tarjetas de presentación</p>
-                    <p>Tarjetas de madera</p>
-                    <p>Tarjetas de PVC</p>
-                    <p>Tarjetas de Metal</p>
-                    <p>Tags</p>
-                    <p>Biznes Band</p>
-                    <p>Accesorios</p>
+                    {categories.map((category) => {
+                        return (
+                            <Link key={category.id} to={`${routes.products}?category=${category.name}`}>
+                                {category.name}
+                            </Link>
+                        );
+                    }   
+                    )}
                 </div>
             </div>
 
@@ -51,9 +75,8 @@ const Footer = () => {
                 </div>
 
                 <div className="footer_section_content">
-                    <p>Contáctanos</p>
-                    <p>Asistencia</p>
-                    <p>Acerca de</p>
+                    <Link to={`${routes.home}#contact_form_container`}>Contáctanos</Link>
+                    <Link to={`${routes.aboutWe}#contact_form_container`}>Sobre nosotros</Link>
                 </div>
             </div>
 
@@ -63,9 +86,9 @@ const Footer = () => {
                 </div>
 
                 <div className="footer_section_content">
-                    <p>Envío y devoluciones</p>
+                    <Link to={routes.termsAndConditions}>Envío y devoluciones</Link>
                     <Link to={routes.termsAndConditions}>Términos y condiciones</Link>
-                    <p>Métodos de pago</p>
+                    <Link to={routes.termsAndConditions}>Métodos de pago</Link>
                     <Link to={routes.faqs}>FAQ</Link>
                 </div>
             </div>

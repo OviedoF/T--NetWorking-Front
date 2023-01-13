@@ -27,6 +27,8 @@ const ActualizeMembership = () => {
         axios.get(`${env.API_URL}/membership`)
         .then(res => setMemberships(res.data))
         .catch(err => console.log(err));
+
+        window.scrollTo(0, 0);
     }, []);
 
     useEffect(() => {
@@ -56,7 +58,7 @@ const ActualizeMembership = () => {
                     totalPrice,
                     period,
                     billingDay: new Date().getDate()
-            }} setIsPurchasing={setIsPurchasing}/>}
+            }} setIsPurchasing={setIsPurchasing} period={period}/>}
 
             <div className="memberships_container">
                 {memberships.map((membership, index) => (

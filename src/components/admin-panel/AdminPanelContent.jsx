@@ -42,6 +42,11 @@ const adminPanelActions = [
         path: routes.manageCategories
     },
     {
+        name: "Administrar información de la empresa",
+        category: 'manage',
+        path: routes.manageInfo
+    },
+    {
         name: 'Crear usuario',
         category: 'create',
         path: routes.createModUser
@@ -75,9 +80,13 @@ const adminPanelActions = [
         name: 'Crear FAQ',
         category: 'create',
         path: routes.createFAQ
+    },
+    {
+        name: 'Crear imágen de "marcas"',
+        category: 'create',
+        path: routes.createBrand
     }
 ];
-
 
 const AdminPanelContent = () => {
     const [manageActions, setManageActions] = useState([]);

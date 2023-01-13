@@ -33,6 +33,11 @@ const inputs = [
         name: 'price',
         type: 'number',
         label: 'Precio del producto'
+    },
+    {
+        name: 'priceWithOffer',
+        type: 'number',
+        label: 'Precio con oferta'
     }
 ]
 
@@ -133,7 +138,7 @@ const ManageProducts = () => {
 
             <AnimatePresence>
                 {selectedId && 
-                    <motion.div layoutId={selectedId} style={{position: 'fixed', background: '#00000080', width: '100vw', height: '100vh', top: 0, left: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 9999}}>
+                    <motion.div layoutId={selectedId} style={{position: 'fixed', background: '#00000080', width: '100vw', height: '100vh', top: 0, left: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: '999999999999999999999999999'}}>
                         <EditItemForm inputs={inputs} item={productSelected} form={form} setForm={setForm}
                         handleSubmit={handleSubmit} width='25%' success={success} errores={errores} 
                         reset={reset}/>

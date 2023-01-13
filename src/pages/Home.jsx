@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Anoucement from '../components/home/anoucement/Anoucement';
 import BrandsSection from '../components/home/brands/BrandsSection';
 import CommentsSection from '../components/home/comments/CommentsSection';
@@ -10,6 +10,10 @@ import ProductsContainer from '../components/home/products/ProductsContainer';
 import StepsSection from '../components/home/steps/StepsSection';
 
 const Home = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <div>
             <SliderHome />

@@ -1,0 +1,87 @@
+.modal_delete{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .delete_brand_modal{
+        width: 500px;
+        height: 300px;
+        background-color: white;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+
+        h2{
+            font-size: 30px;
+            color: black !important;
+            margin-bottom: 20px;
+        }
+
+        p{
+            font-size: 20px;
+            color: black !important;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .delete_brand_modal_buttons{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 20px;
+
+            button{
+                width: 45%;
+                height: 40px;
+                border-radius: 10px;
+                margin: 0 10px;
+                border: none;
+                cursor: pointer;
+                font-size: 20px;
+                transition: all 0.3s;
+
+                &.btn-danger{
+                    background-color: var(--color-danger);
+                }
+
+                &.btn-secondary{
+                    background-color: var(--color-success);
+                }
+
+                &:hover{
+                    transform: scale(1.1);
+                }
+            }
+
+            .delete_brand_modal_button{
+                background-color: red;
+                color: white;
+            }
+
+            .delete_brand_modal_button_cancel{
+                background-color: white;
+                color: black;
+            }
+        }
+    }
+
+    .close_modal{
+        position: absolute;
+        top: 30px;
+        right: 50px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+}

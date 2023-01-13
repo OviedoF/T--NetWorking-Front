@@ -33,6 +33,7 @@ export default {
     createMembership: '/admin-panel/create-membership',
     createHeroCard: '/admin-panel/create-presentation-card',
     createFAQ: '/admin-panel/create-faq',
+    createBrand: '/admin-panel/create-brand',
 
     // Admin Manage
     manageCategories: '/admin-panel/manage-categories',
@@ -40,6 +41,7 @@ export default {
     manageCoupons: '/admin-panel/manage-coupons',
     manageNews: '/admin-panel/manage-news',
     manageUsers: '/admin-panel/manage-users',
-    manageOrders: '/admin-panel/manage-orders'
+    manageOrders: '/admin-panel/manage-orders',
+    manageInfo: '/admin-panel/manage-info',
 
 }
