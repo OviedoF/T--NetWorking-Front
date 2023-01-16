@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import env from '../../env';
+import { authLogin } from '../../redux/actions/auth.actions';
 import MercadoPagoPaymentCompra from './MercadoPagoPaymentCompra';
 import './PaymentOptions.scss'
 
@@ -11,25 +12,33 @@ const formatNumbers = (number) => {
     return number.toString().replace(exp,rep);
 }
 
-const PaymentOptions = ({products}) => {
+const PaymentOptions = ({products, setSuccess}) => {
     const [total, setTotal] = useState(0);
     const [totalWithCoupon, setTotalWithCoupon] = useState(0);
     const [aplyingCoupon, setAplyingCoupon] = useState(false);
     const [paymentID, setPaymentID] = useState(null);
     const couponCode = useRef();
     const auth = useSelector(state => state.auth);
+    const dispatch = useDispatch();
 
     const handleLocalhost = () => {
-        axios.post(`${env.API_URL}/payments/success/${auth._id}`, {})
-        .then(res => console.log(res))
+        axios.post(`${env.API_URL}/payments/try/${auth._id}`, {})
+        .then(res => {
+            dispatch(authLogin(res.data));
+            setSuccess(true);
+        })
         .catch(err => console.log(err));
     }
-
 
     useEffect(() => {
         let total = 0;
         products.forEach(product => {
             total += product.price * product.quantity;
+            console.log(auth);
+
+            if(auth.membershipDiscount) {
+                total -= (total * (auth.membershipDiscount / 100));
+            }
         });
         setTotal(total.toFixed(0));
     }, [products]);
@@ -58,6 +67,14 @@ const PaymentOptions = ({products}) => {
                 </span>
             </h3>
 
+            {
+                auth.membershipDiscount && (
+                    <div className='discount'>
+                        <p style={{marginBottom: 30}}>Se aplicó descuento por membresía: {auth.membershipDiscount}%</p>
+                    </div>
+                )
+            }
+
             <button className='apply' onClick={() => setAplyingCoupon(!aplyingCoupon)}>Aplicar cupón</button>
 
             {aplyingCoupon && (
@@ -71,7 +88,7 @@ const PaymentOptions = ({products}) => {
             <MercadoPagoPaymentCompra cart={products} setPaymentID={setPaymentID} 
             paymentID={paymentID}/>
 
-            {/* <button className='buy' onClick={() => handleLocalhost()}>Comprar en localhost</button> */}
+            <button className='buy' onClick={() => handleLocalhost()}>Comprar en localhost</button>
 
 
             

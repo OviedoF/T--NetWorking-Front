@@ -45,7 +45,8 @@ const MembershipCard = ({membership, setActiveMembership, activeMembership, subt
                     ...membership,
                     period: period
                 });
-            }}>
+            }} style={{backgroundColor: membership._id === auth.membership[0]._id && 'var(--color-logo)'}}>
+                
                 {activeMembership._id === membership._id ? 'Seleccionado' : 
                 membership._id !== auth.membership[0]._id ? 'Seleccionar' : 'Actual'
                 }

@@ -11,12 +11,16 @@ import '../../../components/admin-panel/CardStyle.scss'
 import { AnimatePresence } from "framer-motion";
 import logo from '../../../assets/logo.png';
 import EditOrders from '../../../components/admin-panel/edit-order/EditOrders'
+import { faDochub } from "@fortawesome/free-brands-svg-icons";
+import { Link } from "react-router-dom";
+import routes from "../../../router/routes";
 
 const ManageOrders = () => {
     const [purchase, setPurchase] = useState([]);
     const [selectedId, setSelectedId] = useState(null);
     const [currentPurchase, setCurrentPurchase] = useState(null);
     const auth = useSelector(state => state.auth);
+    console.log(purchase);
 
     useEffect(() => {
         axios.get(`${env.API_URL}/payments/orders`, {
@@ -42,7 +46,11 @@ const ManageOrders = () => {
                             <button className="btn" type="button" onClick={() => setSelectedId(purchase._id)}>{purchase.state}</button>
 
                             <h3 style={{marginRight: 30}}> El comprador es: {purchase.buyer.firstName} {purchase.buyer.lastName} </h3>
-                            <h3 style={{marginRight: 30}}> Id de la orden: {purchase._id} </h3>
+                            <h3 style={{marginRight: 30}}> Fecha de la orden: {purchase.createdAt} </h3>
+
+                            <Link to={`${routes.manageOrders}/${purchase._id}`} style={{textDecoration: 'none', position: 'absolute', right: 100}}>
+                                <FontAwesomeIcon icon={faDochub} className='view_more' color="black"/>
+                            </Link>
 
                             <div className="card__buttons">
                                 <FontAwesomeIcon icon={faTrash} className='delete' />

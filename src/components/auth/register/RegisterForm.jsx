@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import logo from '../../../assets/logo.png';
 import env from '../../../env';
 import routes from '../../../router/routes';
-import { sendRegisterEmail } from '../../../helpers/sendEmail';
 import '../../admin-panel/CreateForm.scss';
 
 const RegisterForm = () => {
@@ -19,7 +18,7 @@ const RegisterForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if(!form.firstName || !form.lastName || !form.email || !form.password || !form.confirmPassword || !form.username || !form.cellphone || !form.userId || !form.images) {
+        if(!form.firstName || !form.lastName || !form.email || !form.password || !form.confirmPassword || !form.username || !form.cellphone || !form.images) {
             setError('Todos los campos son obligatorios');
             setSuccess(false);
             return;
@@ -33,7 +32,6 @@ const RegisterForm = () => {
         formData.append('confirmPassword', form.confirmPassword);
         formData.append('username' , form.username);
         formData.append('cellphone', form.phone);
-        formData.append('userId', form.userId);
         formData.append('images', form.images);
 
         axios.post(`${env.API_URL}/auth/register`, formData, {
@@ -45,14 +43,22 @@ const RegisterForm = () => {
         .then(res => {
             setSuccess(true)
             setError(false);
-            sendRegisterEmail(res.data.userData.email);
-            setTimeout(() => {
-                window.location.href = routes.login;
-            }, 5000);
-    
-            const timer = setInterval(() => {
-                setRedirecting(redirecting - 1);
-            }, 1000);
+
+            axios.post(`${env.API_URL}/emails/registry`, {
+                email: form.email
+            })
+            .then(res => {
+                console.log(res);
+
+                
+                setTimeout(() => {
+                    window.location.href = routes.login;
+                }, 5000);
+        
+                const timer = setInterval(() => {
+                    setRedirecting(redirecting - 1);
+                }, 1000);
+            } )
         })
         .catch(err => {
             if(err.status === 400) {

@@ -36,9 +36,7 @@ const ConfirmMembershipModal = ({membership, setIsPurchasing, period}) => {
     const handleSend = (e) => {
         e.preventDefault();
         setIsLoading(true);
-        axios.post(`${env.API_URL}/membershipPayment/success`, {membership: membership._id, period}, {headers: {
-            idbuyer: auth._id
-        }})
+        axios.post(`${env.API_URL}/membershipPayment/success/${auth._id}/${membership._id}/${period}`)
         .then(res => {
             setIsLoading(false);
             setIsSuccess(true);
@@ -92,20 +90,22 @@ const ConfirmMembershipModal = ({membership, setIsPurchasing, period}) => {
                 <h1>Confirmar membresía</h1>
                 <p>¿Estás seguro de que actualizar a membresía {membership.name}?</p>
                 <p className="disclaimer">Al actualizar la membresía, el mes de tu membresía actual se cobrará de todas formas.</p>
+                <p className="disclaimer">UNA VEZ PAGADO, HAGA CLICK EN "VOLVER AL SITIO".</p>
 
                 <div className="buttons">
                     <button className='cancel' onClick={() => setIsPurchasing(false)}>Cancelar</button>
-                    <button className='confirm' onClick={(e) => handleSend(e)}>Confirmar</button>
+                    
+                    {paymentLink && 
+                        <a href={paymentLink} className='confirm'>
+                            <button className='confirm'>Confirmar</button>
+                        </a>
+                    }
+
+                    <button className='confirm' onClick={(e) => handleSend(e)}>Confirmar Local</button>
                 </div>
 
                 <MercadoPagoMembresia paymentID={paymentID} setPaymentID={setPaymentID} 
-                cart={membership} setPaymentLink={setPaymentLink} />
-                
-                {paymentLink && 
-                    <a href={paymentLink} target="_blank" rel="noreferrer" style={{color: 'black', textAlign: 'center'}}>
-                        {paymentLink}
-                    </a>
-                }
+                cart={membership} setPaymentLink={setPaymentLink} membership={membership._id} period={period} />
                 
             </form>
         </div>

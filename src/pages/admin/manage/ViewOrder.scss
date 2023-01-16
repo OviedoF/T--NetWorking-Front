@@ -1,0 +1,41 @@
+#view_order_container{
+    h1{
+        font-size: 2rem;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    h2{
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        margin-top: 50px;
+    }
+
+    h3{
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        margin-left: 1rem;
+    }
+
+    p{
+        font-size: 1rem;
+        font-weight: 400;
+        margin-bottom: 1rem;
+        margin-left: 1rem;
+    }
+
+    img{
+        width: auto;
+        height: 200px;
+        margin-left: 20px;
+        object-fit: cover;
+    }
+
+    a{
+        color: #000;
+        text-decoration: none;
+    }
+}

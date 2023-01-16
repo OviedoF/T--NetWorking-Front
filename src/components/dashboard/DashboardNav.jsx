@@ -30,7 +30,7 @@ export default function DashboardNav({auth}) {
                 
                 <motion.li transition={{duration: transitionDuration*1.4}} animate={{opacity: 1, top: 0}} ><Link className={location.pathname === "/user-config" ? 'active' : ''} to={routes.userConfig}>Configurar perfil</Link></motion.li>
                 
-                <motion.li transition={{duration: transitionDuration*1.8}} animate={{opacity: 1, top: 0}} ><Link className={location.pathname === "/user-history" ? 'active' : ''} to={routes.history}>Historial de compras</Link></motion.li>
+                <motion.li transition={{duration: transitionDuration*1.8}} animate={{opacity: 1, top: 0}} ><Link className={location.pathname === "/user-history" ? 'active' : ''} to={routes.userHistory}>Historial de compras</Link></motion.li>
                 
                 <motion.li transition={{duration: transitionDuration*2}} animate={{opacity: 1, top: 0}} ><Link className={location.pathname === "/user-search" ? 'active' : ''} to={routes.userSearch}>Usuarios</Link></motion.li>
                 

@@ -67,11 +67,6 @@ const adminPanelActions = [
         path: routes.createNews
     },
     {
-        name: 'Crear categoría',
-        category: 'create',
-        path: routes.createCategory
-    },
-    {
         name: 'Crear tarjeta de presentación',
         category: 'create',
         path: routes.createHeroCard
@@ -85,6 +80,11 @@ const adminPanelActions = [
         name: 'Crear imágen de "marcas"',
         category: 'create',
         path: routes.createBrand
+    },
+    {
+        name: 'Manejar Comentarios',
+        category: 'manage',
+        path: routes.manageComments
     }
 ];
 

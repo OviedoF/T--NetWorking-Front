@@ -3,7 +3,7 @@ import axios from 'axios';
 import env from "../../env";
 import { useSelector } from "react-redux";
 
-const MercadoPagoMembresia = ({ cart, setPaymentID, paymentID, setPaymentLink }) => {
+const MercadoPagoMembresia = ({ cart, setPaymentID, paymentID, setPaymentLink, membership, period }) => {
   const auth = useSelector(state => state.auth);
   console.log(cart);
   const [state, setState] = useState(false);
@@ -11,7 +11,9 @@ const MercadoPagoMembresia = ({ cart, setPaymentID, paymentID, setPaymentLink })
   const FORM_ID = "payment-form";
 
   const getData = async () => {
-    const response = await axios.post(`${env.API_URL}/membershipPayment`, { cart, userid: auth._id });
+    const response = await axios.post(`${env.API_URL}/membershipPayment`, { cart, userid: auth._id, 
+    membershipid: membership._id, period: period
+    });
     const data = response.data;
     console.log('peticion hecha');
 
@@ -41,9 +43,9 @@ const MercadoPagoMembresia = ({ cart, setPaymentID, paymentID, setPaymentLink })
   }, []);
 
   return (
-    <>
+    <div style={{display: 'none'}}>
       <form id={FORM_ID} method="GET" />
-    </>
+    </div>
   );
 };
 

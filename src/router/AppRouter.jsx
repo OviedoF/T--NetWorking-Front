@@ -43,6 +43,10 @@ import CreateHeroCard from '../pages/admin/CreateHeroCard';
 import CreateFAQ from '../pages/admin/CreateFAQ';
 import CreateBrand from '../pages/admin/CreateBrand';
 import ManageBiznesInfo from '../pages/admin/manage/ManageBiznesInfo';
+import ViewOrder from '../pages/admin/manage/ViewOrder';
+import PaymentSuccess from '../pages/PaymentSuccess';
+import ManageComments from '../pages/admin/manage/ManageComments';
+import UserHistory from '../pages/UserHistory';
 
 const AppRouter = () => {
     const dispatch = useDispatch();
@@ -92,6 +96,8 @@ const AppRouter = () => {
                         <Route exact path={routes.aboutWe} element={<AboutWe />} />
                         <Route exact path={routes.termsAndConditions} element={<TermsAndConditions />} />
                         <Route exact path={routes.faqs} element={<FAQS />} />
+                        <Route exact path={routes.paymentSuccess} element={<PaymentSuccess />} />
+                        <Route exact path={routes.userHistory} element={<UserHistory />} />
 
                         {/* ADMIN ROUTES */}
                         <Route exact path={routes.adminPanel} element={ 
@@ -144,6 +150,8 @@ const AppRouter = () => {
 
                         <Route exact path={routes.manageOrders} element={ <ProtectedRoute condition={'admin'}> <ManageOrders /> </ProtectedRoute> }/>
 
+                        <Route exact path={`${routes.manageOrders}/:id`} element={ <ProtectedRoute condition={'admin'}> <ViewOrder /> </ProtectedRoute> }/>
+
                         <Route exact path={routes.editAdmin} element={ <ProtectedRoute condition={'admin'}> <EditAdminForm /> </ProtectedRoute> }/>
 
                         <Route exact path={routes.createHeroCard} element={ <ProtectedRoute condition={'admin'}> <CreateHeroCard /> </ProtectedRoute> }/>
@@ -153,6 +161,8 @@ const AppRouter = () => {
                         <Route exact path={routes.createBrand} element={ <ProtectedRoute condition={'admin'}> <CreateBrand /> </ProtectedRoute> }/>
                         
                         <Route exact path={routes.manageInfo} element={ <ProtectedRoute condition={'admin'}> <ManageBiznesInfo /> </ProtectedRoute> }/>
+
+                        <Route exact path={routes.manageComments} element={ <ProtectedRoute condition={'admin'}> <ManageComments /> </ProtectedRoute> }/>
 
                         <Route path={'/*'} element={<PageNotFound />} />
                 </Route>

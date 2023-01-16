@@ -19,6 +19,8 @@ export default {
     aboutWe: '/about-we',
     termsAndConditions: '/terms-and-conditions',
     faqs: '/faqs',
+    paymentSuccess: '/payment-success',
+    userHistory: '/user-history',
 
     // Admin Create/edit
     createCategory: '/admin-panel/create-category',
@@ -43,5 +45,6 @@ export default {
     manageUsers: '/admin-panel/manage-users',
     manageOrders: '/admin-panel/manage-orders',
     manageInfo: '/admin-panel/manage-info',
+    manageComments: '/admin-panel/manage-comments',
 
 }
