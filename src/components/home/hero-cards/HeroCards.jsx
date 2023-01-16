@@ -15,7 +15,7 @@ const HeroCards = () => {
 
     useEffect(() => {
         axios.get(`${env.API_URL}/heroCard`)
-        .then(res => console.log(res.data))
+        .then(res => setContent(res.data))
         .catch(err => alert('Ocurrió un error al cargar las tarjetas'));
     }, []);
 
@@ -32,7 +32,7 @@ const HeroCards = () => {
         .catch(err => alert('Ocurrió un error al eliminar la tarjeta'));
     }
 
-    return (
+    if(content.length > 0) return (
         <div className='hero_cards_container'>
             
             {content.map((item, index) => {
