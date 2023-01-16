@@ -25,9 +25,9 @@ const Navbar = () => {
 
     return (
         <div style={{marginTop: 70}}>
-            <nav id="navbar" class="">
-                <div class="nav-wrapper">
-                    <div class="logo" style={{padding: 1}}>
+            <nav id="navbar">
+                <div className="nav-wrapper">
+                    <div className="logo" style={{padding: 1}}>
                         <Link to={routes.home}>
                             <img src={logo} alt="logo" style={{height: '100%', objectFit: 'cover', transform: 'scale(3)'}} />
                         </Link>
@@ -51,13 +51,13 @@ const Navbar = () => {
                 </div>
             </nav>
 
-            <div class="menuIcon" onClick={() => setMenuToggle(!menuToggle)}>
-                <span class="icon icon-bars"></span>
-                <span class="icon icon-bars overlay"></span>
+            <div className="menuIcon" onClick={() => setMenuToggle(!menuToggle)}>
+                <span className="icon icon-bars"></span>
+                <span className="icon icon-bars overlay"></span>
             </div>
 
 
-            <div class={menuToggle ? 'overlay-menu active' : 'overlay-menu'}>
+            <div className={menuToggle ? 'overlay-menu active' : 'overlay-menu'}>
                 <FontAwesomeIcon icon={faXmark} onClick={() => setMenuToggle(false)} id='close-overlay-menu' />
 
                 <ul id="menu">

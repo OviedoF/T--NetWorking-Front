@@ -10,7 +10,6 @@ const formatNumbers = (number) => {
 }
 
 const ProductCard = ({product, width}) => {
-    console.log(product)
     const cardStyle = {marginLeft: 0, width, color: 'inherit', textDecoration: 'none', margin: 5,
         borderRadius: 5, height: 350,
         border: '1px solid #ccc',

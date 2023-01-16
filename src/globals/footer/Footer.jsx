@@ -60,7 +60,7 @@ const Footer = () => {
                 <div className="footer_section_content">
                     {categories.map((category) => {
                         return (
-                            <Link key={category.id} to={`${routes.products}?category=${category.name}`}>
+                            <Link key={category._id} to={`${routes.products}?category=${category.name}`}>
                                 {category.name}
                             </Link>
                         );

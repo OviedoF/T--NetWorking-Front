@@ -15,7 +15,7 @@ const HeroCards = () => {
 
     useEffect(() => {
         axios.get(`${env.API_URL}/heroCard`)
-        .then(res => setContent(res.data))
+        .then(res => console.log(res.data))
         .catch(err => alert('Ocurrió un error al cargar las tarjetas'));
     }, []);
 

@@ -5,6 +5,7 @@ import ProductsFilter from './ProductsFilter';
 import ProductCard from '../../globals/ProductCard';
 import './ProductsContainer.scss';
 import { useSearchParams } from 'react-router-dom';
+import {v4 as uuidv4} from 'uuid';
 
 const ProductsContainer = ({}) => {
     const [products, setProducts] = useState([]);
@@ -57,7 +58,7 @@ const ProductsContainer = ({}) => {
 
             <div className='products_container' id='products_container' data-animation="appear">
                 {products && products.map((el, index) => {
-                    return <ProductCard key={index} product={el} width={windowsSize > 500 ? '23%' : '100%'} />
+                    return <ProductCard key={uuidv4()} product={el} width={windowsSize > 500 ? '23%' : '100%'} />
                 })}
             </div> 
         </div>
