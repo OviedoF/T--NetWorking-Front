@@ -52,7 +52,7 @@ const FAQS = () => {
                     </p>
 
                     
-                    {auth.roles.includes('admin') && <FontAwesomeIcon icon={faTrash} 
+                    {auth.logged && auth.roles.includes('admin') && <FontAwesomeIcon icon={faTrash} 
                             onClick={() => setIsDeleting(faq)}
                             style={{
                                 color: 'var(--color-danger)',

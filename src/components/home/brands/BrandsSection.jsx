@@ -38,7 +38,7 @@ const BrandsSection = () => {
                     {brands.map((brand, index) => (
                         <div key={index} className="brands_item">
                             <img src={brand.logo} alt="brand" />
-                            {auth.roles.includes('admin') && <FontAwesomeIcon icon={faTrash} 
+                            {auth.logged && auth.roles.includes('admin') && <FontAwesomeIcon icon={faTrash} 
                             onClick={() => setIsDeleting(brand)}
                             style={{
                                 color: 'var(--color-danger)',
@@ -55,7 +55,7 @@ const BrandsSection = () => {
                     {brands.map((brand, index) => (
                         <div key={index} className="brands_item">
                             <img src={brand.logo} alt="brand" />
-                            {auth.roles.includes('admin') && <FontAwesomeIcon icon={faTrash} 
+                            {auth.logged && auth.roles.includes('admin') && <FontAwesomeIcon icon={faTrash} 
                             onClick={() => setIsDeleting(brand)}
                             style={{
                                 color: 'var(--color-danger)',

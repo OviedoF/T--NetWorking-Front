@@ -48,7 +48,7 @@ const HeroCards = () => {
                         <p className='description'>{item.description}</p>
                         <Link to={item.buttonLink} className='button'>{item.buttonText}</Link>
                         
-                        {auth.roles.includes('admin') && <FontAwesomeIcon icon={faTrash} 
+                        {auth.logged && auth.roles.includes('admin') && <FontAwesomeIcon icon={faTrash} 
                             onClick={() => setIsDeleting(item)}
                             style={{
                                 color: 'var(--color-danger)',
